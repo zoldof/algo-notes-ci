@@ -28,7 +28,7 @@
   <div id="content">loading...</div>
 
   <script>
-    fetch('notes/sample.txt')
+    fetch('./sample.txt')
       .then(res => res.text())
       .then(text => {
         const el = document.getElementById('content');
