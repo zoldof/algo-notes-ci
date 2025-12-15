@@ -32,6 +32,9 @@
   <div id="content">loading...</div>
 
   <script>
+    marked.setOptions({
+      gfm: true
+    });
     const params = new URLSearchParams(location.search);
     const fname = params.get('fname');
     fetch(`./${fname}.txt`)
