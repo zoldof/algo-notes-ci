@@ -32,7 +32,9 @@
   <div id="content">loading...</div>
 
   <script>
-    fetch('./sample.txt')
+    const params = new URLSearchParams(location.search);
+    const fname = params.get('fname');
+    fetch('./${fname}.txt')
       .then(res => res.text())
       .then(text => {
         const el = document.getElementById('content');
