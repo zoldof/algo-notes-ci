@@ -210,11 +210,11 @@ $\;\:\; \, \;\:\;\: 2 \quad \;\: 5$
 ＊変則すだれ算では公約数で割れない数について、そのまま下に降ろす
 
 - ある3つの数の変則すだれ算
-$2\ \underline{\phontome{00}12 \quad 15 \quad 40}$
-$2\ \underline{\phontome{00}6 \quad 15 \quad 20}$
-$3\ \underline{\phontome{00}3 \quad 15 \quad 10}$
-$5\ \underline{\phontome{00}1 \quad\ 5 \quad 10}$
-$\\phontome{5}1 \quad \ 1 \quad \ 2$
+$2\ \underline{\phontom{00}12 \quad 15 \quad 40}$
+$2\ \underline{\phontom{00}6 \quad 15 \quad 20}$
+$3\ \underline{\phontom{00}3 \quad 15 \quad 10}$
+$5\ \underline{\phontom{00}1 \quad\ 5 \quad 10}$
+$\\phontom{5}1 \quad \ 1 \quad \ 2$
 
 
 
