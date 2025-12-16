@@ -4,13 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
-  <script>
-    (function () {
-      const params = new URLSearchParams(location.search);
-      const fname = params.get('fname');
-      window.__fname = fname;
-    })();
-  </script>
   <title>Markdown + GFM + KaTeX Viewer</title>
   <!-- Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -71,7 +64,8 @@
         breaks: true,
         gfm: true
       });
-      const fname = window.__fname;
+      const params = new URLSearchParams(location.search);
+      const fname = params.get('fname');
       if (!fname) {
         document.getElementById("content").textContent = "fname not specified";
         return;
