@@ -178,7 +178,7 @@ $1+(8÷4)=3$とカッコを必要とすることになります。
 - ある2つの数のすだれ算
 $2)\\underline{\phantom{00}12 \phantom{00}30}$
 $3)\\underline{\phantom{000}6 \phantom{00}15}$
-$    \quad \quad \phantom{0}2 \phantom{000}5$
+$             \hspace{0.4em}2 \phantom{000}5$
 
 **最大公約数**
 すだれ算をつかって求める
