@@ -31,6 +31,7 @@
   <style>
     body {
       font-family: monospace;
+      font-size: inherit;
     }
     table {
       border-collapse: collapse; 
@@ -46,10 +47,6 @@
     #content {
       width: 90%;
       margin: 3rem auto;
-      font-size: 20px;
-    }
-    #content * {
-      font-size: inherit;
     }
   </style>
 </head>
@@ -58,7 +55,7 @@
   <div id="content">loading...</div>
 
   <script>
-    marked.setOptions({
+    marked.etOptions({
       breaks:true,
       gfm: true
     });
