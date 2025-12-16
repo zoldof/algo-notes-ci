@@ -178,7 +178,7 @@ $1+(8÷4)=3$とカッコを必要とすることになります。
 - ある2つの数のすだれ算
 $ 2)\\underline{\phantom{00}12 \phantom{00}30}$
 $ 3)\\underline{\phantom{000}6 \phantom{00}15}$
-$\hspace{0.8em} \phantom{000}2 \phantom{000}5$
+$\hspace{0.9em} \phantom{000}2 \phantom{000}5$
 
 **最大公約数**
 すだれ算をつかって求める
@@ -210,11 +210,11 @@ $\hspace{0.8em} \phantom{000}2 \phantom{000}5$
 ＊変則すだれ算では公約数で割れない数について、そのまま下に降ろす
 
 - ある3つの数の変則すだれ算
-$2)\\underline{\phantom{00}12 \phantom{00}15 \phantom{00}40}$
-$2)\\underline{\phantom{000}6 \phantom{00}15 \phantom{00}20}$
-$3)\\underline{\phantom{000}3 \phantom{00}15 \phantom{00}10}$
-$5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
-$        \quad \phantom{000}1 \phantom{000}1 \phantom{000}2$
+$  2)\\underline{\phantom{00}12 \phantom{00}15 \phantom{00}40}$
+$  2)\\underline{\phantom{000}6 \phantom{00}15 \phantom{00}20}$
+$  3)\\underline{\phantom{000}3 \phantom{00}15 \phantom{00}10}$
+$  5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
+$\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 
 ~~＊この例で、3つの数の公約数はひとつもない~~🙇
 ＊この例で、3つの数の最大公約数は1だけ
