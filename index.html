@@ -2,6 +2,21 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const fname = params.get('fname');
+      window.__fname = fname;
+      const shouldNoIndex =
+        !fname || fname.startsWith('_') || fname.startsWith('raw-');
+      if (shouldNoIndex) {
+        const meta = document.createElement('meta');
+        meta.name = 'robots';
+        meta.content = 'noindex';
+        document.head.appendChild(meta);
+      }
+    })();
+  </script>
   <title>Markdown + GFM + KaTeX Viewer</title>
   <!-- Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -43,8 +58,7 @@
     marked.setOptions({
       gfm: true
     });
-    const params = new URLSearchParams(location.search);
-    const fname = params.get('fname');
+    const fname = window.__fname;
     fetch(`./${fname}.txt`)
       .then(res => res.text())
       .then(text => {
