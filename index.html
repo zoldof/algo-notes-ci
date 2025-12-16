@@ -53,25 +53,36 @@
 
 <body>
   <div id="content">loading...</div>
-
   <script>
-    marked.etOptions({
-      breaks:true,
-      gfm: true
-    });
-    const fname = window.__fname;
-    fetch(`./${fname}.txt`)
-      .then(res => res.text())
-      .then(text => {
-        const el = document.getElementById('content');
-        el.innerHTML = marked.parse(text);
-        renderMathInElement(el, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false }
-          ]
-        });
+    document.addEventListener("DOMContentLoaded", () => {
+      marked.setOptions({
+        breaks: true,
+        gfm: true
       });
-  </script>
+      const fname = window.__fname;
+      if (!fname) {
+        document.getElementById("content").textContent = "fname not specified";
+        return;
+      }
+      fetch(`./${fname}.txt`)
+        .then(res => {
+          if (!res.ok) throw new Error("fetch failed");
+          return res.text();
+        })
+        .then(text => {
+          const el = document.getElementById("content");
+          el.innerHTML = marked.parse(text);
+          renderMathInElement(el, {
+            delimiters: [
+              { left: "$$", right: "$$", display: true },
+              { left: "$", right: "$", display: false }
+            ]
+          });
+        })
+        .catch(err => {
+          document.getElementById("content").textContent = err.message;
+        });
+    });
+    </script>
 </body>
 </html>
