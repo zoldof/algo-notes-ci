@@ -176,10 +176,9 @@ $1+(8÷4)=3$とカッコを必要とすることになります。
 ある数は整数か小数か問わない
 
 - ある2つの数のすだれ算
-$2\ \rparen \underline{\ 12 \quad 30}$
-$3\ \rparen \underline{\\\ 6 \quad 15}$
-$\\\ \ \\\\ 2 \quad \\ 5$
-
+$2)\\underline{\phantom{00}12 \quad 30}$
+$3)\\underline{\phantom{000}6 \quad 15}$
+$\phanton{00000}2 \quad 5$
 
 **最大公約数**
 すだれ算をつかって求める
@@ -214,8 +213,8 @@ $\\\ \ \\\\ 2 \quad \\ 5$
 $2)\\underline{\phantom{00}12\quad 15\quad 40}$
 $2)\\underline{\phantom{000}6 \quad 15 \quad 20}$
 $3)\\underline{\phantom{000}3 \quad 15 \quad 10}$
-$5)\\underline{\phantom{000}1 \quad\ 5 \quad 10}$
-$\phantom{00000}1\quad \ 1\quad \ 2$
+$5)\\underline{\phantom{000}1 \phantom{000}5 \quad 10}$
+$\phantom{00000}1\phantom{000} \quad 2$
 
 ~~＊この例で、3つの数の公約数はひとつもない~~🙇
 ＊この例で、3つの数の最大公約数は1だけ
