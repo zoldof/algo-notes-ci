@@ -180,6 +180,7 @@ $2\ \rparen \underline{\ 12 \quad 30}$
 $3\ \rparen \underline{\\\ 6 \quad 15}$
 $\\\ \ \\\\ 2 \quad \\ 5$
 
+
 **最大公約数**
 すだれ算をつかって求める
 ＊すだれ算で公約数を探すときには小さい素数から始めることで、素数の倍数で探す手間を省いている
@@ -211,12 +212,10 @@ $\\\ \ \\\\ 2 \quad \\ 5$
 
 - ある3つの数の変則すだれ算
 $2)\\underline{\phantom{00}12\quad 15\quad 40}$
-$2)\\underline{\phantom{00}6 \quad 15 \quad 20}$
-$3)\\underline{\phantom{00}3 \quad 15 \quad 10}$
-$5)\\underline{\phantom{00}1 \quad\ 5 \quad 10}$
-$\phantom{5}1\quad \ 1\quad \ 2$
-
-
+$2)\\underline{\phantom{000}6 \quad 15 \quad 20}$
+$3)\\underline{\phantom{000}3 \quad 15 \quad 10}$
+$5)\\underline{\phantom{000}1 \quad\ 5 \quad 10}$
+$\phantom{00000}1\quad \ 1\quad \ 2$
 
 ~~＊この例で、3つの数の公約数はひとつもない~~🙇
 ＊この例で、3つの数の最大公約数は1だけ
