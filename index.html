@@ -3,19 +3,12 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
   <script>
     (function () {
       const params = new URLSearchParams(location.search);
       const fname = params.get('fname');
       window.__fname = fname;
-      const shouldNoIndex =
-        !fname || fname.startsWith('raw-');
-      if (shouldNoIndex) {
-        const meta = document.createElement('meta');
-        meta.name = 'robots';
-        meta.content = 'noindex';
-        document.head.appendChild(meta);
-      }
     })();
   </script>
   <title>Markdown + GFM + KaTeX Viewer</title>
