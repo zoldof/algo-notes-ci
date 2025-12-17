@@ -4,8 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
-  <!-- Cache-Control -->
-  <meta http-equiv="Cache-Control" content="no-store">
   <title>Markdown + GFM + KaTeX Viewer</title>
   <!-- Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -72,7 +70,8 @@
         document.getElementById("content").textContent = "fname not specified";
         return;
       }
-      fetch(`./${fname}.txt`)
+      //fetch(`./${fname}.txt`)
+      fetch(`./${fname}.txt?_=${Date.now()}`)
         .then(res => {
           if (!res.ok) throw new Error("fetch failed");
           return res.text();
