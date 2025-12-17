@@ -74,11 +74,11 @@ $15×3$の大きいブロックが正方形になるように並べると
 3つの数の公約数以外に2つの数の公約数が生じるため変則すだれ算をつかう
 
 ある3つの数の変則すだれ算
-$2\; \rparen \underline{\; 12 \quad 15 \quad 40}$
-$2\; \rparen \underline{\;\;\: 6 \quad 15 \quad 20}$
-$3\; \rparen \underline{\;\;\: 3 \quad 15 \quad 10}$
-$5\; \rparen \underline{\;\;\: 1 \quad\;\: 5 \quad 10}$
-$\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
+$  2)\\underline{\phantom{00}12 \phantom{00}15 \phantom{00}40}$
+$  2)\\underline{\phantom{000}6 \phantom{00}15 \phantom{00}20}$
+$  3)\\underline{\phantom{000}3 \phantom{00}15 \phantom{00}10}$
+$  5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
+$\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 
 >この例で、3つの数の公約数は1だけ。すなわち、**3つの数の最大公約数は1**。
 
@@ -96,8 +96,8 @@ $\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
 なぜなら、下の段から「段ごとの部分最小公倍数」を計算していくと、それまでの部分最小公倍数（下の段で積み重ねてきたもの）に「段ごとの2つの数の公約数」を掛けていく構造になっている。
 
 例えば上記の例で1段目を抜き出すと
-$5\; \rparen \underline{\;\;\: 1 \quad\;\: 5 \quad 10}$
-$\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
+$  5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
+$\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 
 この3つの数の最小公倍数は$5×1×1×2=10$である。
 この段だけに限定すれば（2つの数の）公約数は5である。
@@ -107,9 +107,9 @@ $\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
 >「最大公約数の何倍か」という意味ではなかったのか？という疑問
 
 2段目を追加すると
-$3\; \rparen \underline{\;\;\: 3 \quad 15 \quad 10}$
-$5\; \rparen \underline{\;\;\: 1 \quad\;\: 5 \quad 10}$
-$\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
+$  3)\\underline{\phantom{000}3 \phantom{00}15 \phantom{00}10}$
+$  5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
+$\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 
 1段目の最小公倍数は$5×1×1×2=10$であり、すでに公約数3で割った数であるため、この3つの数の最小公倍数は$3×5×2=30$である。
 1段目の公約数は3、2段目の公約数は5であり、乗算すると公約数は15であるが「変則すだれ算の2つの数における公約数である」ことに注意が必要。
@@ -136,11 +136,11 @@ $\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
 段が終わるまで作業を繰り返したあとで何をしているのか
 改めて最下段から見直してみる
 
-$2\; \rparen \underline{\; 12 \quad 15 \quad 40}$
-$2\; \rparen \underline{\;\;\: 6 \quad 15 \quad 20}$
-$3\; \rparen \underline{\;\;\: 3 \quad 15 \quad 10}$
-$5\; \rparen \underline{\;\;\: 1 \quad\;\: 5 \quad 10}$
-$\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
+$  2)\\underline{\phantom{00}12 \phantom{00}15 \phantom{00}40}$
+$  2)\\underline{\phantom{000}6 \phantom{00}15 \phantom{00}20}$
+$  3)\\underline{\phantom{000}3 \phantom{00}15 \phantom{00}10}$
+$  5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
+$\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 
 例の場合であれば3つの数の最大公約数は1だけ
 それとは別に、段別に2つの数の公約数と最小公倍数を設定していくと仮定すると
