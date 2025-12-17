@@ -1,3 +1,4 @@
+<a id="top"></a>
 # どのような人に向けて作られた記事か？
 ①中学1年の数学を学び直したい人
 ②実用数学技能検定で5級を取りたい人
@@ -405,19 +406,18 @@
 ［円錐，円柱，半球］を組み合わせたもの
 - 母線：円柱や円錐の側面を形作る部分の長さのこと
 
-# 宣伝
-- [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zenn.dev/algorithm_math/articles/1631216a6976a9)
-
 # 参考サイト
 - [実用数学技能検定 算数5級](https://www.su-gaku.net/suken/examination/summary/5q)
 - [平成29年告示 中学校学習指導要項 数学](https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/03/18/1387018_004.pdf)
 - [中学校数学・学習サイト](https://math.005net.com)
 
 ---
-
+<a id="fn"></a>
 # 脚注  
 - **円の接線について**:[なぜ半径に対して垂直か？](https://curlpingnosiawase.com/three-proof-methods-that-the-angle-of-the-tangent-of-the-circle-is-90-degrees-right-angle-what-is-a-tangent-what-is-the-point-of-contact-between-a-circle-and-a-straight-line-junior-high-school-mathmat)
 - **距離という単語**:問題の出し方にもよるが基本は、ある場所までの最短距離のことを「距離」と呼び、真っ直ぐ向かうのが一番早いので線分である。
 現実的には道のりに障害物があったり、道が飛び飛びであったり、行き止まりであったり、分岐していたり、曲がっていたり、斜めであったり、中継地点があったりするので、それらをふまえた単語として「距離」が用いられる。
 - **垂線が直線に対して90度な理由**:垂線の作図に使う交点を結ぶ三角形は線対称になるから、直線の垂線は対称の軸でもあり直線に90度で交わる。
 - **最小公倍数の求め方**:例えば10を20にするのに2倍、10を30にするのに3倍、[最小公倍数の仕組み](https://zenn.dev/algorithm_math/articles/idea-math-shou1-gcd_and_lcm)から見ると、正方形の1辺を形成するために、それぞれの倍数が影響し合うことで最小公倍数60が求まる。
+
+[⏫ページ先頭へ](#top)
