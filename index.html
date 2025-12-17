@@ -70,6 +70,7 @@
         document.getElementById("content").textContent = "fname not specified";
         return;
       }
+      //* Cache-Control *
       //fetch(`./${fname}.txt`)
       fetch(`./${fname}.txt?_=${Date.now()}`)
         .then(res => {
