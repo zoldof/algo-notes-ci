@@ -10,8 +10,7 @@ body {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-p, pre {
-  white-space: pre-wrap;
+p {
   word-break: break-word;
 }
 table {
@@ -33,7 +32,7 @@ th, td {
   max-width: 100%;
   overflow-x: auto;
 }
-#content {
+#content, p, pre {
   width: 90%;
   max-width: 100%;
   margin: 2rem auto;
