@@ -10,9 +10,6 @@ body {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-p {
-  word-break: break-word;
-}
 table {
   border-collapse: collapse; 
   max-width: 100%;
@@ -32,7 +29,7 @@ th, td {
   max-width: 100%;
   overflow-x: auto;
 }
-#content, p, pre {
+#content {
   width: 90%;
   max-width: 100%;
   margin: 2rem auto;
