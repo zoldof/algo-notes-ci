@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="robots" content="{{ page.robots }}">
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="{{ '/style.css?v=1' | relative_url }}">
+  <!-- Cashe control -->
+  <!-- <link rel="stylesheet" href="{{ '/style.css' | relative_url }}"> -->
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 </head>
 <body>
   {{ content }}
