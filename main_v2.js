@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   //* Cache-Control *
   //fetch(`./${fname}/${fname}.txt`)
-  fetch(`https://zoldof.github.io/algo-notes/shougaku/${fname}.txt?_=${Date.now()}`)
+  fetch(`./${fname}/${fname}.txt?_=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
