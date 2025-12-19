@@ -6,13 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
-  if (!fname) {
-    document.getElementById("content").textContent = "fname not specified";
-    return;
-  }
-  //* Cache-Control *
-  //fetch(`/${repo}/${fname}/${fname}.txt`)
-  fetch(`/${repo}/${fname}/${fname}.txt?_=${Date.now()}`)
+  if (fname) {
+    //* Cache-Control *
+    //fetch(`/${repo}/${fname}/${fname}.txt`)
+    fetch(`/${repo}/${fname}/${fname}.txt?_=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
@@ -30,4 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => {
       document.getElementById("content").textContent = err.message;
     });
+  } else {
+    // 本番ページ用：ビルド済み HTML
+    content.innerHTML = `<object type="text/html" data="./index.html" style="width:100%;height:100%"></object>`;
+  }
 });
