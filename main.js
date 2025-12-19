@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     breaks: true,
     gfm: true
   });
+  const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
   if (!fname) {
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   //* Cache-Control *
   //fetch(`./${fname}/${fname}.txt`)
-  fetch(`/algo-notes/${fname}/${fname}.txt?_=${Date.now()}`)
+  fetch(`/${repo}/${fname}/${fname}.txt?_=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
