@@ -7,14 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
   const pathParts = location.pathname.split('/').filter(Boolean); 
-  const currentDir = pathParts[pathParts.length - 1]; // 最後の要素が省略index.htmlなら最後がディレクトリ
-
+  const currentDir = pathParts[pathParts.length - 1]; 
+  const el = document.getElementById("content");
   if (currentDir === fname) {
-    console.log(`Skipping fetch: already in ${fname}/`);
+    el.textContent = "Skipping fetch: already in ${fname}/";
     return;
   }
   if (!fname) {
-    document.getElementById("content").textContent = "fname not specified";
+    el.textContent = "fname not specified";
     return;
   }
   //* Cache-Control *
@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.text();
     })
     .then(text => {
-      const el = document.getElementById("content");
       el.innerHTML = marked.parse(text);
       renderMathInElement(el, {
         delimiters: [
@@ -35,6 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
     .catch(err => {
-      document.getElementById("content").textContent = err.message;
+      el.textContent = err.message;
     });
 });
