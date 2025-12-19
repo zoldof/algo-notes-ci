@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentDir = pathParts[pathParts.length - 1]; 
   const el = document.getElementById("content");
   if (currentDir != repo) {
-    el.textContent = `Fetch blocked: not launched from repo root (${currentDir})`;
+    el.textContent = `Test blocked: not launched from repo root (${currentDir})`;
     return;
   }
   if (!fname) {
