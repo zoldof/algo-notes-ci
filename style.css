@@ -1,0 +1,37 @@
+/* 横スクロール緊急停止用 
+html, body {
+  overflow-x: hidden;
+} */
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: monospace;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+table {
+  border-collapse: collapse; 
+  max-width: 100%;
+  margin: 1em 0;
+  display: block;
+  overflow-x: auto;
+}
+th, td {
+  border: 1px solid #999;
+  padding: 0.4em 0.6em;
+}
+/* インラインと表示数式で分けてる */
+.katex {
+  font-size: 1.1em;
+}
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+}
+#content {
+  width: 90%;
+  max-width: 100%;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
