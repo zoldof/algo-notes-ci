@@ -1,3 +1,9 @@
+---
+layout: default
+title: 数式メモ
+robots: noindex
+---
+
 <a id="top"></a>
 # どのような人に向けて作られた記事か？
 ①小学校の算数から学び直したい人
