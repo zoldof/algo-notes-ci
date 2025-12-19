@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const pathParts = location.pathname.split('/').filter(Boolean); 
   const currentDir = pathParts[pathParts.length - 1]; 
   const el = document.getElementById("content");
-  if (currentDir === fname) {
-    el.textContent = "Skipping fetch: already in ${fname}/";
+  if (currentDir != repo) {
+    el.textContent = `Fetch blocked: not launched from repo root (${currentDir})`;
     return;
   }
   if (!fname) {
