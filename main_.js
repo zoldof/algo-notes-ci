@@ -29,6 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   } else {
     // 本番ページ用：ビルド済み HTML
-    content.innerHTML = `<object type="text/html" data="./index.html" style="width:100%;height:100%"></object>`;
+    //content.innerHTML = `<object type="text/html" data="./index.html" style="width:100%;height:100%"></object>`;
   }
 });
