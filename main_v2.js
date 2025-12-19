@@ -4,15 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     gfm: true
   });
   const params = new URLSearchParams(location.search);
-  const dilectory = params.get('d');
-  const file = params.get('f');
+  const fname = params.get('f');
   if (!fname) {
     document.getElementById("content").textContent = "fname not specified";
     return;
   }
   //* Cache-Control *
-  //fetch(`./${dilectory}/${file}.txt`)
-  fetch(`./${dilectory}/${file}.txt?_=${Date.now()}`)
+  //fetch(`./${fname}/${fname}.txt`)
+  fetch(`./${fname}/${fname}.txt?_=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
