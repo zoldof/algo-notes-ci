@@ -9,9 +9,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("content").textContent = "fname not specified";
     return;
   }
+
+  fetch(`./${fname}/${fname}.txt?_=${Date.now()}`)
+
   //* Cache-Control *
   //fetch(`./${fname}/${fname}.txt`)
   fetch(`./${fname}/${fname}.txt?_=${Date.now()}`)
+    .then(res => {
+      console.log(res.status, res.url);
+      return res.text();
+    })
+    .then(text => {
+      console.log(text.slice(0, 100));
+    })
+    .catch(err => console.error(err));
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
