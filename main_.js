@@ -15,7 +15,7 @@ export async function renderMarkdown(el) {
   }
 
   try {
-    const res = await fetch(`/${repo}/dist/${dname}/index.md`);
+    const res = await fetch(`/${repo}/docs/${dname}/index.md`);
     if (!res.ok) throw new Error("fetch failed");
 
     const text = await res.text();
