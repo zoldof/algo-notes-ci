@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   //* Cache-Control *
   fetch(`/${repo}/${dname}/index.md`)
-  //fetch(`/${repo}/${dname}/${dname}.md?_=${Date.now()}`)
+  //fetch(`/${repo}/${dname}/$index.md?_=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
