@@ -1,4 +1,4 @@
-import { renderMarkdown } from "main.js";
+import { renderMarkdown } from "main_.js";
 import { renderKatex } from "katex.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
