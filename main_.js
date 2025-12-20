@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
-  const fname = params.get('fname');
+  const dname = params.get('dname');
   const pathParts = location.pathname.split('/').filter(Boolean); 
   const currentDir = pathParts[pathParts.length - 1]; 
   const el = document.getElementById("content");
@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = `Test blocked: not launched from repo root (${currentDir})`;
     return;
   }
-  if (!fname) {
-    el.textContent = "fname not specified";
+  if (!dname) {
+    el.textContent = "dname not specified";
     return;
   }
   //* Cache-Control *
-  fetch(`/${repo}/${fname}/${fname}.md`)
-  //fetch(`/${repo}/${fname}/${fname}.md?_=${Date.now()}`)
+  fetch(`/${repo}/${dname}/index.md`)
+  //fetch(`/${repo}/${dname}/${dname}.md?_=${Date.now()}`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
