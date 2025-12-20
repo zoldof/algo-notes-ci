@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
+export async function renderMarkdown(el) {
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
-  const dname = params.get('dname');
-  const pathParts = location.pathname.split('/').filter(Boolean); 
-  const currentDir = pathParts[pathParts.length - 1]; 
-  const el = document.getElementById("content");
-  if (currentDir != repo) {
+  const dname = params.get("dname");
+  const pathParts = location.pathname.split("/").filter(Boolean);
+  const currentDir = pathParts[pathParts.length - 1];
+
+  if (currentDir !== repo) {
     el.textContent = `Test blocked: not launched from repo root (${currentDir})`;
     return;
   }
@@ -13,21 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "dname not specified";
     return;
   }
-  //* Cache-Control *
-  fetch(`/${repo}/${dname}/index.md`)
-  //fetch(`/${repo}/${dname}/$index.md?_=${Date.now()}`)
-    .then(res => {
-      if (!res.ok) throw new Error("fetch failed");
-      return res.text();
-    })
-    .then(text => {
-      marked.setOptions({
-        breaks: true,
-        gfm: true
-      });
-      el.innerHTML = marked.parse(text);
-    })
-    .catch(err => {
-      el.textContent = err.message;
+
+  try {
+    const res = await fetch(`/${repo}/${dname}/index.md`);
+    if (!res.ok) throw new Error("fetch failed");
+
+    const text = await res.text();
+    marked.setOptions({
+      breaks: true,
+      gfm: true
     });
-});
+    el.innerHTML = marked.parse(text);
+  } catch (err) {
+    el.textContent = err.message;
+  }
+}
