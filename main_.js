@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  import { katexr } from "katexr.js";
+  const { katexr } await import ("katexr.js");
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
