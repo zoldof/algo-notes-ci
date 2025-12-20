@@ -14,11 +14,17 @@
     {{ content }}
   </div>
   <script>
-    renderMathInElement(document.getElementById("content"), {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false }
-      ]
+    <div id="content">
+  {{ content }}
+</div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.getElementById("content"), {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false }
+        ]
+      });
     });
   </script>
 </body>
