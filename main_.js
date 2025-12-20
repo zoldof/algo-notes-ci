@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const { katexr } await import ("katexr.js");
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gfm: true
       });
       el.innerHTML = marked.parse(text);
-      katexr(el);
+      (await import(`katexr.js`)).katexr(el);
     })
     .catch(err => {
       el.textContent = err.message;
