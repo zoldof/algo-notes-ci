@@ -2,5 +2,11 @@ markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
   hard_wrap: true  # 改行を <br> に変換
-
+math_delimiters:
+  - left: "$$"
+    right: "$$"
+    display: true
+  - left: "$"
+    right: "$"
+    display: false
   
