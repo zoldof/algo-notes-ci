@@ -13,6 +13,13 @@
   <div id="content">
     {{ content }}
   </div>
-  <script src="{{ '/main_.js' | relative_url }}"></script>
+  <script>
+    renderMathInElement(el, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  </script>
 </body>
 </html>
