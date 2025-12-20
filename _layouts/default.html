@@ -14,7 +14,7 @@
     {{ content }}
   </div>
   <script>
-    renderMathInElement(el, {
+    renderMathInElement(document.getElementById("content"), {
       delimiters: [
         { left: "$$", right: "$$", display: true },
         { left: "$", right: "$", display: false }
