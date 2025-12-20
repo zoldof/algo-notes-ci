@@ -2,7 +2,7 @@ markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
   hard_wrap: true  # 改行を <br> に変換
-  math_engine: katex
+  math_engine: mathjax
   math_engine_opts:
     inline_math_delimiters: ['$', '$']    # インライン数式
     display_math_delimiters: ['$$', '$$'] # ブロック数式
