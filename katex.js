@@ -1,4 +1,4 @@
-function katexr(el) {
+export function renderKatex(el) {
   renderMathInElement(el, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
