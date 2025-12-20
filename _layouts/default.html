@@ -6,6 +6,7 @@
   <title>{{ page.title }}</title>
   <!-- Cache-Control -->
   <!-- <link rel="stylesheet" href="{{ '/style.css' | relative_url }}"> -->
+  {% include head.html %}
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
 </head>
 <body>
