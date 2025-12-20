@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gfm: true
       });
       el.innerHTML = marked.parse(text);
-      (import(`katexr.js`)).katexr(el);
+      import('katexr.js').then(mod => mod.katexr(el));
     })
     .catch(err => {
       el.textContent = err.message;
