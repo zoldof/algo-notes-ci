@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  import { katexr } from "katexr.js";
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
@@ -26,12 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gfm: true
       });
       el.innerHTML = marked.parse(text);
-      renderMathInElement(el, {
-        delimiters: [
-          { left: "$$", right: "$$", display: true },
-          { left: "$", right: "$", display: false }
-        ]
-      });
+      katexr(el);
     })
     .catch(err => {
       el.textContent = err.message;
