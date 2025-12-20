@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
-  const fname = params.get('fname');
-  if (!fname) {
-    document.getElementById("content").textContent = "fname not specified";
+  const dname = params.get('dname');
+  if (!dname) {
+    document.getElementById("content").textContent = "dname not specified";
     return;
   }
-  fetch(`/${repo}/${fname}/${fname}.txt`)
+  fetch(`/${repo}/dist/${dname}/${dname}.md`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
