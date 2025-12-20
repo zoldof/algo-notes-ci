@@ -10,9 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("content").textContent = "fname not specified";
     return;
   }
-  //* Cache-Control *
-  //fetch(`/${repo}/${fname}/${fname}.txt`)
-  fetch(`/${repo}/${fname}/${fname}.txt?_=${Date.now()}`)
+  fetch(`/${repo}/${fname}/${fname}.txt`)
     .then(res => {
       if (!res.ok) throw new Error("fetch failed");
       return res.text();
