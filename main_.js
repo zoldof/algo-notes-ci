@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  marked.setOptions({
-    breaks: true,
-    gfm: true
-  });
   const repo = "algo-notes";
   const params = new URLSearchParams(location.search);
   const fname = params.get('fname');
@@ -25,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.text();
     })
     .then(text => {
+      marked.setOptions({
+        breaks: true,
+        gfm: true
+      });
       el.innerHTML = marked.parse(text);
       renderMathInElement(el, {
         delimiters: [
