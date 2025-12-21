@@ -230,7 +230,7 @@ $\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 **最小公倍数**
 ①すだれ算をつかって求める
 ②変則すだれ算をつかって求める
-＊3つの数で変則すだれ算を使う場合について、詳しい解説は[こちらの記事](https://zenn.dev/algorithm_math/articles/idea-math-shou1-gcd_and_lcm)でまとめています。
+＊3つの数で変則すだれ算を使う場合について、詳しい解説は[こちらの記事](https://zoldof.github.io/algo-notes/dist/gcd_and_lcm/)でまとめています。
 
 **公約数をすべて求める**
 1と最大公約数を含めたすべての公約数は
