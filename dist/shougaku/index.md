@@ -179,9 +179,9 @@ $1+(8÷4)=3$とカッコを必要とすることになります。
 ある数は整数か小数か問わない
 
 - ある2つの数のすだれ算
-$2\; \rparen \underline{\; 12 \quad 30}$
-$3\; \rparen \underline{\;\;\: 6 \quad 15}$
-$\;\:\; \, \;\:\;\: 2 \quad \;\: 5$
+$ 2)\\underline{\phantom{00}12 \phantom{00}30}$
+$ 3)\\underline{\phantom{000}6 \phantom{00}15}$
+$\hspace{0.9em} \phantom{000}2 \phantom{000}5$
 
 **最大公約数**
 すだれ算をつかって求める
