@@ -7,4 +7,3 @@ document.addEventListener("DOMContentLoaded", async () => {
   await renderMarkdown(el);
   renderKatex(el);
 });
-//
