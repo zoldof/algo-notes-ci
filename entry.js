@@ -1,4 +1,4 @@
-import { renderMarkdown } from "/algo-notes/main_.js";
+import { renderMarkdown } from "/algo-notes/main.js";
 import { renderKatex } from "/algo-notes/katex.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
