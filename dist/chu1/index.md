@@ -1,3 +1,8 @@
+---
+layout: default
+title: 中1数学
+robots: noindex
+---
 <a id="top"></a>
 # どのような人に向けて作られた記事か？
 ①中学1年の数学を学び直したい人
