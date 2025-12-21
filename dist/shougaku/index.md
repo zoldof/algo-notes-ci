@@ -475,9 +475,6 @@ $\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 ＊棒グラフの場合には各階級に対応する個数を積み上げる
 ＊階級の中央値を最頻値と見立てる場合がある
 
-# 宣伝
-- [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zenn.dev/algorithm_math/articles/idea-math-chuu1)
-
 # 参考サイト[^9]
 - [実用数学技能検定 算数6級](https://www.su-gaku.net/suken/examination/summary/6q/)
 - [平成20年告示 小学校学習指導要項 算数](https://www.mext.go.jp/a_menu/shotou/new-cs/youryou/syo/san.htm)
