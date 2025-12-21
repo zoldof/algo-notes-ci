@@ -1,5 +1,5 @@
 - can build
-- cant build
+- ~~cant build~~
 
 # コーディング
 - 詰まったら順番にコード内容をAIに投げて質問する
