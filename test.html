@@ -15,11 +15,11 @@
   <script defer
     src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <!-- General -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 </head>
   
 <body>
   <div id="content">loading...</div>
-  <script type="module" src="entry.js"></script>
+  <script type="module" src="{{ '/entry.js' | relative_url }}"></script>
 </body>
 </html>
