@@ -1,0 +1,5 @@
+markdown: kramdown
+kramdown:
+  input: GFM       # GitHub Flavored Markdown
+  hard_wrap: true  # 改行を <br> に変換
+  
