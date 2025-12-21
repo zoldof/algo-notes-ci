@@ -5,12 +5,13 @@
   <meta name="robots" content="{{ page.robots }}">
   <title>{{ page.title }}</title>
   {% include katex.html %}
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <!-- <link rel="stylesheet" href="{{ '/style.css' | relative_url }}"> -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="content">
     {{ content }}
   </div>
-  <script type="module" src="{{ '/entry.js' | relative_url }}"></script>
+  <script type="module" src="entry.js"></script>
 </body>
 </html>
