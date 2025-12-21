@@ -213,11 +213,11 @@ $\;\:\; \, \;\:\;\: 2 \quad \;\: 5$
 ＊変則すだれ算では公約数で割れない数について、そのまま下に降ろす
 
 - ある3つの数の変則すだれ算
-$2\; \rparen \underline{\; 12 \quad 15 \quad 40}$
-$2\; \rparen \underline{\;\;\: 6 \quad 15 \quad 20}$
-$3\; \rparen \underline{\;\;\: 3 \quad 15 \quad 10}$
-$5\; \rparen \underline{\;\;\: 1 \quad\;\: 5 \quad 10}$
-$\;\:\; \, \;\:\;\: 1 \quad \;\: 1 \quad \;\: 2$
+$  2)\\underline{\phantom{00}12 \phantom{00}15 \phantom{00}40}$
+$  2)\\underline{\phantom{000}6 \phantom{00}15 \phantom{00}20}$
+$  3)\\underline{\phantom{000}3 \phantom{00}15 \phantom{00}10}$
+$  5)\\underline{\phantom{000}1 \phantom{000}5 \phantom{00}10}$
+$\\hspace{0.9em} \phantom{000}1 \phantom{000}1 \phantom{000}2$
 
 ~~＊この例で、3つの数の公約数はひとつもない~~🙇
 ＊この例で、3つの数の最大公約数は1だけ
