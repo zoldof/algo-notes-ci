@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <script>
+    (function () {
+      const path = location.pathname;
+      const m = path.match(/\/dist\/([^\/]+)\//);
+      if (m) {
+        const dname = m[1];
+        location.replace(`/algo-notes/?dname=${encodeURIComponent(dname)}`);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Not Found</p>
+</body>
+</html>
