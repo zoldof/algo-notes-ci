@@ -1,5 +1,5 @@
 export async function renderMarkdown(el) {
-  const repo = "algo-notes";
+  const repo = "algo-notes-ci";
   const params = new URLSearchParams(location.search);
   const dname = params.get("dname");
 
