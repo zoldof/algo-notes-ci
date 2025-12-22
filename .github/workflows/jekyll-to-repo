@@ -1,0 +1,34 @@
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source (Jekyll repo)
+        uses: actions/checkout@v4
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Checkout destination repo
+        uses: actions/checkout@v4
+        with:
+          repository: yourname/static-pages-repo
+          token: ${{ secrets.PAT }}
+          path: dest
+          ref: main
+
+      - name: Copy build result
+        run: |
+          rm -rf dest/*
+          cp -r _site/* dest/
+
+      - name: Commit and push
+        run: |
+          cd dest
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Deploy from Jekyll build" || echo "No changes"
+          git push
