@@ -1,5 +1,5 @@
 const url = new URL(import.meta.url);
-const repo = url.pathname.split("/")[1];
+const repo = url.pathname.split("/")[0];
 import { renderKatex } from `/${repo}/katex.js`;
 
 document.addEventListener("DOMContentLoaded", async () => {
