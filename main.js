@@ -1,5 +1,4 @@
 export async function renderMarkdown(el) {
-  const repo = "algo-notes-ci";
   const params = new URLSearchParams(location.search);
   const dname = params.get("dname");
 
@@ -9,7 +8,7 @@ export async function renderMarkdown(el) {
   }
 
   try {
-    const res = await fetch(`/${repo}/dist/${dname}/index.md`);
+    const res = await fetch`(./dist/${dname}/index.md`);
     if (!res.ok) throw new Error("fetch failed");
 
     const text = await res.text();
