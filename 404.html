@@ -5,13 +5,11 @@
   <meta name="robots" content="noindex">
   <script>
     (function () {
-      const url = new URL(import.meta.url);
-      const m = path.match(/\/([^\/]+)\/dist\/([^\/]+)\//);
+      const path = location.pathname;
+      const m = path.match(/\/dist\/([^\/]+)\//);
       if (m) {
-        const repo = m[1];
-        const dname = m[2];
-        
-        location.replace(`/${repo}/?dname=${encodeURIComponent(dname)}`);
+        const dname = m[1];
+        location.replace(`/algo-notes-ci/?dname=${encodeURIComponent(dname)}`);
       }
     })();
   </script>
