@@ -1,7 +1,3 @@
-exclude:
-  - index.html
-  - README.md
-
 markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
