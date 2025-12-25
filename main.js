@@ -8,7 +8,7 @@ export async function renderMarkdown(el) {
   }
 
   try {
-    const res = await fetch(`/algo-notes-ci/dist/${dname}/index.md`);
+    const res = await fetch(`/dist/${dname}/index.md`);
     if (!res.ok) throw new Error("fetch failed");
 
     const text = await res.text();
