@@ -1,5 +1,6 @@
 exclude:
   - index.html
+  - README.md
 
 markdown: kramdown
 kramdown:
