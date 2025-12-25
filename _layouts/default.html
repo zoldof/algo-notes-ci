@@ -6,15 +6,15 @@
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
-  <!-- Liquid -->
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <!-- General -->
+  <base href="/algo-notes-ci/">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="content">
     <!-- Liquid -->
     {{ content }}
   </div>
-  <!-- Liquid -->
-  <script type="module" src="{{ '/entry.js' | relative_url }}"></script>
+  <script type="module" src="entry.js"></script>
 </body>
 </html>
