@@ -9,6 +9,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-24.04
@@ -18,23 +22,27 @@ jobs:
         with:
           fetch-depth: 1
 
-      # 依存関係が不要な純粋な HTML/CSS/JS の場合はスキップ可
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      # 必要ならビルドステップを入れる
-      # - name: Build site
-      #   run: npm run build   # 出力先が ./dist の場合は下の path を ./dist に変更
+      - name: Build site
+        run: npm run build   # 例: dist/ が生成される
+
+      - name: Debug – list generated files
+        run: |
+          echo "=== repo root ==="
+          ls -R .
+          echo "=== dist ==="
+          ls -R dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # ルートの index.html と同階層の静的資産だけを対象
           path: |
             index.html
             *.css
             *.js
-            dist/**/*.md
+            dist/**/*.md   # 任意の深さの .md をすべて含める
 
       - name: Deploy to GitHub Pages
         id: deployment
