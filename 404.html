@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex">
+  <base href="/algo-notes-ci/">
   <script>
     (function () {
       const path = location.pathname;
       const m = path.match(/\/dist\/([^\/]+)\//);
       if (m) {
         const dname = m[1];
-        location.replace(`/algo-notes-ci/?dname=${encodeURIComponent(dname)}`);
+        location.replace(`?dname=${encodeURIComponent(dname)}`);
       }
     })();
   </script>
