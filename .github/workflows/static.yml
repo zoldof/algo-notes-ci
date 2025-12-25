@@ -9,10 +9,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
     runs-on: ubuntu-24.04
@@ -38,7 +34,7 @@ jobs:
             index.html
             *.css
             *.js
-            dist/*/*.md
+            dist/**/*.md
 
       - name: Deploy to GitHub Pages
         id: deployment
