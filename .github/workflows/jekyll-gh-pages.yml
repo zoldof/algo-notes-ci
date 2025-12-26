@@ -58,6 +58,7 @@ jobs:
           tar -xzf site.tar.gz -C .
           mkdir -p target-repo
           for d in dist/*/; do
+            cp -r "$d" target-repo/
           done
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
