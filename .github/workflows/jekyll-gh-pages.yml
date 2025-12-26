@@ -45,12 +45,12 @@ jobs:
         with:
           repository: zoldof/algo-notes
           token: ${{ secrets.PAT_FOR_TARGET }}
-          path: algo-notes
+          path: target-repo
 
       - name: Copy artifact into target repo
         run: |
-          cp site.tar.gz algo-notes/
-          cd algo-notes
+          cp site.tar.gz target-repo/
+          cd target-repo
           # 必要なら解凍してファイルを展開
           # tar -xzf site.tar.gz -C .
           git config user.name "github-actions[bot]"
