@@ -2,3 +2,5 @@ markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
   hard_wrap: true  # 改行を <br> に変換
+sass:
+  style: compressed   # 既に圧縮した CSS がある場合は無視
