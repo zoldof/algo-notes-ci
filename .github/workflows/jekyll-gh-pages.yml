@@ -1,51 +1,60 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Build and push artifacts to another repo
 
 on:
-  # Runs on pushes targeting the default branch
+  workflow_dispatch:   # 手動実行
   # push:
-    # branches: ["main"]
+    # branches: [main]   # 必要なら自動実行も可
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  # PAT を使うので GITHUB_TOKEN の書き込み権限は不要
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+      - name: Archive site
+        run: |
+          tar -czf site.tar.gz -C _site .
+        # ここで _site ディレクトリを圧縮
+
+      - name: Upload artifact (optional, for debugging)
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-artifact
+          path: site.tar.gz
+
+  push:
     needs: build
+    runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          repository: <OWNER>/<TARGET-REPO>
+          token: ${{ secrets.PAT_FOR_TARGET }}
+          path: algo-notes
+
+      - name: Copy artifact into target repo
+        run: |
+          cp site.tar.gz algo-notes/
+          cd algo-notes
+          # 必要なら解凍してファイルを展開
+          # tar -xzf site.tar.gz -C .
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Update build artifacts $(date +%Y-%m-%dT%H:%M:%S)"
+          git push origin HEAD:main
