@@ -43,7 +43,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: <OWNER>/<TARGET-REPO>
+          repository: zoldof/algo-notes
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: algo-notes
 
