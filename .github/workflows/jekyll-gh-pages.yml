@@ -1,13 +1,12 @@
 name: Build and push artifacts to another repo
 
 on:
-  workflow_dispatch:   # 手動実行
+  workflow_dispatch:
   # push:
-    # branches: [main]   # 必要なら自動実行も可
+  #   branches: [main]
 
 permissions:
   contents: read
-  # PAT を使うので GITHUB_TOKEN の書き込み権限は不要
 
 jobs:
   build:
@@ -28,9 +27,8 @@ jobs:
       - name: Archive site
         run: |
           tar -czf site.tar.gz -C _site .
-        # ここで _site ディレクトリを圧縮
 
-      - name: Upload artifact (optional, for debugging)
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-artifact
@@ -40,6 +38,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-artifact
+          path: .
+
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -51,10 +55,13 @@ jobs:
         run: |
           cp site.tar.gz target-repo/
           cd target-repo
-          # 必要なら解凍してファイルを展開
+          # 必要なら解凍
           # tar -xzf site.tar.gz -C .
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Update build artifacts $(date +%Y-%m-%dT%H:%M:%S)"
-          git push origin HEAD:main
+          # 変更が無い場合はコミットしないように
+          if ! git diff --cached --quiet; then
+            git commit -m "Update build artifacts $(date +%Y-%m-%dT%H:%M:%S)"
+            git push origin HEAD:main
+          fi
