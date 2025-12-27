@@ -1,7 +1,9 @@
-name: Build and push selected artifacts
+name: Build and push artifacts to another repo
 
 on:
   workflow_dispatch:
+  # push:
+  #   branches: [main]
 
 permissions:
   contents: read
@@ -10,8 +12,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source (ci repo)
+      - name: Checkout source
         uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
@@ -19,16 +24,15 @@ jobs:
           source: ./
           destination: ./_site
 
-      - name: Archive selected directories
+      - name: Archive site
         run: |
-          mkdir -p artifacts
-          tar -czf artifacts/site.tar.gz -C _site dist
+          tar -czf site.tar.gz -C _site .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-artifact
-          path: artifacts/site.tar.gz
+          path: site.tar.gz
 
   push:
     needs: build
@@ -40,25 +44,26 @@ jobs:
           name: site-artifact
           path: .
 
-      - name: Checkout target repo (cd repo)
+      - name: Checkout target repo
         uses: actions/checkout@v4
         with:
           repository: zoldof/algo-notes
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      - name: Extract selected files into target repo root
+      - name: Copy & extract artifact into target repo
         run: |
-          tar -xzf site.tar.gz -C target-repo
-          if [ -d "target-repo/dist" ]; then
-            rsync -a --delete target-repo/dist/ target-repo/
-          fi
-
+          cp site.tar.gz target-repo/
           cd target-repo
+          tar -xzf site.tar.gz -C .
+          mkdir -p target-repo
+          for d in dist/*/; do
+            cp -r "$d" target-repo/
+          done
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "Deploy selected artifacts $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git commit -m "Deploy site $(date +%Y-%m-%dT%H:%M:%S)"
             git push origin HEAD:main
           fi
