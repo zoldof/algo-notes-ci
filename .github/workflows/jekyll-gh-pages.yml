@@ -52,7 +52,6 @@ jobs:
           tar -xzf site.tar.gz -C target-repo
           if [ -d "target-repo/dist" ]; then
             rsync -a --delete target-repo/dist/ target-repo/
-            rm -r target-repo/dist
           fi
 
           cd target-repo
