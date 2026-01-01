@@ -1,91 +1,89 @@
-name: Build & push only changed dirs
-on: workflow_dispatch
+name: Build and push only changed files
+
+on:
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: read   # 只読で OK、push のときは PAT が必要
 
 jobs:
   # -------------------------------------------------
-  # 1️⃣ ビルド → 変更があったディレクトリだけをアーティファクト化
+  # 1️⃣ ビルド → 変更があったファイルだけをアーティファクトに保存
   # -------------------------------------------------
   build:
     runs-on: ubuntu-latest
-    outputs:
-      # 後続ジョブで参照できるように出力を定義
-      has_changed: ${{ steps.changed.outputs.has_changed }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
-      - uses: actions/configure-pages@v5
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
-      - uses: actions/jekyll-build-pages@v1
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
 
-      # 前回の dist をキャッシュから復元（無ければ空ディレクトリになる）
-      - name: Restore previous dist
+      # 前回の成果物があれば取得（キャッシュ利用で永続化）
+      - name: Restore previous dist cache
         uses: actions/cache@v3
-        id: cache-restore
         with:
-          path: prev-dist
+          path: previous-dist
           key: dist-cache-${{ github.sha }}
           restore-keys: dist-cache-
 
-      - name: Prepare cache folder
-        run: |
-          mkdir -p prev-dist
-          # 初回は空なので何もしない
-          cp -r prev-dist/* . || true
-
-      # 変更があったディレクトリだけを抽出
-      - name: Find changed dirs
+      # 変更されたファイルだけをリスト化
+      - name: List changed files
         id: changed
         run: |
-          mkdir -p changed
-          rsync -a --compare-dest=../prev-dist _site/dist/ changed/
-          # 変更があったトップレベルディレクトリ名をスペース区切りで出力
-          DIRS=$(find changed -mindepth 1 -maxdepth 1 -type d -printf '%f ')
-          echo "dirs=$DIRS" >> $GITHUB_OUTPUT
-
-          # 変更があったかどうかのフラグを作成
-          if [ -n "$DIRS" ]; then
-            echo "has_changed=true" >> $GITHUB_OUTPUT
+          # 前回の成果物が無い場合は全ファイルを対象
+          if [ -d previous-dist ]; then
+            cd _site/dist
+            git init -q
+            git add -A
+            git commit -qm "temp"
+            git diff --name-only --no-index ../previous-dist . > $GITHUB_WORKSPACE/changed-files.txt
           else
-            echo "has_changed=false" >> $GITHUB_OUTPUT
+            find _site/dist -type f > $GITHUB_WORKSPACE/changed-files.txt
           fi
 
-      # 変更があればアーティファクトにアップロード
-      - name: Upload changed dirs
-        if: steps.changed.outputs.dirs != ''
+      # 変更ファイルだけをアーティファクトにアップロード
+      - name: Upload changed files artifact
         uses: actions/upload-artifact@v4
         with:
           name: changed-dist
           path: |
-            ${{ steps.changed.outputs.dirs }}/**/*
+            @${{ github.workspace }}/changed-files.txt
+          if-no-files-found: ignore
 
-      # 今回の dist を次回の比較用にキャッシュ保存
-      - name: Save current dist
+      # 現在の dist を次回用に保存（キャッシュに備える）
+      - name: Save current dist for next run
+        run: |
+          rm -rf previous-dist
+          cp -r _site/dist previous-dist
+
+      - name: Cache current dist
         uses: actions/cache@v3
         with:
-          path: _site/dist
+          path: previous-dist
           key: dist-cache-${{ github.sha }}
 
   # -------------------------------------------------
-  # 2️⃣ 変更があったファイルだけをリポジトリへプッシュ
+  # 2️⃣ 変更があったファイルだけをターゲットリポジトリへプッシュ
   # -------------------------------------------------
   push:
     needs: build
     runs-on: ubuntu-latest
-    # ビルドジョブの出力 (has_changed) を参照
-    if: needs.build.outputs.has_changed == 'true'
     steps:
-      - name: Download changed artifact
+      # アーティファクトを取得
+      - name: Download changed files artifact
         uses: actions/download-artifact@v4
         with:
           name: changed-dist
-          path: changed-dist
+          path: changed-artifact
 
+      # デプロイ先リポジトリをチェックアウト
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -93,15 +91,17 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      - name: Copy & commit
+      # 取得したファイルをリポジトリのルートへコピー
+      - name: Copy changed files into repo
         run: |
-          cp -r changed-dist/* target-repo/
+          cp -r changed-artifact/* target-repo/
           cd target-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
+          # 変更があればコミット・プッシュ、無ければ何もしない
           if ! git diff --cached --quiet; then
-            git commit -m "Deploy updated site $(date +%Y-%m-%dT%H:%M:%S)"
+            git commit -m "Deploy updated site $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push origin HEAD:main
           else
             echo "No changes to deploy"
