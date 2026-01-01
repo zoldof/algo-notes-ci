@@ -1,4 +1,4 @@
-name: Build and push artifacts to another repo
+name: Build and push changed dist directories
 
 on:
   workflow_dispatch:
@@ -7,9 +7,10 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
+      # ソースリポジトリ
       - name: Checkout source
         uses: actions/checkout@v4
 
@@ -22,27 +23,7 @@ jobs:
           source: ./
           destination: ./_site
 
-      # dist ディレクトリだけを圧縮
-      - name: Archive site (dist only)
-        run: |
-          tar -czf site.tar.gz -C _site dist
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-artifact
-          path: site.tar.gz
-
-  push:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: site-artifact
-          path: .
-
+      # ターゲットリポジトリ
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -50,18 +31,50 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      - name: Extract artifact into target repo
+      # dist 直下で差分のあるディレクトリを検出
+      - name: Detect changed dist directories
         run: |
-          cp site.tar.gz target-repo/
-          cd target-repo
-          tar -xzf site.tar.gz          # dist/ が展開される
-          cp -r dist/* .                # 必要なファイルをルートへ移動
-          rm -rf dist site.tar.gz       # 後片付け（任意）
+          mkdir -p /tmp/changed_dirs
+          > /tmp/changed_dirs/list
 
+          for dir in _site/dist/*; do
+            name=$(basename "$dir")
+
+            if [ ! -d "target-repo/$name" ]; then
+              echo "$name" >> /tmp/changed_dirs/list
+              continue
+            fi
+
+            if ! diff -qr "$dir" "target-repo/$name" >/dev/null; then
+              echo "$name" >> /tmp/changed_dirs/list
+            fi
+          done
+
+          sort -u /tmp/changed_dirs/list -o /tmp/changed_dirs/list
+          cat /tmp/changed_dirs/list
+
+      # 変更があったディレクトリだけ同期
+      - name: Sync changed directories
+        run: |
+          if [ ! -s /tmp/changed_dirs/list ]; then
+            echo "No changed dist directories"
+            exit 0
+          fi
+
+          while read dir; do
+            rsync -a --delete "_site/dist/$dir/" "target-repo/$dir/"
+          done < /tmp/changed_dirs/list
+
+      # commit & push
+      - name: Commit and push
+        run: |
+          cd target-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "Deploy site $(date +%Y-%m-%dT%H:%M:%S)"
+            git commit -m "Deploy updated dist directories"
             git push origin HEAD:main
+          else
+            echo "No changes to deploy"
           fi
