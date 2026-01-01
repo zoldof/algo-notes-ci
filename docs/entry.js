@@ -1,4 +1,4 @@
-//絶対パスで記述するとモジュールとして扱うため相対パスをつかう
+//絶対パスで記述するとモジュールとして認識してしまうため相対パスをつかう
 import { renderMarkdown } from "./main.js";
 import { renderKatex } from "./katex.js";
 
