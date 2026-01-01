@@ -1,4 +1,5 @@
 name: Build and push artifacts to another repo
+
 on:
   workflow_dispatch:
 
@@ -9,19 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # -------------------------------------------------
-      # 1️⃣ 前回のコミット SHA を取得（最初は空）
-      # -------------------------------------------------
-      - name: Get previous commit SHA
-        id: prev
-        run: |
-          # 前回のコミットが取得できなければ空文字にする
-          PREV=$(git rev-parse HEAD~1 2>/dev/null || echo "")
-          echo "sha=$PREV" >> "$GITHUB_OUTPUT"
-
-      # -------------------------------------------------
-      # 2️⃣ ソースコード取得・Pages 設定・Jekyll ビルド
-      # -------------------------------------------------
       - name: Checkout source
         uses: actions/checkout@v4
 
@@ -34,52 +22,27 @@ jobs:
           source: ./
           destination: ./_site
 
-      # -------------------------------------------------
-      # 3️⃣ dist 配下の「変更があった」ファイルだけを圧縮
-      # -------------------------------------------------
-      - name: Archive only changed files in dist
-        id: archive
+      # dist ディレクトリだけを圧縮
+      - name: Archive site (dist only)
         run: |
-          # 変更があったファイルを取得
-          CHANGED=$(git diff --name-only ${{ steps.prev.outputs.sha }} HEAD -- _site/dist) || true
+          tar -czf site.tar.gz -C _site dist
 
-          if [ -z "$CHANGED" ]; then
-            echo "No changes in dist – creating empty placeholder"
-            # 空のプレースホルダーを作っておく（ダウンロード時に「artifact exists」になるように）
-            touch empty.txt
-            echo "path=empty.txt" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          # 変更リストを tar に渡す
-          echo "$CHANGED" | tar -czf site.tar.gz -C _site -T -
-          echo "path=site.tar.gz" >> "$GITHUB_OUTPUT"
-
-      # -------------------------------------------------
-      # 4️⃣ アーティファクトをアップロード
-      # -------------------------------------------------
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: site-artifact
-          path: ${{ steps.archive.outputs.path }}
+          path: site.tar.gz
 
   push:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # -------------------------------------------------
-      # 5️⃣ アーティファクト取得（同一ワークフロー内なので repository 指定は不要）
-      # -------------------------------------------------
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: site-artifact
           path: .
 
-      # -------------------------------------------------
-      # 6️⃣ ターゲットリポジトリをチェックアウト
-      # -------------------------------------------------
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -87,17 +50,8 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      # -------------------------------------------------
-      # 7️⃣ アーティファクトを展開し、変更があればコミット
-      # -------------------------------------------------
       - name: Extract artifact into target repo
         run: |
-          # 空プレースホルダーの場合は何もしない
-          if [ -f empty.txt ]; then
-            echo "No changed files – nothing to push"
-            exit 0
-          fi
-
           cp site.tar.gz target-repo/
           cd target-repo
           tar -xzf site.tar.gz          # dist/ が展開される
@@ -110,6 +64,4 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Deploy site $(date +%Y-%m-%dT%H:%M:%S)"
             git push origin HEAD:main
-          else
-            echo "No file changes to commit"
           fi
