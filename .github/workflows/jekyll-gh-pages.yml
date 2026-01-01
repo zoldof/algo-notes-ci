@@ -68,9 +68,9 @@ jobs:
         run: |
           cp site.tar.gz target-repo/
           cd target-repo
-          tar -xzf site.tar.gz          # dist/ が展開される
-          cp -r dist/* .                # 必要なファイルをルートへ移動
-          rm -rf dist site.tar.gz       # 後片付け（任意）
+          tar -xzf site.tar.gz
+          # cp -r dist/* .                # 必要なファイルをルートへ移動
+          # rm -rf dist site.tar.gz       # 後片付け（任意）
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
