@@ -1,0 +1,35 @@
+name: Move Directory
+
+on:
+  workflow_dispatch:   # 手動実行（必要なら push や schedule に変更）
+
+jobs:
+  move-dir:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ リポジトリを取得
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # push 用に token を取得
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2️⃣ ディレクトリを移動
+      - name: Move directory
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 例: src/old_folder → src/new_folder
+          git mv dist docs/dist
+
+          # 変更があるか確認
+          if git diff-index --quiet HEAD; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          # 3️⃣ コミット & プッシュ
+          git commit -m "Automated: move old_folder to new_folder"
+          git push origin ${{ github.ref_name }}
