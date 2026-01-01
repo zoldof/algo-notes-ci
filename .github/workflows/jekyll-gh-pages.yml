@@ -1,12 +1,15 @@
-name: Build and push artifacts to another repo
+name: Build and push only changed files
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: read   # 只読で OK、push のときは PAT が必要
 
 jobs:
+  # -------------------------------------------------
+  # 1️⃣ ビルド → dist ディレクトリをアーティファクトに保存
+  # -------------------------------------------------
   build:
     runs-on: ubuntu-latest
     steps:
@@ -22,41 +25,29 @@ jobs:
           source: ./
           destination: ./_site
 
-      - name: Get changed paths
-        id: changes
-        run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed.txt
-          grep '^dist/' changed.txt | cut -d/ -f2- | sort -u > dist_paths.txt
-      
-      - name: Archive only changed dist files
-        run: |
-          # 書き込み可能な作業ディレクトリを使用
-          TMPDIR="${{ runner.temp }}/site_tmp"
-          mkdir -p "$TMPDIR"
-      
-          while IFS= read -r p; do
-            cp -r "_site/$p" "$TMPDIR/$p"
-          done < dist_paths.txt
-      
-          tar -czf site.tar.gz -C "$TMPDIR" .
-        shell: bash
-
-      - name: Upload artifact
+      # dist 以下の全ファイルをそのままアーティファクトに
+      - name: Upload dist artifact
         uses: actions/upload-artifact@v4
         with:
-          name: site-artifact
-          path: site.tar.gz
+          name: dist-artifact
+          path: _site/dist/**/*
+          if-no-files-found: ignore   # 何もなければスキップ
 
+  # -------------------------------------------------
+  # 2️⃣ 変更があったファイルだけをターゲットリポジトリへプッシュ
+  # -------------------------------------------------
   push:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
+      # アーティファクトを取得
+      - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: site-artifact
-          path: .
+          name: dist-artifact
+          path: dist-artifact   # 任意の作業ディレクトリ
 
+      # デプロイ先リポジトリをチェックアウト
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -64,18 +55,18 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      - name: Extract artifact into target repo
+      # 取得したファイルをリポジトリのルートへコピー
+      - name: Copy changed files into repo
         run: |
-          cp site.tar.gz target-repo/
+          cp -r dist-artifact/* target-repo/
           cd target-repo
-          tar -xzf site.tar.gz
-          # cp -r dist/* .                # 必要なファイルをルートへ移動
-          # rm -rf dist site.tar.gz       # 後片付け（任意）
-
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
+          # 変更があればコミット・プッシュ、無ければ何もしない
           if ! git diff --cached --quiet; then
-            git commit -m "Deploy site $(date +%Y-%m-%dT%H:%M:%S)"
+            git commit -m "Deploy updated site $(date +%Y-%m-%dT%H:%M:%S)"
             git push origin HEAD:main
+          else
+            echo "No changes to deploy"
           fi
