@@ -6,53 +6,32 @@ permissions:
   contents: read
 
 jobs:
-  # -------------------------------------------------
-  # 1️⃣ ビルド → 変更があったファイルだけをアーティファクトに保存
-  # -------------------------------------------------
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-
-      # 変更ファイルだけを抽出して temporary ディレクトリへコピー
+      - uses: actions/checkout@v4
+      - name: Build site
+        run: |
+          # 例: Jekyll ビルド → _site に出力
+          jekyll build -s . -d _site
       - name: Gather changed files
         id: gather
         run: |
           mkdir -p changed
-          # _site 配下で変更があったファイルを取得
           cd _site
-          # 前回のビルド成果物が残っている場合はそれと比較
-          # ここでは単純に git の差分を利用（リポジトリにビルド成果物はコミットされていない想定）
-          # もしビルド成果物を別ブランチに保持しているなら、そのブランチを checkout して比較してください
-          git diff --name-only HEAD > /tmp/changed_files.txt || true
-          # 変更が無い場合は全ファイルを対象にしたいなら以下を有効化
-          # find . -type f > /tmp/changed_files.txt
-          while IFS= read -r file; do
-            mkdir -p "../changed/$(dirname "$file")"
-            cp -a "$file" "../changed/$file"
-          done < /tmp/changed_files.txt
-
-      # 変更があったファイルだけをアーティファクトにアップロード
+          # 変更があったファイルだけを抽出
+          git diff --name-only HEAD > /tmp/changed.txt || true
+          while IFS= read -r f; do
+            mkdir -p "../changed/$(dirname "$f")"
+            cp -a "$f" "../changed/$f"
+          done < /tmp/changed.txt
       - name: Upload changed artifact
         uses: actions/upload-artifact@v4
         with:
-          name: changed-artifact
+          name: changed-artifact          # ← ここと download 側の名前を合わせる
           path: changed/**/*
-          if-no-files-found: ignore   # 変更が無ければスキップ
+          if-no-files-found: warn        # 変更が無いときは警告で分かる
 
-  # -------------------------------------------------
-  # 2️⃣ 変更があったファイルだけをターゲットリポジトリへプッシュ
-  # -------------------------------------------------
   push:
     needs: build
     runs-on: ubuntu-latest
@@ -60,17 +39,16 @@ jobs:
       - name: Download changed artifact
         uses: actions/download-artifact@v4
         with:
-          name: changed-artifact
+          name: changed-artifact          # ← 同じ名前
           path: changed-artifact
-
+          # repository と run-id は省略 → 同じ Run のアーティファクトを取得
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
           repository: zoldof/algo-notes
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
-
-      - name: Copy changed files into repo
+      - name: Copy and push
         run: |
           cp -r changed-artifact/* target-repo/
           cd target-repo
@@ -78,8 +56,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "Deploy updated site $(date +%Y-%m-%dT%H:%M:%S)"
+            git commit -m "Deploy $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push origin HEAD:main
           else
-            echo "No changes to deploy"
+            echo "No changes"
           fi
