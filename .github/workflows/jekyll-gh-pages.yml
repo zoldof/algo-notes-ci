@@ -10,6 +10,9 @@ jobs:
   # -------------------------------------------------
   build:
     runs-on: ubuntu-latest
+    outputs:
+      # 後続ジョブで参照できるように出力を定義
+      has_changed: ${{ steps.changed.outputs.has_changed }}
     steps:
       - uses: actions/checkout@v4
 
@@ -42,7 +45,15 @@ jobs:
           mkdir -p changed
           rsync -a --compare-dest=../prev-dist _site/dist/ changed/
           # 変更があったトップレベルディレクトリ名をスペース区切りで出力
-          echo "dirs=$(find changed -mindepth 1 -maxdepth 1 -type d -printf '%f ')" >> $GITHUB_OUTPUT
+          DIRS=$(find changed -mindepth 1 -maxdepth 1 -type d -printf '%f ')
+          echo "dirs=$DIRS" >> $GITHUB_OUTPUT
+
+          # 変更があったかどうかのフラグを作成
+          if [ -n "$DIRS" ]; then
+            echo "has_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changed=false" >> $GITHUB_OUTPUT
+          fi
 
       # 変更があればアーティファクトにアップロード
       - name: Upload changed dirs
@@ -66,6 +77,8 @@ jobs:
   push:
     needs: build
     runs-on: ubuntu-latest
+    # ビルドジョブの出力 (has_changed) を参照
+    if: needs.build.outputs.has_changed == 'true'
     steps:
       - name: Download changed artifact
         uses: actions/download-artifact@v4
