@@ -21,6 +21,7 @@ jobs:
         with:
           source: ./
           destination: ./_site
+          incremental: true
 
       # dist ディレクトリだけを圧縮
       - name: Archive site (dist only)
