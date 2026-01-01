@@ -1,5 +1,7 @@
-import { renderMarkdown } from "./docs/main.js";
-import { renderKatex } from "./docs/katex.js";
+//docs/entry.js
+//絶対パスで記述するとモジュールとして扱うため相対パスをつかう
+import { renderMarkdown } from "./main.js";
+import { renderKatex } from "./katex.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const el = document.getElementById("content");
