@@ -22,22 +22,25 @@ jobs:
           source: ./
           destination: ./_site
 
-      # 変更があったファイル・ディレクトリを取得
       - name: Get changed paths
         id: changes
         run: |
           git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed.txt
-          # 例: dist 以下だけを対象にする
           grep '^dist/' changed.txt | cut -d/ -f2- | sort -u > dist_paths.txt
       
-      # 変更があった dist 配下だけを圧縮
-      - name: Archive changed dist files
+      - name: Archive only changed dist files
         run: |
-          mkdir -p _site/tmp
+          # 書き込み可能な作業ディレクトリを使用
+          TMPDIR="${{ runner.temp }}/site_tmp"
+          mkdir -p "$TMPDIR"
+      
           while IFS= read -r p; do
-            cp -r "_site/$p" "_site/tmp/$p"
+            # _site の中身を一時領域へコピー
+            cp -r "_site/$p" "$TMPDIR/$p"
           done < dist_paths.txt
-          tar -czf site.tar.gz -C _site/tmp .
+      
+          tar -czf site.tar.gz -C "$TMPDIR" .
+        shell: bash
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
