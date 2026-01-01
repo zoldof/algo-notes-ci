@@ -1,5 +1,5 @@
 
-![ ](https://latex.codecogs.com/svg.image?\int_0^1 x^2 dx)
+![ ](https://latex.codecogs.com/svg.image?\int_0^1)
 # コーディング
 - 詰まったら順番にコード内容をAIに投げて質問する
 - つまずいたらコミット履歴を見る
