@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read   # リードオンリーで十分。push は PAT 使用
+  contents: read   # push は PAT 使用
 
 jobs:
   # -------------------------------------------------
@@ -12,11 +12,13 @@ jobs:
   # -------------------------------------------------
   build:
     runs-on: ubuntu-latest
+    outputs:
+      has_artifact: ${{ steps.set_artifact_flag.outputs.has_artifact }}
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 差分取得のためフル履歴を取得
+          fetch-depth: 0  # git diff のためフル履歴
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -30,22 +32,29 @@ jobs:
       - name: Get changed directories
         id: changed_dirs
         run: |
-          # main ブランチとの差分を取得
           DIRS=$(git diff --name-only origin/main...HEAD | grep '^_site/dist/' | xargs -n1 dirname | sort -u)
-          # 空の場合はスキップ用にチェック
           if [ -z "$DIRS" ]; then
-            echo "dirs=" >> $GITHUB_OUTPUT
+            echo "dirs="
           else
-            # 改行区切りで出力
-            echo "dirs=$(echo $DIRS | tr ' ' '\n')" >> $GITHUB_OUTPUT
-          fi
+            echo "dirs=$(echo $DIRS | tr ' ' '\n')"
+          fi > $GITHUB_OUTPUT
 
       - name: Upload changed dist directories
+        id: upload
         if: steps.changed_dirs.outputs.dirs != ''
         uses: actions/upload-artifact@v4
         with:
           name: dist-artifact
           path: ${{ steps.changed_dirs.outputs.dirs }}
+
+      - name: Set artifact flag
+        id: set_artifact_flag
+        run: |
+          if [ "${{ steps.changed_dirs.outputs.dirs }}" = "" ]; then
+            echo "has_artifact=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_artifact=true" >> $GITHUB_OUTPUT
+          fi
 
   # -------------------------------------------------
   # 2️⃣ 変更があったファイルだけをターゲットリポジトリへプッシュ
@@ -54,14 +63,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # アーティファクトを取得
-      - name: Download dist artifact
+      - name: Download dist artifact if exists
+        if: needs.build.outputs.has_artifact == 'true'
         uses: actions/download-artifact@v4
         with:
           name: dist-artifact
           path: dist-artifact
 
-      # デプロイ先リポジトリをチェックアウト
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
@@ -69,8 +77,8 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      # 取得したファイルをリポジトリのルートへコピー
       - name: Copy changed files into repo
+        if: needs.build.outputs.has_artifact == 'true'
         run: |
           cp -r dist-artifact/* target-repo/
           cd target-repo
