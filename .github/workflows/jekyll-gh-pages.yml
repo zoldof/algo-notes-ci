@@ -4,17 +4,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read   # push のときは PAT が必要
+  contents: read   # リードオンリーで十分。push は PAT 使用
 
 jobs:
   # -------------------------------------------------
-  # 1️⃣ ビルド → 変更ファイルだけをアーティファクトに保存
+  # 1️⃣ ビルド → dist ディレクトリをアーティファクトに保存
   # -------------------------------------------------
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 差分取得のためフル履歴を取得
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -25,23 +27,28 @@ jobs:
           source: ./
           destination: ./_site
 
-      - name: List changed files in dist
-        id: changes
+      - name: Get changed directories
+        id: changed_dirs
         run: |
-          # 最後の main ブランチとの差分から dist/ 以下の変更を取得
-          git fetch origin main
-          CHANGED_FILES=$(git diff --name-only origin/main HEAD | grep '^_site/dist/' || true)
-          echo "changed_files=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          # main ブランチとの差分を取得
+          DIRS=$(git diff --name-only origin/main...HEAD | grep '^_site/dist/' | xargs -n1 dirname | sort -u)
+          # 空の場合はスキップ用にチェック
+          if [ -z "$DIRS" ]; then
+            echo "dirs=" >> $GITHUB_OUTPUT
+          else
+            # 改行区切りで出力
+            echo "dirs=$(echo $DIRS | tr ' ' '\n')" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Upload only changed files
+      - name: Upload changed dist directories
+        if: steps.changed_dirs.outputs.dirs != ''
         uses: actions/upload-artifact@v4
         with:
           name: dist-artifact
-          path: ${{ steps.changes.outputs.changed_files }}
-          if-no-files-found: ignore
+          path: ${{ steps.changed_dirs.outputs.dirs }}
 
   # -------------------------------------------------
-  # 2️⃣ 変更ファイルだけをターゲットリポジトリへプッシュ
+  # 2️⃣ 変更があったファイルだけをターゲットリポジトリへプッシュ
   # -------------------------------------------------
   push:
     needs: build
@@ -62,20 +69,16 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      # 取得した変更ファイルだけをコピー
+      # 取得したファイルをリポジトリのルートへコピー
       - name: Copy changed files into repo
         run: |
+          cp -r dist-artifact/* target-repo/
           cd target-repo
-          for f in $(find ../dist-artifact -type f); do
-            mkdir -p "$(dirname "$f")"
-            cp "$f" "$f"
-          done
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "Deploy updated files $(date +%Y-%m-%dT%H:%M:%S)"
+            git commit -m "Deploy updated site $(date +%Y-%m-%dT%H:%M:%S)"
             git push origin HEAD:main
           else
             echo "No changes to deploy"
-          fi
