@@ -7,8 +7,7 @@ on:
     branches: ["main"]
     paths-ignore:
       - '.github/**'
-      - '_includes/**'
-      - '_layouts/**'
+      - '_*/*'
       - 'README.md'
       - '_config.yml'
       - 'memo.txt'
