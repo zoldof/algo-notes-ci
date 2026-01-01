@@ -22,10 +22,18 @@ jobs:
           source: ./
           destination: ./_site
 
-      # dist ディレクトリだけを圧縮
-      - name: Archive site (dist only)
+      - name: Archive only changed files in dist
+        id: archive
         run: |
-          tar -czf site.tar.gz -C _site dist
+          # 変更があったファイルだけ取得
+          CHANGED=$(git diff --name-only ${{ steps.prev.outputs.sha }} HEAD -- _site/dist) || true
+          if [ -z "$CHANGED" ]; then
+            echo "No changes in dist – skipping archive"
+            exit 0
+          fi
+          # tar にリストを渡す
+          echo "$CHANGED" | tar -czf site.tar.gz -C _site -T -
+          echo "path=site.tar.gz" >> "$GITHUB_OUTPUT"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
