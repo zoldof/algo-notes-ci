@@ -1,8 +1,5 @@
 name: Build and push artifacts to another repo
-
-on:
-  workflow_dispatch:
-
+on: workflow_dispatch
 permissions:
   contents: read
 
@@ -13,20 +10,38 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # ① _site をキャッシュから復元
+      - name: Restore _site cache
+        uses: actions/cache@v4
+        with:
+          path: _site
+          key: ${{ runner.os }}-jekyll-${{ github.ref_name }}
+          restore-keys: |
+            ${{ runner.os }}-jekyll-
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Jekyll
+      - name: Build with Jekyll (incremental)
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
           incremental: true
 
-      # dist ディレクトリだけを圧縮
-      - name: Archive site (dist only)
+      # ② ビルド後にキャッシュを保存
+      - name: Save _site cache
+        uses: actions/cache@v4
+        with:
+          path: _site
+          key: ${{ runner.os }}-jekyll-${{ github.ref_name }}
+
+      # ③ 変更があったファイルだけを圧縮
+      - name: Archive changed files only
         run: |
-          tar -czf site.tar.gz -C _site dist
+          cd _site
+          # 変更されたファイルリストを取得し tar に渡す
+          git ls-files -m | tar -czf ../site.tar.gz -T -
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -55,10 +70,7 @@ jobs:
         run: |
           cp site.tar.gz target-repo/
           cd target-repo
-          tar -xzf site.tar.gz          # dist/ が展開される
-          cp -r dist/* .                # 必要なファイルをルートへ移動
-          rm -rf dist site.tar.gz       # 後片付け（任意）
-
+          tar -xzf site.tar.gz
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
