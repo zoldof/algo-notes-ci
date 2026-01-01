@@ -35,7 +35,7 @@ jobs:
           mkdir -p "$TMPDIR"
       
           while IFS= read -r p; do
-            # _site の中身を一時領域へコピー
+          # _site の中身を一時領域へコピー
             cp -r "_site/$p" "$TMPDIR/$p"
           done < dist_paths.txt
       
