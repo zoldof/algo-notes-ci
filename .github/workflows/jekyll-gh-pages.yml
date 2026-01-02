@@ -62,7 +62,7 @@ jobs:
           fi
 
           while read dir; do
-            rsync -a --delete "_site/dist/$dir/" "target-repo/$dir/"
+            rsync -a --delete "docs/_site/dist/$dir/" "target-repo/$dir/"
           done < /tmp/changed_dirs/list
 
       # commit & push
