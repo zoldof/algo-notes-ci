@@ -20,7 +20,8 @@
   <script type="module">
     import { renderKatex } from "./katex.js";
     document.addEventListener("DOMContentLoaded", async () => {
-      renderKatex(document.getElementById("content"));
+      const el = document.getElementById("content");
+      renderKatex(el);
     });
   </script>
 </body>
