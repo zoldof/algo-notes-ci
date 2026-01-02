@@ -18,7 +18,7 @@
     {{ content }}
   </div>
   <script type="module">
-    import { renderKatex } from "/algo-notes-ci/katex.js";
+    import { renderKatex } from "../../katex.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
     });
