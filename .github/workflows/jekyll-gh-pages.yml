@@ -20,8 +20,8 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
-          destination: ./_site
+          source: ./docs
+          destination: ./docs/_site
 
       # ターゲットリポジトリ
       - name: Checkout target repo
@@ -37,7 +37,7 @@ jobs:
           mkdir -p /tmp/changed_dirs
           > /tmp/changed_dirs/list
 
-          for dir in _site/dist/*; do
+          for dir in docs/_site/dist/*; do
             name=$(basename "$dir")
 
             if [ ! -d "target-repo/$name" ]; then
