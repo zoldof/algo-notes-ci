@@ -7,7 +7,7 @@
   <!-- Include -->
   {% include katex.html %}
   <!-- General -->
-  <base href="/algo-notes-ci/">
+  <!-- <base href="/algo-notes-ci/"> -->
   <link rel="icon" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="stylesheet" href="style.css">
@@ -18,10 +18,9 @@
     {{ content }}
   </div>
   <script type="module">
-    import { renderKatex } from "./katex.js";
+    import { renderKatex } from "/algo-notes-ci/katex.js";
     document.addEventListener("DOMContentLoaded", async () => {
-      const el = document.getElementById("content");
-      renderKatex(el);
+      renderKatex(document.getElementById("content"));
     });
   </script>
 </body>
