@@ -19,7 +19,9 @@
   </div>
   <script type="module">
     import { renderKatex } from ".../katex.js";
-    renderKatex(document.getElementById("content"));
+    document.addEventListener("DOMContentLoaded", async () => {
+      renderKatex(document.getElementById("content"));
+    });
   </script>
 </body>
 </html>
