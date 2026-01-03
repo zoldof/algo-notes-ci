@@ -1,10 +1,14 @@
 name: Move Files
 
 on:
-  workflow_dispatch:  # 手動トリガー、必要に応じて push や schedule に変更可能
+  workflow_dispatch:
 
 permissions:
   contents: write
+
+env:
+  SOURCE_DIR: dest_dir
+  DEST_DIR: src-dir
 
 jobs:
   move_files:
@@ -21,10 +25,12 @@ jobs:
 
       - name: Move files
         run: |
-          mkdir -p source_dir dest_dir
-          if [ -d "source_dir" ] && [ "$(ls -A source_dir)" ]; then
-            mv source_dir/* dest_dir/
+          mkdir -p "$SOURCE_DIR" "$DEST_DIR"
+
+          if [ -d "$SOURCE_DIR" ] && [ "$(ls -A "$SOURCE_DIR")" ]; then
+            mv "$SOURCE_DIR"/* "$DEST_DIR"/
           fi
+
           git add .
-          git diff-index --quiet HEAD || git commit -m "Move files from source_dir to dest_dir"
+          git diff-index --quiet HEAD || git commit -m "Move files from $SOURCE_DIR to $DEST_DIR"
           git push
