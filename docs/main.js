@@ -1,6 +1,6 @@
 import { renderKatex } from "./katex.js";
 
-async function main() {
+async function render() {
   const el = document.getElementById("content");
   if (!el) return;
   const params = new URLSearchParams(location.search);
@@ -26,4 +26,4 @@ async function main() {
     el.textContent = err.message;
   }
 }
-document.addEventListener("DOMContentLoaded", main);
+document.addEventListener("DOMContentLoaded", render);
