@@ -31,14 +31,39 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      # dist 直下のディレクトリをすべて同期（差分は rsync に任せる）
-      - name: Sync dist directories via rsync
+      # dist 直下で差分のあるディレクトリを検出
+      - name: Detect changed dist directories
         run: |
+          mkdir -p /tmp/changed_dirs
+          > /tmp/changed_dirs/list
+
           for dir in docs/_site/dist/*; do
             name=$(basename "$dir")
-            mkdir -p "target-repo/$name"
-            rsync -a --delete --update "$dir/" "target-repo/$name/"
+
+            if [ ! -d "target-repo/$name" ]; then
+              echo "$name" >> /tmp/changed_dirs/list
+              continue
+            fi
+
+            if ! diff -qr "$dir" "target-repo/$name" >/dev/null; then
+              echo "$name" >> /tmp/changed_dirs/list
+            fi
           done
+
+          sort -u /tmp/changed_dirs/list -o /tmp/changed_dirs/list
+          cat /tmp/changed_dirs/list
+
+      # 変更があったディレクトリだけ同期
+      - name: Sync changed directories
+        run: |
+          if [ ! -s /tmp/changed_dirs/list ]; then
+            echo "No changed dist directories"
+            exit 0
+          fi
+
+          while read dir; do
+            rsync -a --delete "docs/_site/dist/$dir/" "target-repo/$dir/"
+          done < /tmp/changed_dirs/list
 
       # commit & push
       - name: Commit and push
