@@ -7,8 +7,8 @@ permissions:
   contents: write
 
 env:
-  SOURCE_DIR: dest_dir
-  DEST_DIR: src-dir
+  SOURCE_DIR: src-dir
+  DIST_DIR: dist-dir
 
 jobs:
   move_files:
@@ -25,12 +25,12 @@ jobs:
 
       - name: Move files
         run: |
-          mkdir -p "$SOURCE_DIR" "$DEST_DIR"
+          mkdir -p "$SOURCE_DIR" "$DIST_DIR"
 
           if [ -d "$SOURCE_DIR" ] && [ "$(ls -A "$SOURCE_DIR")" ]; then
-            mv "$SOURCE_DIR"/* "$DEST_DIR"/
+            mv "$SOURCE_DIR"/* "$DIST_DIR"/
           fi
 
           git add .
-          git diff-index --quiet HEAD || git commit -m "Move files from $SOURCE_DIR to $DEST_DIR"
+          git diff-index --quiet HEAD || git commit -m "Move files from $SOURCE_DIR to $DIST_DIR"
           git push
