@@ -1,4 +1,8 @@
-export async function renderMarkdown(el) {
+import { renderKatex } from "./katex.js";
+
+async function main() {
+  const el = document.getElementById("content");
+  if (!el) return;
   const params = new URLSearchParams(location.search);
   const dname = params.get("dname");
 
@@ -17,7 +21,9 @@ export async function renderMarkdown(el) {
       gfm: true
     });
     el.innerHTML = marked.parse(text);
+    renderKatex(el);
   } catch (err) {
     el.textContent = err.message;
   }
 }
+document.addEventListener("DOMContentLoaded", main);
