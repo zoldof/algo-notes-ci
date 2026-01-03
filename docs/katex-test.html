@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>KaTeX Live Editor</title>
+  <title>KaTeX Delimiter Test</title>
 
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -11,46 +11,80 @@
 
   <style>
     body {
+      margin: 0;
+      padding: 0;
       display: flex;
-      gap: 1rem;
+      justify-content: center;
       font-family: sans-serif;
+      background: #f8f8f8;
+    }
+    #container {
+      width: 80%;
+      max-width: 1000px;
+      padding: 2rem;
     }
     textarea {
-      width: 50%;
-      height: 90vh;
+      width: 100%;
+      height: 30vh;
       font-family: monospace;
-      font-size: 14px;
-    }
-    #preview {
-      width: 50%;
+      font-size: 18px;
       padding: 1rem;
-      border-left: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    #output {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: white;
+      font-size: 22px;
+      min-height: 30vh;
     }
   </style>
 </head>
 <body>
-  <textarea id="editor">
-\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
-  </textarea>
+  <div id="container">
+    <textarea id="input">
+これはインライン $a^2+b^2=c^2$ です。
 
-  <div id="preview"></div>
+これはディスプレイ：
+$$
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$
+    </textarea>
+
+    <div id="output"></div>
+  </div>
 
   <script>
-    const editor = document.getElementById("editor");
-    const preview = document.getElementById("preview");
+    const input = document.getElementById("input");
+    const output = document.getElementById("output");
 
     function render() {
+      let text = input.value;
+
       try {
-        katex.render(editor.value, preview, {
-          displayMode: true,
-          throwOnError: false
+        // $$ ... $$（display）
+        text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) => {
+          return katex.renderToString(expr, {
+            displayMode: true,
+            throwOnError: false
+          });
         });
+
+        // $ ... $（inline）
+        text = text.replace(/\$([^$]+?)\$/g, (_, expr) => {
+          return katex.renderToString(expr, {
+            displayMode: false,
+            throwOnError: false
+          });
+        });
+
+        output.innerHTML = text;
       } catch (e) {
-        preview.textContent = e.message;
+        output.textContent = e.message;
       }
     }
 
-    editor.addEventListener("input", render);
+    input.addEventListener("input", render);
     render();
   </script>
 </body>
