@@ -21,6 +21,11 @@
   
 <body>
   <div id="content">loading...</div>
-  <script type="module" src="main.js"></script>
+  <script type="module">
+    import { renderKatex } from "./katex.js";
+    document.addEventListener("DOMContentLoaded", async () => {
+      renderKatex(document.getElementById("content"));
+    });
+  </script>
 </body>
 </html>
