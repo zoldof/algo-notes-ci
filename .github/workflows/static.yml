@@ -6,7 +6,10 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'docs/**/*.{md,html,css,js}'
+      - 'docs/**/*.md'
+      - 'docs/**/*.html'
+      - 'docs/**/*.css'
+      - 'docs/**/*.js'
 
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
