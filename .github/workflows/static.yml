@@ -7,6 +7,11 @@ on:
     branches: ["main"]
     paths:
       - 'docs/**'
+    paths-ignore:
+      - '_includes/*'
+      - '_layouts/*'
+      - '_config.yml'
+      - 'favion.png'
 
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
