@@ -7,7 +7,7 @@ on:
     branches: ["main"]
     paths:
       - 'docs/**/*.md'
-      - 'docs-test/*.html'
+      - 'docs/*.html'
       - 'docs/*.js'
       - 'docs/*.css'
 
