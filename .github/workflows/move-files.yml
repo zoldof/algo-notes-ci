@@ -3,6 +3,9 @@ name: Move Files
 on:
   workflow_dispatch:  # 手動トリガー、必要に応じて push や schedule に変更可能
 
+permissions:
+  contents: write
+
 jobs:
   move_files:
     runs-on: ubuntu-latest
