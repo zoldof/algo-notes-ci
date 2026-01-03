@@ -1,4 +1,4 @@
-import { renderKatex } from "./katex.js";
+import { renderKatex } from "./docs/katex.js";
 
 async function render() {
   const el = document.getElementById("content");
@@ -12,7 +12,7 @@ async function render() {
   }
 
   try {
-    const res = await fetch(`dist/${dname}/index.md`);
+    const res = await fetch(`docs/dist/${dname}/index.md`);
     if (!res.ok) throw new Error("fetch failed");
 
     const text = await res.text();
