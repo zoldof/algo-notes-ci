@@ -62,6 +62,6 @@ You can also go to [W3C] [2] and maybe visit a [friend].
 Email[^1] addresses in plain text are not linked: test@example.com.
 Email addresses wrapped in angle brackets are linked: <test@example.com>.
 They are also obfuscated so that email harvesting spam robots hopefully won't get them.
-test2
+test3
 
 [^1]:mail service.
