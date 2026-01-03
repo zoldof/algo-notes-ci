@@ -8,10 +8,10 @@ on:
     paths:
       - 'docs/**'
     paths-ignore:
-      - '_includes/*'
-      - '_layouts/*'
-      - '_config.yml'
-      - 'favion.png'
+      - 'docs/_includes/*'
+      - 'docs/_layouts/*'
+      - 'docs/_config.yml'
+      - 'docs/favion.png'
 
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
