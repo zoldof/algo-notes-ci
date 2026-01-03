@@ -19,7 +19,9 @@ jobs:
       - name: Move files
         run: |
           mkdir -p source_dir dest_dir
-          mv source_dir/* dest_dir/ || true  # source_dir が空でもエラーにならないように
+          if [ -d "source_dir" ] && [ "$(ls -A source_dir)" ]; then
+            mv source_dir/* dest_dir/
+          fi
           git add .
           git diff-index --quiet HEAD || git commit -m "Move files from source_dir to dest_dir"
           git push
