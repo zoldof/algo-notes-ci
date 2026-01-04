@@ -44,61 +44,25 @@
       white-space: pre-line;
     }
   </style>
-</head>
+  <!-- <link rel="stylesheet" href="katex-test.css"> -->
+</head>  
 <body>
   <div id="container">
-
     <div class="header">
       <h2>Input ('$'src)</h2>
       <button id="clear">Clear</button>
     </div>
-<textarea id="input">
+  <textarea id="input">
 三平方の定理：$a^2+b^2=c^2$
 
 自然数の和の公式：
 $$
 \sum_{i=1}^{n} i = \frac{n(n+1)}{2}
 $$
-</textarea>
+  </textarea>
     <h2>Output (KaTeX)</h2>
     <div id="output"></div>
   </div>
-
-  <script>
-    const input = document.getElementById("input");
-    const output = document.getElementById("output");
-    const clearBtn = document.getElementById("clear");
-
-    function render() {
-      let text = input.value || input.defaultValue;
-
-      text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) =>
-        katex.renderToString(expr, {
-          displayMode: true,
-          throwOnError: false
-        })
-      );
-
-      text = text.replace(/\$([^$]+?)\$/g, (_, expr) =>
-        katex.renderToString(expr, {
-          displayMode: false,
-          throwOnError: false
-        })
-      );
-
-      output.innerHTML = text;
-    }
-
-    input.addEventListener("input", render);
-
-    clearBtn.addEventListener("click", () => {
-      input.value = "";
-      output.innerHTML = "";
-    });
-
-    window.addEventListener("DOMContentLoaded", () => {
-      render();
-    });
-  </script>
+  <script src="katex-test.js"></script>
 </body>
 </html>
