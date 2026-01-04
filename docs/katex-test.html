@@ -69,7 +69,7 @@ $$
     const clearBtn = document.getElementById("clear");
 
     function render() {
-      let text = input.value;
+      let text = input.value || input.defaultValue;
 
       text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) =>
         katex.renderToString(expr, {
@@ -95,7 +95,9 @@ $$
       output.innerHTML = "";
     });
 
-    render();
+    window.addEventListener("DOMContentLoaded", () => {
+      render();
+    });
   </script>
 </body>
 </html>
