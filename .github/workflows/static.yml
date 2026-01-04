@@ -7,7 +7,7 @@ on:
     branches: ["main"]
     paths:
       - 'docs/**/*.md'
-      - 'docs/katex-test/*.html'
+      - 'docs/katex-test/*'
       - 'docs/*.html'
       - 'docs/*.js'
       - 'docs/*.css'
