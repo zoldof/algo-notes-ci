@@ -46,54 +46,54 @@
   </style>
 </head>
 <body>
-  <div class="header">
-  <h2>Input (Source)</h2>
-  <button id="clear">Clear</button>
-</div>
+  <div id="container">
 
-<textarea id="input"></textarea>
+    <div class="header">
+      <h2>Input ('$'source)</h2>
+      <button id="clear">Clear</button>
+    </div>
+<textarea id="input">
+インライン $a^2+b^2=c^2$
 
-<h2>Output (KaTeX)</h2>
-  <div id="output"></div>
-  
+$$
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$</textarea>
+    <h2>Output (KaTeX)</h2>
+    <div id="output"></div>
+  </div>
+
   <script>
     const input = document.getElementById("input");
     const output = document.getElementById("output");
     const clearBtn = document.getElementById("clear");
-  
-    const initialText =
-  `インライン $a^2+b^2=c^2$
-  
-  $$
-  \\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}
-  $$`;
-  
+
     function render() {
       let text = input.value;
-  
+
       text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) =>
         katex.renderToString(expr, {
           displayMode: true,
           throwOnError: false
         })
       );
-  
+
       text = text.replace(/\$([^$]+?)\$/g, (_, expr) =>
         katex.renderToString(expr, {
           displayMode: false,
           throwOnError: false
         })
       );
-  
+
       output.innerHTML = text;
     }
-  
+
+    input.addEventListener("input", render);
+
     clearBtn.addEventListener("click", () => {
       input.value = "";
       output.innerHTML = "";
     });
-  
-    input.value = initialText;
+
     render();
   </script>
 </body>
