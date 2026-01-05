@@ -1,9 +1,11 @@
+import renderMathInElement from "../katex.js";
+
 const input = document.getElementById("input");
 const output = document.getElementById("output");
 const clearBtn = document.getElementById("clear");
 
 function render() {
-  let text = input.value || input.defaultValue;
+  output.textContent = input.value || input.defaultValue;
 
   text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) =>
     katex.renderToString(expr, {
