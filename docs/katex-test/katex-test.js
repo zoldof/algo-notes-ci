@@ -1,4 +1,4 @@
-import { renderKatex } from "../katex.js";
+import { renderKatex } from "./../katex.js";
 
 const input = document.getElementById("input");
 const output = document.getElementById("output");
