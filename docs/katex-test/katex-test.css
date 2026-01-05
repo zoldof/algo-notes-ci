@@ -1,3 +1,7 @@
+body{
+  font-family: monospace;
+  font-size: 1rem;
+}
 h2 {
   margin: 0.2em;
 }
@@ -20,6 +24,9 @@ textarea {
   margin-bottom: 0.5em;
 }
 #output {
+  white-space: pre-line;
+  background: white;
   min-height: 30vh;
+  padding: 0.1em;
+  font-size: 1.1em;
 }
-
