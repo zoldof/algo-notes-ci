@@ -1,15 +1,6 @@
 body{
   font-size: 1rem;
 }
-#container {
-  width: 100%;
-}
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5em;
-}
 h2 {
   margin: 0.2em;
 }
@@ -24,6 +15,15 @@ textarea {
   font-family: monospace;
   font-size: 1em;
   padding: 0.3em;
+}
+#container {
+  width: 100%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
 }
 #output {
   white-space: pre-line;
