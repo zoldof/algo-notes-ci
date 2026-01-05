@@ -1,18 +1,32 @@
-import renderKatex from "/algo-notes-ci/docs/katex.js";
-
 const input = document.getElementById("input");
 const output = document.getElementById("output");
 const clearBtn = document.getElementById("clear");
 
 function render() {
-  output.textContent = input.value || input.defaultValue;
-  renderKatex(output);
+  let text = input.value || input.defaultValue;
+
+  text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_, expr) =>
+    katex.renderToString(expr, {
+      displayMode: true,
+      throwOnError: false
+    })
+  );
+
+  text = text.replace(/\$([^$]+?)\$/g, (_, expr) =>
+    katex.renderToString(expr, {
+      displayMode: false,
+      throwOnError: false
+    })
+  );
+
+  output.innerHTML = text;
 }
 
 input.addEventListener("input", render);
+
 clearBtn.addEventListener("click", () => {
   input.value = "";
-  output.textContent = "";
+  output.innerHTML = "";
 });
 
 window.addEventListener("DOMContentLoaded", () => {
