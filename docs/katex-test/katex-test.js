@@ -8,8 +8,7 @@ function render() {
   const text = input.value || input.defaultValue;
 
   output.textContent = text;
-  renderKatex(document.getElementById("output"));
-  //renderKatex(output);
+  renderKatex(output);
 }
 
 input.addEventListener("input", render);
