@@ -26,12 +26,6 @@ textarea {
   margin-bottom: 0.5em;
 }
 #output {
-  white-space: pre-line;
-  background: white;
   min-height: 30vh;
-  padding: 0.1em;
-  font-family: monospace;
-  font-size: 1.1em;
-  box-sizing: border-box;
 }
 
