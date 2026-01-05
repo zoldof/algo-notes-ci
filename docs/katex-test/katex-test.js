@@ -12,7 +12,7 @@ function render() {
 input.addEventListener("input", render);
 clearBtn.addEventListener("click", () => {
   input.value = "";
-  output.innerHTML = "";
+  output.textContent = "";
 });
 
 window.addEventListener("DOMContentLoaded", () => {
