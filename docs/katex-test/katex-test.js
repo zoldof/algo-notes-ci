@@ -5,9 +5,9 @@ const output = document.getElementById("output");
 const clearBtn = document.getElementById("clear");
 
 function render() {
-  const html = input.value || input.defaultValue;
+  const text = input.value || input.defaultValue;
 
-  output.innerHTML = html;
+  output.textContent = text;
   renderKatex(output);
 }
 
@@ -15,7 +15,7 @@ input.addEventListener("input", render);
 
 clearBtn.addEventListener("click", () => {
   input.value = "";
-  output.innerHTML = "";
+  output.textContent = "";
 });
 
 window.addEventListener("DOMContentLoaded", () => {
