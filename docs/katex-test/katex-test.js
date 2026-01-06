@@ -1,4 +1,4 @@
-import { renderKatex } from "/algo-notes-ci/katex.js";
+import { renderKatex } from "algo-notes-ci/katex.js";
 const input = document.getElementById("input");
 const output = document.getElementById("output");
 const clearBtn = document.getElementById("clear");
