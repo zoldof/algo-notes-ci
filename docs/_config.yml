@@ -1,4 +1,4 @@
-baseurl: /algo-notes-ci
+# baseurl: /algo-notes-ci
 markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
