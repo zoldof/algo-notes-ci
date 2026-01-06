@@ -4,7 +4,7 @@
 - ファイル一括のディレクトリ移動
 - KaTeXのテスト用ページ
 
-＊［修正履歴，dev-scratch，proto‑best‑practices］は降順
+＊［修正履歴，dev-scratch］は降順
 
 # 発端と設計意図
 ## 結局なんのために作ったものか？
