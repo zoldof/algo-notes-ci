@@ -23,4 +23,5 @@ textarea {
 }
 #output {
   min-height: 30vh;
+  white-space: pre-line;
 }
