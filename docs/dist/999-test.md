@@ -2,6 +2,8 @@
 layout: default
 title: 数式メモ
 robots: noindex
+categories: math
+slug: test
 ---
 
 <a id="top"></a>
