@@ -2,6 +2,7 @@
 layout: default
 title: 数式メモ
 robots: noindex
+permalink: /math/
 ---
 
 <a id="top"></a>
