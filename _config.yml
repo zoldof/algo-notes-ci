@@ -1,0 +1,8 @@
+# baseurl: /algo-notes-ci
+permalink: /:categories/:slug/
+markdown: kramdown
+kramdown:
+  input: GFM       # GitHub Flavored Markdown
+  hard_wrap: true  # 改行を <br> に変換
+exclude:
+  - assets/style.css      # 圧縮済みのファイルを除外
