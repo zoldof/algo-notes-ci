@@ -1,4 +1,5 @@
 # baseurl: /algo-notes-ci
+permalink: /:categories/:slug/
 markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
