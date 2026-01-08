@@ -70,10 +70,3 @@ h1{
     opacity: 0.6;
   }
 }
-
-/* 動きを嫌う環境への配慮 */
-@media (prefers-reduced-motion: reduce) {
-  .hero::before {
-    animation: none;
-  }
-}
