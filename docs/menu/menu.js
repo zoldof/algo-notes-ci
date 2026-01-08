@@ -3,7 +3,7 @@ async function render() {
   if (!el) return;
 
   try {
-    const res = await fetch(`menu/menu.md`);
+    const res = await fetch(`menu.md`);
     if (!res.ok) throw new Error("fetch failed");
 
     const text = await res.text();
