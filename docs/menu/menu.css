@@ -3,34 +3,10 @@
   text-align: center;
   padding: 1em 0;
 }
-.ssite-title {
+.site-title {
   font-size: 2.3em;
   font-weight: bold;
   color: #1f3a5f;
-}
-.site-title {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: bold;
-  letter-spacing: 0.02em;
-}
-/* ライトモード */
-@media (prefers-color-scheme: light) {
-  .site-title {
-    color: #1f3a5f;
-    -webkit-text-stroke: 0.6px rgba(31, 58, 95, 0.35);
-    text-shadow:
-      0 0 2px rgba(255, 255, 255, 0.6);
-  }
-}
-/* ダークモード */
-@media (prefers-color-scheme: dark) {
-  .site-title {
-    color: #eaeaea;
-    -webkit-text-stroke: 0.6px rgba(180, 220, 255, 0.4);
-    text-shadow:
-      0 0 4px rgba(180, 220, 255, 0.35),
-      0 0 12px rgba(180, 220, 255, 0.2);
-  }
 }
 h1{
   background-color: #e6f4ff;
