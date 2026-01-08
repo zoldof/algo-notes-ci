@@ -1,5 +1,5 @@
 # 哲学
-## 哲学の歴史と起源
+### 哲学の歴史と起源
 <details>
 <summary>◆歴史の流れ</summary>
 ・物理的存在段階：エネルギーと粒子の相互作用のみ<br>
@@ -22,10 +22,10 @@
 ・・パピルスや羊皮紙の普及による影響<br>
 </details>
 
-## 形而上学
+### 形而上学
 <details>
 <summary>◆概要</summary>
-世界の普遍原理を思考で認識する哲学から派生した学問<br><br>
+・世界の普遍原理を思考で認識する哲学から派生した学問<br><br>
 </details>
 
 <details>
@@ -46,4 +46,4 @@
 </details>
 
 # 数学
-- <a href="https://example.com" target="_blank">リンクテキスト</a>
+- ### <a href="https://example.com" target="_blank">リンクテキスト</a>
