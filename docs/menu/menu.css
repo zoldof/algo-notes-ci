@@ -1,3 +1,13 @@
+.site-header {
+  background-color: #cfe8ff;
+  text-align: center;
+  padding: 1em 0;
+}
+.site-title {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #1f3a5f;
+}
 h1{
   background-color: #e6f4ff;
 }
