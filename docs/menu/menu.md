@@ -46,4 +46,4 @@
 </details>
 
 # 数学
-- ### <a href="https://example.com" target="_blank">リンクテキスト</a>
+- ### <a href="https://example.com" target="_blank">リンクテキスト</a><a href="https://example.com" target="_blank">［🔄履歴］</a><a href="https://example.com" target="_blank">［📝編集］</a>
