@@ -45,5 +45,5 @@
 ・生命の誕生<br>
 </details>
 
-# 数学（🔄履歴，📝編集）
-- ### <a href="https://example.com" target="_blank">リンクテキスト</a> <a href="https://example.com" target="_blank">🔄</a> <a href="https://example.com" target="_blank">📝</a>
+# 数学
+- ### <a href="https://zoldof.github.io/algo-notes/shougaku/" target="_blank">リンクテキスト</a> <a href="https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/shougaku/index.md" target="_blank">🔄</a> <a href="https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/shougaku/index.md" target="_blank">📝</a>
