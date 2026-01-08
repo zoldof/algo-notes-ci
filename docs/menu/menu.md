@@ -25,28 +25,24 @@
 
   </details>
 
-### 形而上学
-<details>
-<summary>◆概要</summary>
-・世界の普遍原理を思考で認識する哲学から派生した学問<br><br>
-</details>
+- ### 形而上学
+  <details>
+  <summary>形而上学まとめ</summary>
 
-<details>
-<summary>◆存在の有無</summary>
-・完全円<br>
-・物質<br><br>
-</details>
+  ---
   
-<details>
-<summary>◆大小の限界</summary>
-・物質<br><br>
-</details>
+  **世界の普遍原理を思考で認識する哲学から派生した学問**
   
-<details>
-<summary>◆理由の有無</summary>
-・物質の最小単位が球体である<br>
-・生命の誕生<br>
-</details>
+  ◆存在の有無
+  - 完全円
+  - 物質
+  
+  ◆大小の限界
+  - 物質
+  
+  ◆理由の有無
+  - 物質の最小単位が球体である
+  - 生命の誕生
 
 # 数学
 ### 小学校
