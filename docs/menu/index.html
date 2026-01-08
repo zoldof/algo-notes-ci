@@ -15,7 +15,10 @@
   
 <body>
   <header class="site-header">
-    <div class="site-title">アルゴリズム×数学の学び直し</div>
+    <div class="site-title"></div>
+    <script>
+      document.querySelector('.site-title').textContent = document.title;
+    </script>
   </header>
   <div id="content">loading...</div>
   <script type="module" src="menu.js"></script>
