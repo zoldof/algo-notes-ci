@@ -8,6 +8,7 @@ on:
     paths:
       - 'docs/**/*.md'
       - 'docs/katex-test/*'
+      - 'docs/menu/*'
       - 'docs/*.html'
       - 'docs/*.js'
       - 'docs/*.css'
