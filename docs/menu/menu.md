@@ -45,5 +45,5 @@
 ・生命の誕生<br>
 </details>
 
-# 数学
-- ### <a href="https://example.com" target="_blank">リンクテキスト</a><a href="https://example.com" target="_blank">［🔄履歴］</a><a href="https://example.com" target="_blank">［📝編集］</a>
+# 数学（🔄履歴，📝編集）
+- ### <a href="https://example.com" target="_blank">リンクテキスト</a> <a href="https://example.com" target="_blank">🔄</a> <a href="https://example.com" target="_blank">📝</a>
