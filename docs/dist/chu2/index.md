@@ -10,7 +10,7 @@ robots: noindex
    * TOC
    {:toc}
 
-   </details>
+</details>
 
 ## 【検定過去問の技能別対策】
 ◆計算
