@@ -4,8 +4,12 @@ title: 中2数学
 robots: noindex
 ---
 
-* TOC
-{:toc}
+## <details><summary>目次</summary>
+
+   * TOC
+   {:toc}
+
+   </details>
 
 ## 【検定過去問の技能別対策】
 ◆計算
