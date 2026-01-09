@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 中1数学
+title: 中2数学
 robots: noindex
 ---
 
