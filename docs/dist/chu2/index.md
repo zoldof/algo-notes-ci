@@ -4,7 +4,7 @@ title: 中2数学
 robots: noindex
 ---
 
-✅[[はじめに>>内部リンク集#数学まとめ冒頭補足]]
+✅<a href="[https://zoldof.github.io/algo-notes/shougaku/](https://algorithm.memo.wiki/d/%c6%e2%c9%f4%a5%ea%a5%f3%a5%af%bd%b8)" target="_blank">はじめに</a>
 ## <details><summary>目次</summary>
 
    * TOC
