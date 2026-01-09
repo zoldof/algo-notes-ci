@@ -4,6 +4,7 @@ title: 中2数学
 robots: noindex
 ---
 
+✅[[はじめに>>内部リンク集#数学まとめ冒頭補足]]
 ## <details><summary>目次</summary>
 
    * TOC
