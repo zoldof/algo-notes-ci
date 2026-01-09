@@ -1,3 +1,9 @@
+---
+layout: default
+title: 中1数学
+robots: noindex
+---
+
 * TOC
 {:toc}
 
