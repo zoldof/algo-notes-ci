@@ -5,7 +5,7 @@ robots: noindex
 ---
 
 * TOC
-{:toc}
+{:toc levels="1"}
 
 # 【検定過去問の技能別対策】
 ### ◆ 計算
