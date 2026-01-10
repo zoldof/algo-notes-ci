@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
 </head>
 <body>
+  <button id="toc-toggle" class="toc-toggle" aria-expanded="false">
+    📋
+  </button>
   <div id="content">
     <!-- Liquid -->
     {{ content }}
@@ -25,5 +28,6 @@
       renderKatex(document.getElementById("content"));
     });
   </script>
+  <script src="{{ site.baseurl }}/toc.js"></script>
 </body>
 </html>
