@@ -23,8 +23,10 @@
     {{ content }}
   </div>
   <script type="module">
+    import { InitTocToggle } from "{{ site.baseurl }}/toc.js";
     import { renderKatex } from "{{ site.baseurl }}/katex.js";
     document.addEventListener("DOMContentLoaded", async () => {
+      InitTocToggle();
       renderKatex(document.getElementById("content"));
     });
   </script>
