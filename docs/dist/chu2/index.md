@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 中2数学
+toc:true
 robots: noindex
 ---
 
