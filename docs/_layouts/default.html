@@ -21,19 +21,10 @@
   </div>
   <script type="module">
     import { renderKatex } from "{{ site.baseurl }}/katex.js";
+    import { addBackToTopLinks } from "{{ site.baseurl }}/back.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
-    });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("h2, h3, h4").forEach(h => {
-        const a = document.createElement("a");
-        a.href = "#top";
-        a.className = "back-to-top";
-        a.textContent = "↑";
-        h.appendChild(a);
-      });
+      addBackToTopLinks();
     });
   </script>
 </body>
