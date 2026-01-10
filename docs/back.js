@@ -3,7 +3,7 @@ export function addBackToTopLinks() {
     const a = document.createElement("a");
     a.href = "#top";
     a.className = "back-to-top";
-    a.textContent = "⤴️";
+    a.textContent = "＾";
     h.appendChild(a);
   });
 }
