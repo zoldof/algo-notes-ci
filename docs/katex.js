@@ -1,5 +1,5 @@
 export function renderKatex(el) {
-  renderMathInElement(el, {
+  window.renderMathInElement(el, {
     delimiters: [
       { left: "$$", right: "$$", display: true },
       { left: "$", right: "$", display: false }
