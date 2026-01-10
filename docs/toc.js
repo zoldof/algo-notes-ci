@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+export functiin InitTocToggle(){
   const toggle = document.getElementById("toc-toggle");
   const toc = document.getElementById("toc-container");
 
@@ -7,5 +7,4 @@ document.addEventListener("DOMContentLoaded", () => {
   toggle.addEventListener("click", () => {
     const isClosed = toc.classList.toggle("is-closed");
     toggle.setAttribute("aria-expanded", String(!isClosed));
-  });
-});
+}
