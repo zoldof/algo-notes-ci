@@ -1,4 +1,4 @@
-export functiin InitTocToggle(){
+export function InitTocToggle(){
   const toggle = document.getElementById("toc-toggle");
   const toc = document.getElementById("toc-container");
 
