@@ -1,17 +1,24 @@
 ## <details><summary>どのような人に向けて作られた記事か？</summary>
+
 ①小学校から中学3年までの数学を学び直したい人
-②[実用数学技能検定](https://www.su- gaku.net/suken)で合格したい人
+②[実用数学技能検定](https://www.su-gaku.net/suken)で合格したい人
 この記事は、平成29年告示の学習指導要領に則った内容です。
+
 </details>
+
 ## <details><summary>算数からはじめる数学まとめ</summary>
-- [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo- notes/shougaku)
-- [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.github.io/algo- notes/chu1)
-- [中2数学](https://zoldof.github.io/algo- notes/chu2)
+
+- [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo-notes/shougaku)
+- [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.github.io/algo-notes/chu1)
+- [中2数学](https://zoldof.github.io/algo-notes/chu2)
 - 中3数学
-  - [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo- notes/chu3- 1)
-  - [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo- notes/chu3- 2)
+  - [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1)
+  - [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2)
+
 </details>
+
 ## <details><summary>Wiki管理者の成績</summary>
+
 合格判定のものに限定しています。
 単位は％です。
 
@@ -87,11 +94,13 @@
 - 実用数学技能検定3～6級 合格
 
 </details>
+
 ## <details><summary>執筆経緯</summary>
+
 「なぜ、算数を学び直したいのか」理由は人によって様々です。
 私の場合は、アルゴリズムの理解を極めるのに必要な知識だと認識したからです。
 「アルゴリズムとは何か？」は[こちら](https://zenn.dev/algorithm_math/articles/7c9a208402e9ae)の記事を参照ください。
-後付けで「なぜ、算数を学び直したいのか」を再検討した際には、[米田優峻さん](https://e869120.hatenablog.com/entry/2021/12/02/225743)の書かれた[問題解決のための「アルゴリズム×数学」が基礎からしっかり身につく本](https://www.amazon.co.jp/問題解決のための「アルゴリズム×数学」が基礎からしっかり身につく本- 米田- 優峻- ebook/dp/B09NXFQRD3)を参考にしました。
+後付けで「なぜ、算数を学び直したいのか」を再検討した際には、[米田優峻さん](https://e869120.hatenablog.com/entry/2021/12/02/225743)の書かれた[問題解決のための「アルゴリズム×数学」が基礎からしっかり身につく本](https://www.amazon.co.jp/問題解決のための「アルゴリズム×数学」が基礎からしっかり身につく本-米田-優峻-ebook/dp/B09NXFQRD3)を参考にしました。
 
 アルゴリズムを学ぶにあたり必要な数学の知識について、
 具体的には、書籍の冒頭で［小学校算数，中学数学，高校数学，大学数学の教養レベル］が必要との記載がありました。
@@ -104,8 +113,11 @@
 そうではない自分のような人にとっては、数学の復習が必要だと痛感しました。
 そこで、学習指導要領と数検の範囲を照合し、以下に項目別でまとめることにしました。
 各項目の構成方法としては、個人的に見て学び直しに最適なサイトを再構築し、学習指導要領と比較したときに不足がないか調べて、数検の出題範囲に最適化しています。
+
 </details>
+
 ## <details><summary>構成案内</summary>
+
 ◆構成の流れ：中2以降
 ・基本的な流れは［検定過去問対策→応用問題→基礎知識］で、ページが2つ以上になる場合あり
 ↑応用問題の各項目のうち「&#9888;&#65039;」で記載している部分は、「認識の注意点」の項目である
@@ -118,15 +130,21 @@
 ・・・xに係数がある場合は括弧内の計算結果の降順
 ・・↑共通因数でまとめるとの意味合いの場合は昇順
 ・・2次方程式
+
 </details>
-## <details><summary>四則演算の扱い</summary>  
+
+## <details><summary>四則演算の扱い</summary>
+
 四則演算と加減乗除の記載方法について混同して使われることが多い
 特に説明の文章が長くなってしまうときに加減乗除の記載方法をつかう
-四則演算と加減乗除の違いについては[算数の学び直しの記事](https://zenn.dev/algorithm_math/articles/1631216a6976a9#四則演算とは？)を参考にしてください。
+四則演算と加減乗除の違いについては[算数の学び直しの記事](https://zoldof.github.io/algo-notes/shougaku#四則演算とは？)を参考にしてください。
 **小学数学（算数）では、基本的に四則演算の記載方法に従うものとする**
 **中学数学以降では説明をより簡略化するため、基本的に加減乗除の記載方法に従うものとする**
+
 </details>
+
 ## <details><summary>言葉遣いの注意点</summary>
+
 - 式：文字式
   - ［x,y,z］：未知数としての伝統
   - n：「数(number)」の頭文字であり［自然数，整数］を意味する
@@ -138,11 +156,15 @@
   - 数量：物の分量を数で表現する
 - 数式：式のうち特に数が入っていることを強調したい場合の呼び方である
 - 等式：文章題から式をつくる場合、方程式ではなく「等式をつくる」という
+
 </details>
+
 ## <details><summary>参考サイト</summary>
-- [平成20年告示 小学校学習指導要項 算数](https://www.mext.go.jp/a_menu/shotou/new- cs/youryou/syo/san.htm)
+
+- [平成20年告示 小学校学習指導要項 算数](https://www.mext.go.jp/a_menu/shotou/new-cs/youryou/syo/san.htm)
 - [平成29年告示 中学校学習指導要項 数学](https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/03/18/1387018_004.pdf)
 - [数基礎 ～数学を基礎からやり直したい！～](https://suukiso.com)
 - [中学校数学・学習サイト](https://math.005net.com)
-- [親子で成長する中学数学 標本調査](https://oyako- cyugaku.com/category7/entry30.html)
+- [親子で成長する中学数学 標本調査](https://oyako-cyugaku.com/category7/entry30.html)
+
 </details>
