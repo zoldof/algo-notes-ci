@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 中3数学-1
+title: 中3数学【数学の役立て方】【基礎知識】
 robots: noindex
 ---
 
