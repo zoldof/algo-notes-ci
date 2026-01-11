@@ -8,7 +8,7 @@ permissions:
 
 env:
   SOURCE_DIR: docs/dist-marked
-  DIST_DIR: docs/dist-marked/menu
+  DIST_DIR: docs/dist-marked2
 
 jobs:
   move_files:
