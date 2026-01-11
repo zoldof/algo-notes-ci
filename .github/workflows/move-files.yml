@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 env:
-  SOURCE_DIR: docs/menu
+  SOURCE_DIR: docs/dist-marked
   DIST_DIR: docs/dist-marked/menu
 
 jobs:
