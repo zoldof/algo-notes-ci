@@ -1,5 +1,4 @@
 <details>
-
 ## <summary>どのような人に向けて作られた記事か？</summary>
    ①小学校から中学3年までの数学を学び直したい人
    ②[実用数学技能検定](https://www.su-gaku.net/suken)で合格したい人
