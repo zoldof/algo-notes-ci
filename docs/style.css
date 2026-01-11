@@ -38,3 +38,10 @@ th, td {
   margin: 0.1rem auto;
   box-sizing: border-box;
 }
+details > summary {
+  font-size: 1.5rem;      /* <h2> の既定サイズ（ブラウザによって異なる） */
+  font-weight: 700;       /* 太字（<h2> のデフォルト） */
+  margin: 0;              /* <h2> の余白に合わせる場合は調整 */
+  line-height: 1.2;       /* 行間も <h2> と同様に */
+  cursor: pointer;        /* 折りたたみ可能であることを示す */
+}
