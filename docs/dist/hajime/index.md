@@ -1,18 +1,21 @@
-<details>
-<summary>どのような人に向けて作られた記事か？</summary>
-   ①小学校から中学3年までの数学を学び直したい人
-   ②[実用数学技能検定](https://www.su-gaku.net/suken)で合格したい人
-   この記事は、平成29年告示の学習指導要領に則った内容です。
+<details><summary>どのような人に向けて作られた記事か？</summary>
+   
+①小学校から中学3年までの数学を学び直したい人
+②[実用数学技能検定](https://www.su-gaku.net/suken)で合格したい人
+この記事は、平成29年告示の学習指導要領に則った内容です。
+   
 </details>
 
-## <details><summary>算数からはじめる数学まとめ</summary>
-   - [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo-notes/shougaku)
-   - [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.github.io/algo-notes/chu1)
-   - [中2数学](https://zoldof.github.io/algo-notes/chu2)
-   - 中3数学
-     - [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1)
-     - [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2)
-   </details>
+<details><summary>算数からはじめる数学まとめ</summary>
+   
+  - [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo-notes/shougaku)
+  - [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.github.io/algo-notes/chu1)
+  - [中2数学](https://zoldof.github.io/algo-notes/chu2)
+  - 中3数学
+    - [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1)
+    - [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2)
+
+</details>
 
 ## <details><summary>Wiki管理者の成績</summary>
 
