@@ -116,7 +116,7 @@ robots: noindex
 :::
 
 &ref(https://image01.seesaawiki.jp/a/o/algorithm-memo/1b81b258c8a99164.jpg,500,836)
-【多項式】
+## 【多項式】
 
 ◆式の展開
 :::
