@@ -1,4 +1,10 @@
-&#9989;&#65039;[[はじめに>>内部リンク集#数学まとめ冒頭補足]]
+---
+layout: default
+title: 中3数学【検定過去問対策】【応用問題】
+robots: noindex
+---
+
+{% include intro-and-toc.md %}
 
 ## 【検定過去問の技能別対策】
 
