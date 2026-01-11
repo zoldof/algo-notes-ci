@@ -1,10 +1,11 @@
-## <details><summary>どのような人に向けて作られた記事か？</summary>
+<details>
 
+## <summary>どのような人に向けて作られた記事か？</summary>
    ①小学校から中学3年までの数学を学び直したい人
    ②[実用数学技能検定](https://www.su-gaku.net/suken)で合格したい人
    この記事は、平成29年告示の学習指導要領に則った内容です。
    
-   </details>
+</details>
 
 ## <details><summary>算数からはじめる数学まとめ</summary>
    - [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo-notes/shougaku)
