@@ -7,14 +7,12 @@
 </details>
 
 ## <details><summary>算数からはじめる数学まとめ</summary>
-
-- [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo-notes/shougaku)
-- [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.github.io/algo-notes/chu1)
-- [中2数学](https://zoldof.github.io/algo-notes/chu2)
-- 中3数学
-  - [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1)
-  - [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2)
-
+   - [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.github.io/algo-notes/shougaku)
+   - [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.github.io/algo-notes/chu1)
+   - [中2数学](https://zoldof.github.io/algo-notes/chu2)
+   - 中3数学
+     - [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1)
+     - [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2)
 </details>
 
 ## <details><summary>Wiki管理者の成績</summary>
