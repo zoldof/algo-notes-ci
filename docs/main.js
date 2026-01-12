@@ -13,23 +13,22 @@ async function render() {
 
   try {
     const res = await fetch(`dist/${dname}/index.md`);
-
+    let text ="";
+    
     if (res.ok) {
-      return await res.text();
-      const text = await res.text();
+      text = await res.text();
     }
     else if (res.status === 404) {
       const markedRes = await fetch(`index.md`);
       if (!markedRes.ok) {
         throw new Error("both fetches failed");
       }
-      return await markedRes.text();
-      const text = await markedRes.text();
+      text = await markedRes.text();
     }
     else {
       throw new Error(`fetch failed: ${res.status}`);
     }
-    
+
     marked.setOptions({
       breaks: true,
       gfm: true
