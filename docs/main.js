@@ -1,15 +1,8 @@
-import { renderKatex } from "./katex.js";
-
 async function render() {
   const el = document.getElementById("content");
   if (!el) return;
   const params = new URLSearchParams(location.search);
   const dname = params.get("dname");
-
-  if (!dname) {
-    el.textContent = "dname not specified";
-    return;
-  }
 
   try {
     const res = await fetch(`dist/${dname}/index.md`);
@@ -34,7 +27,10 @@ async function render() {
       gfm: true
     });
     el.innerHTML = marked.parse(text);
-    renderKatex(el);
+    if (dname) {
+      const { renderKatex } = await import("./katex.js");
+      renderKatex(el);
+    }
   } catch (err) {
     el.textContent = err.message;
   }
