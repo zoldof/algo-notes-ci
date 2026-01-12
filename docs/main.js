@@ -23,7 +23,7 @@ async function render() {
       if (!markedRes.ok) {
         throw new Error("both fetches failed");
       }
-      text = markedRes.text();
+      text = await markedRes.text();
     }
     else {
       throw new Error(`fetch failed: ${res.status}`);
