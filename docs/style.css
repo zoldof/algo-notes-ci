@@ -40,9 +40,6 @@ th, td {
 .back-to-top {
   text-decoration: none;
 }
-.dname-hajime details > summary {
-  font-size: 1.5em;
-}
 /* インラインと表示数式で分けてる */
 .katex {
   font-size: 1.1em;
@@ -50,4 +47,11 @@ th, td {
 .katex-display {
   max-width: 100%;
   overflow-x: auto;
+}
+
+.dname-menu h2 {
+  background-color: #e6f2ff;
+}
+.dname-hajime details > summary {
+  font-size: 1.5em;
 }
