@@ -4,7 +4,8 @@ title: 中3数学【数学の役立て方】【基礎知識】
 robots: noindex
 ---
 
-{% include intro-and-toc.md %}
+{% include intro.md %}
+{% include toc.md %}
 
 ## 【数学は何の役に立つか？中3数学までで得られる知識からの回答】
 
