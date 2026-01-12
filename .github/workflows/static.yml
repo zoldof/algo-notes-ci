@@ -6,7 +6,6 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'docs/**/*.md'
       - 'docs/dist-marked/**'
       - 'docs/*.html'
       - 'docs/*.js'
