@@ -4,7 +4,8 @@ title: 中2数学
 robots: noindex
 ---
 
-{% include intro-and-toc.md %}
+{% include intro.md %}
+{% include toc.md %}
 
 ## 【検定過去問の技能別対策】
 ◆計算
