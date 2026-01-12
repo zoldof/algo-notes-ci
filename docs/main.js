@@ -13,7 +13,20 @@ async function render() {
 
   try {
     const res = await fetch(`dist/${dname}/index.md`);
-    if (!res.ok) throw new Error("fetch failed");
+
+    if (res.ok) {
+      return await res.text();
+    }
+    else if (res.status === 404) {
+      const markedRes = await fetch(`dist-marked/${dname}/index.md`);
+      if (!markedRes.ok) {
+        throw new Error("both fetches failed");
+      }
+      return await markedRes.text();
+    }
+    else {
+      throw new Error(`fetch failed: ${res.status}`);
+    }
 
     const text = await res.text();
     marked.setOptions({
