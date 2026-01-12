@@ -16,6 +16,7 @@ async function render() {
 
     if (res.ok) {
       return await res.text();
+      const text = await res.text();
     }
     else if (res.status === 404) {
       const markedRes = await fetch(`index.md`);
@@ -23,12 +24,12 @@ async function render() {
         throw new Error("both fetches failed");
       }
       return await markedRes.text();
+      const text = await markedRes.text();
     }
     else {
       throw new Error(`fetch failed: ${res.status}`);
     }
-
-    const text = await res.text();
+    
     marked.setOptions({
       breaks: true,
       gfm: true
