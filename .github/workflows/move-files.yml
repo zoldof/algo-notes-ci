@@ -7,8 +7,8 @@ permissions:
   contents: write
 
 env:
-  SOURCE_DIR: docs/dist-marked2
-  DIST_DIR: docs/dist-marked/menu
+  SOURCE_DIR: source_dir
+  DIST_DIR: dist_dir
 
 jobs:
   move_files:
