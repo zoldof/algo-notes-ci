@@ -12,6 +12,7 @@ async function render() {
   }
 
   try {
+    document.body.classList.add(`dname-${dname}`);
     const res = await fetch(`dist/${dname}/index.md`);
     let text ="";
 
