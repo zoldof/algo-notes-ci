@@ -40,6 +40,9 @@ th, td {
 .back-to-top {
   text-decoration: none;
 }
+.large-h2 {
+  font-size: 1.5em;
+}
 /* インラインと表示数式で分けてる */
 .katex {
   font-size: 1.1em;
