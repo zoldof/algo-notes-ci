@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Markdown + GFM + KaTeX Viewer</title>
+  <title>アルゴリズム×数学の学び直し</title>
   <!-- Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <!-- KaTeX -->
@@ -17,9 +16,16 @@
   <!-- General -->
   <!-- <base href="/algo-notes-ci/"> -->
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="menu.css">
 </head>
   
 <body>
+  <header class="site-header">
+    <div class="site-title"></div>
+    <script>
+      document.querySelector('.site-title').textContent = document.title;
+    </script>
+  </header>
   <div id="content">loading...</div>
   <script type="module" src="main.js"></script>
 </body>
