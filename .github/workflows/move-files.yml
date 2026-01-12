@@ -7,8 +7,8 @@ permissions:
   contents: write
 
 env:
-  SOURCE_DIR: docs/katex-test
-  DIST_DIR: docs/dist_marked/katex-test
+  SOURCE_DIR: docs/dist_marked/katex-test
+  DIST_DIR: docs/dist-marked/katex-test
 
 jobs:
   move_files:
