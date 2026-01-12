@@ -31,8 +31,17 @@ th, td {
   font-weight: bold;
   color: #1f3a5f;
 }
+#content {
+  width: 99%;
+  max-width: 100%;
+  margin: 0.1rem auto;
+  box-sizing: border-box;
+}
 .back-to-top {
   text-decoration: none;
+}
+.dname-hajime details > summary {
+  font-size: 1.5rem;
 }
 /* インラインと表示数式で分けてる */
 .katex {
@@ -41,10 +50,4 @@ th, td {
 .katex-display {
   max-width: 100%;
   overflow-x: auto;
-}
-#content {
-  width: 99%;
-  max-width: 100%;
-  margin: 0.1rem auto;
-  box-sizing: border-box;
 }
