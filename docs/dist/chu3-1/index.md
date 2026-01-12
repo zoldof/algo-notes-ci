@@ -115,7 +115,7 @@ robots: noindex
 ・除算は割り切れるもの限定とする
 :::
 
-&ref(https://image01.seesaawiki.jp/a/o/algorithm-memo/1b81b258c8a99164.jpg,500,836)
+![](https://image01.seesaawiki.jp/a/o/algorithm-memo/1b81b258c8a99164.jpg,500,836)
 ## 【多項式】
 
 ◆式の展開
@@ -191,9 +191,9 @@ robots: noindex
 
 ◆平方根の大小と理屈
 ・a, bが正の数でa < bならば正方形の1辺と同じ理屈で√a < √b
-・[[開閉法とは>>https://suugakunoie.com/suugaku1/hissann-kaiheihou-yarikata]]
+・<a href="https://suugakunoie.com/suugaku1/hissann-kaiheihou-yarikata" target="_blank">開閉法とは</a>
 ・・例えば5桁の数の平方根が100a + 10b + cであることを利用して筆算形式で表したもの
-・[[二分法とは>>https://zenn.dev/algorithm_math/articles/c2d1506fdfe171#二分探索]]
+・<a href="https://zenn.dev/algorithm_math/articles/c2d1506fdfe171#二分探索" target="_blank">二分法とは</a>
 ・・無理数の場合は近似値を区間で二分する
 ・［x：整数，y：平方根］となる平方根のグラフはなだらかに増加する曲線になる
 
