@@ -14,7 +14,11 @@
   <!-- <link rel="stylesheet" href="/algo-notes-ci/style.css"> -->
   <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
 </head>
-<body>
+<body class="page-{{ page.url
+                 | split:'/'               # 「/」で分割 → 配列になる
+                 | last                    # 配列の最後の要素（ファイル名）を取得
+                 | replace_last:'.md',''   # .md も除去したいとき
+                 | slugify }}">
   <div id="content">
     <!-- Liquid -->
     {{ content }}
