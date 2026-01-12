@@ -3,7 +3,5 @@ markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
   hard_wrap: true  # 改行を <br> に変換
-  disable_html: false
-  attribute_lists: true
 exclude:
   - assets/style.css      # 圧縮済みのファイルを除外
