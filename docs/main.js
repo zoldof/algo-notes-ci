@@ -18,7 +18,7 @@ async function render() {
       return await res.text();
     }
     else if (res.status === 404) {
-      const markedRes = await fetch(`dist-marked/${dname}/index.md`);
+      const markedRes = await fetch(`index.md`);
       if (!markedRes.ok) {
         throw new Error("both fetches failed");
       }
