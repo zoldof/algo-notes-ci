@@ -34,14 +34,14 @@ th, td {
 #content {
   width: 99%;
   max-width: 100%;
-  margin: 0.1rem auto;
+  margin: 0.1em auto;
   box-sizing: border-box;
 }
 .back-to-top {
   text-decoration: none;
 }
 .dname-hajime details > summary {
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 /* インラインと表示数式で分けてる */
 .katex {
