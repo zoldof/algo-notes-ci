@@ -1,5 +1,5 @@
 export function addBackToTopLinks() {
-  document.querySelectorAll("h1, h2").forEach((h, i) => {
+  document.querySelectorAll("h2").forEach((h, i) => {
     if (i === 0) return;
     const a = document.createElement("a");
     a.href = "#top";
