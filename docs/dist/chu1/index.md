@@ -3,13 +3,9 @@ layout: default
 title: 中1数学
 robots: noindex
 ---
-# どのような人に向けて作られた記事か？
-①中学1年の数学を学び直したい人
-②実用数学技能検定で5級を取りたい人
-この記事は、平成29年告示の学習指導要領に則った内容です。
 
-# はじめに
-- [［一覧，著者，経緯，注意点］](https://zenn.dev/zoldof/scraps/ea70ec179f567c#数学まとめ記事の冒頭補足)
+{% include intro.md %}
+{% include toc.md %}
 
 # 考え方のヒント集
 :::message
