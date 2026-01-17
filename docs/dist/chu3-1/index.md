@@ -116,7 +116,8 @@ robots: noindex
 ・除算は割り切れるもの限定とする
 :::
 
-![](https://image01.seesaawiki.jp/a/o/algorithm-memo/1b81b258c8a99164.jpg,500,836)
+![](https://image01.seesaawiki.jp/a/o/algorithm-memo/1b81b258c8a99164.jpg)
+
 ## 【多項式】
 
 ◆式の展開
