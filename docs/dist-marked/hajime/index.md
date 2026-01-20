@@ -182,6 +182,7 @@
 
 <details><summary>参考サイト</summary>
 
+- [実用数学技能検定](https://www.su-gaku.net/suken)
 - [平成20年告示 小学校学習指導要項 算数](https://www.mext.go.jp/a_menu/shotou/new-cs/youryou/syo/san.htm)
 - [平成29年告示 中学校学習指導要項 数学](https://www.mext.go.jp/component/a_menu/education/micro_detail/__icsFiles/afieldfile/2019/03/18/1387018_004.pdf)
 - [数基礎 ～数学を基礎からやり直したい！～](https://suukiso.com)
