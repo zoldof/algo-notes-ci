@@ -34,7 +34,15 @@ async function render() {
       breaks: true,
       gfm: true
     });
-    el.innerHTML = marked.parse(text);
+    const renderer = new marked.Renderer();
+    renderer.link = (href, text) => {
+      const isExternal = /^https?:\/\//.test(href);
+      const target = isExternal
+        ? ' target="_blank" rel="noopener noreferrer"'
+        : '';
+      return `<a href="${href}"${target}>${text}</a>`;
+    };
+    el.innerHTML = marked.parse(text, { renderer });
     renderKatex(el);
   } catch (err) {
     el.textContent = err.message;
