@@ -50,8 +50,8 @@
 
 # 数学
 - ### 小学校
-  - #### <a href="https://zoldof.github.io/algo-notes/shougaku/" target="_blank">小学数学まとめ</a> <a href="https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/shougaku/index.md" target="_blank">🔄</a> <a href="https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/shougaku/index.md" target="_blank">📝</a>
+  - #### [小学数学まとめ](https://zoldof.github.io/algo-notes/shougaku) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/shougaku/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/shougaku/index.md)
 - ### 中学1年
-  - #### <a href="https://zoldof.github.io/algo-notes/chu1/" target="_blank">中1数学まとめ</a> <a href="https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu1/index.md" target="_blank">🔄</a> <a href="https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu1/index.md" target="_blank">📝</a>
+  - #### [中1数学まとめ](https://zoldof.github.io/algo-notes/chu1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu1/index.md)
 - ### 中学2年
-  - #### <a href="https://zoldof.github.io/algo-notes/chu2/" target="_blank">中2数学まとめ</a> <a href="https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu2/index.md" target="_blank">🔄</a> <a href="https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu2/index.md" target="_blank">📝</a>
+  - #### [中2数学まとめ](https://zoldof.github.io/algo-notes/chu2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu2/index.md)
