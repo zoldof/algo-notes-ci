@@ -193,7 +193,7 @@ robots: noindex
 
 <details>
   <summary>＊参考画像</summary>
-  ![alt](chu3-2-1.png){: width="300"}
+  ![](chu3-2-1.png){: width="300"}
 </details>
 
 ・大小の円の面積差が分かっているとき小さい円の接線と大きい円との交点を両端とする線分の長さを求める場合
