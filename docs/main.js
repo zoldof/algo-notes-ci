@@ -35,11 +35,12 @@ async function render() {
       gfm: true
     });
     const renderer = new marked.Renderer();
-    renderer.link = (href, text) => {
+    renderer.link = function ({ href, tokens }) {
       const isExternal = /^https?:\/\//.test(href);
       const target = isExternal
         ? ' target="_blank" rel="noopener noreferrer"'
         : '';
+      const text = this.parser.parseInline(tokens);
       return `<a href="${href}"${target}>${text}</a>`;
     };
     el.innerHTML = marked.parse(text, { renderer });
