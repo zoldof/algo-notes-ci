@@ -55,3 +55,6 @@
   - #### [中1数学まとめ](https://zoldof.github.io/algo-notes/chu1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu1/index.md)
 - ### 中学2年
   - #### [中2数学まとめ](https://zoldof.github.io/algo-notes/chu2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu2/index.md)
+- ### 中学3年
+  - #### [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-1/index.md)
+  - #### [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-2/index.md)
