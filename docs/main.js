@@ -1,5 +1,18 @@
 import { renderKatex } from "./katex.js";
 
+function externalLinkRenderer() {
+  const renderer = new marked.Renderer();
+  renderer.link = function ({ href, tokens }) {
+    const isExternal = /^https?:\/\//.test(href);
+    const target = isExternal
+      ? ' target="_blank" rel="noopener noreferrer"'
+      : '';
+    const text = this.parser.parseInline(tokens);
+    return `<a href="${href}"${target}>${text}</a>`;
+  };
+  return renderer;
+}
+
 async function render() {
   const el = document.getElementById("content");
   if (!el) return;
@@ -29,20 +42,8 @@ async function render() {
     else {
       throw new Error(`fetch failed: ${res.status}`);
     }
-
-    marked.setOptions({
-      breaks: true,
-      gfm: true
-    });
-    const renderer = new marked.Renderer();
-    renderer.link = function ({ href, tokens }) {
-      const isExternal = /^https?:\/\//.test(href);
-      const target = isExternal
-        ? ' target="_blank" rel="noopener noreferrer"'
-        : '';
-      const text = this.parser.parseInline(tokens);
-      return `<a href="${href}"${target}>${text}</a>`;
-    };
+    marked.setOptions({ breaks: true, gfm: true });
+    const renderer = externalLinkRenderer();
     el.innerHTML = marked.parse(text, { renderer });
     renderKatex(el);
   } catch (err) {
