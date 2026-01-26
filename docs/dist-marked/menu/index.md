@@ -58,3 +58,7 @@
 - ### 中学3年
   - #### [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-1/index.md)
   - #### [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-2/index.md)
+ 
+# エンジニアリング
+- ### 基礎技術
+  - #### [文字の使い分けとプログラミング命名規則](https://zoldof.github.io/algo-notes/moji) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/moji/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/moji/index.md)
