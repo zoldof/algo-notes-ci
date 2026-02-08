@@ -45,7 +45,7 @@ robots: noindex
 ### 四則演算の優先順位
 掛け算と割り算が優先される
 四則演算の中でも括弧の付いている演算が最優先である
-<a href="https://math-fun.net/20210506/13757" target="_blank">なぜ掛け算と割り算が優先されるようになったのか？</a>
+[なぜ掛け算と割り算が優先されるようになったのか？](https://math-fun.net/20210506/13757){:target="_blank" rel="noopener noreferrer"}
 このサイトの説明を引用すると
 
 **掛け算優先の理由（引用部分）**
