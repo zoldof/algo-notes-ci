@@ -6,7 +6,7 @@ robots: noindex
 # はじめに
 この記事は以下の目的で作りました。
 - 算数の学び直し記事を修正していく中で、特に分かりにくい部分があったので別でまとめる
-  - [変則すだれ算の最小公倍数](https://zenn.dev/algorithm_math/articles/1631216a6976a9#ある3つの数について調べる場合)の求め方を解説
+  - [変則すだれ算の最小公倍数](https://zenn.dev/algorithm_math/articles/1631216a6976a9#ある3つの数について調べる場合){:target="_blank" rel="noopener noreferrer"}の求め方を解説
  
 # まず知っておきたい：最大公約数を求めるとは？
 - 最大公約数：2つ以上の整数に共通する約数の中で最大値
