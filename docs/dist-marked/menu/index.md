@@ -60,7 +60,9 @@
   - #### [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-2/index.md)
  
 # アルゴリズム
+- ### 概要
   - #### [アルゴリズムの基本と算法体系](https://zenn.dev/algorithm_math/articles/7c9a208402e9ae)
+- ### 種類別
   - #### [配列](https://zenn.dev/algorithm_math/articles/339cdee6be1334)
   - #### [時刻差分](https://zenn.dev/zoldof/articles/8087839369b6ad)
   - #### [並べ替え](https://zenn.dev/algorithm_math/articles/548c3fe8d7b937)
@@ -75,5 +77,6 @@
   - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
  
 # プロフィール
+- ### サイト別
   - #### [Qiita](https://qiita.com/zoldof/items/e33808cc7b1280f133f7)
   - #### [Zenn](https://zenn.dev/zoldof/articles/6af328a17001b4)
