@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 中2数学
-robots: noindex
 ---
 
 {% include intro.md %}
