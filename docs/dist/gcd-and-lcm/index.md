@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 最大公約数と最小公倍数
+robots: noindex
 ---
 
 # はじめに
