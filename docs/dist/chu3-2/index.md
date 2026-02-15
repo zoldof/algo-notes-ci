@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 中3数学【検定過去問対策】【応用問題】
-robots: noindex
 ---
 
 {% include intro.md %}
