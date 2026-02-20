@@ -75,6 +75,8 @@
 - ### 基礎技術
   - #### [文字の使い分けとプログラミング命名規則](https://zoldof.github.io/algo-notes/moji) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/moji/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/moji/index.md)
   - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
+- ### 生産管理
+  - #### [基礎](https://zoldof.github.io/algo-notes/seikan1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/seikan1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/seikan1/index.md)
  
 # プロフィール
 - ### サイト別
