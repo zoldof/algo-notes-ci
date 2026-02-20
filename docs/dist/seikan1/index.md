@@ -356,3 +356,9 @@ title: 生産管理 基礎
 ↑例：来月以降分の納入予定分まで完成品としての在庫は「今」の概念で見ると不要なもの
 ↑あくまで予定であるから顧客側が「やはり購入取り止めます」という事態を想定していない
 ・整頓：必要なものをいつでも取り出せるようにしておく
+
+## 参考サイト
+- [生産管理とは？工程管理との違いや業務を効率化する方法について解説](https://biz.moneyforward.com/work-efficiency/basic/2012/?utm_source=chatgpt.com){:target="_blank" rel="noopener noreferrer"}
+- [《利益に直結》在庫管理の基本をチェック！発注方式の種類/経済的発注量/カンバン方式など要点解説](https://engineer-education.com/production-engineering-09_inventory-control/?utm_source=chatgpt.com){:target="_blank" rel="noopener noreferrer"}
+- [生産管理の基礎知識](https://seisankanripro.com/college-2/?utm_source=chatgpt.com){:target="_blank" rel="noopener noreferrer"}
+- [オペレーションズ・リサーチの応用](chrome-native://pdf/link?url=content%3A%2F%2Fmedia%2Fexternal%2Fdownloads%2F1000022859){:target="_blank" rel="noopener noreferrer"}
