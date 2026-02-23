@@ -338,8 +338,9 @@ title: 生産管理 基礎
 ・・作業者の正しい知識と技能向上
 ・・安全対策の徹底
 
-[【動画で学ぶ】：間違いだらけの】生産管理｜5Sをやっても生産性は上がらない ”中小製造業”のための”儲かる”トヨタ生産方式](https://www.youtube.com/watch?v=u8tsGaLvT7c){:target="_blank" rel="noopener noreferrer"}
-[投稿者](https://kasuyatoru.com/profile/){:target="_blank" rel="noopener noreferrer"}
+## 動画で学ぶ
+- [間違いだらけの】生産管理｜5Sをやっても生産性は上がらない ”中小製造業”のための”儲かる”トヨタ生産方式](https://www.youtube.com/watch?v=u8tsGaLvT7c){:target="_blank" rel="noopener noreferrer"}
+- [投稿者](https://kasuyatoru.com/profile/){:target="_blank" rel="noopener noreferrer"}
 
 ◆［整理，整頓］の準備
 ①製品：［完成品，仕掛品，原材料］
