@@ -1,5 +1,5 @@
 # baseurl: /algo-notes-ci
-cdn_base: "https://cdn.jsdelivr.net/gh/zoldof/algo-notes-ci@main"
+cdn_base: "https://cdn.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs"
 markdown: kramdown
 kramdown:
   input: GFM       # GitHub Flavored Markdown
