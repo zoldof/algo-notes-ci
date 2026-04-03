@@ -31,6 +31,12 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
+      # .github/workflows/deploy.yml の Build ステップ直後に追加
+      - name: Move sitemap to dist
+        run: |
+          mkdir -p docs/_site/dist
+          mv docs/_site/sitemap.xml docs/_site/dist
+
       # dist 直下で差分のあるディレクトリを検出
       - name: Detect changed dist directories
         run: |
