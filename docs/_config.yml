@@ -7,5 +7,6 @@ kramdown:
   hard_wrap: true  # 改行を <br> に変換
 exclude:
   - assets/style.css      # 圧縮済みのファイルを除外
+  - dist-marked
 plugins:
   - jekyll-sitemap
