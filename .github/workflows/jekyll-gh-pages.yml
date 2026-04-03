@@ -71,9 +71,6 @@ jobs:
           docs/_site/sitemap.xml \
           if [ ! -f "target-repo/sitemap.xml" ] || ! diff docs/_site/sitemap.xml target-repo/sitemap.xml >/dev/null; then
             cp docs/_site/sitemap.xml target-repo/sitemap.xml
-            echo "sitemap.xml updated"
-          else
-            echo "sitemap.xml unchanged"
           fi
 
       # commit & push
