@@ -23,6 +23,11 @@ jobs:
           source: ./docs
           destination: ./docs/_site
 
+      # sitemapをdist直下に作成
+      - name: Move sitemap to dist
+        run: |
+          mv docs/_site/sitemap.xml docs/_site/dist
+
       # ターゲットリポジトリ
       - name: Checkout target repo
         uses: actions/checkout@v4
@@ -31,13 +36,7 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      # .github/workflows/deploy.yml の Build ステップ直後に追加
-      - name: Move sitemap to dist
-        run: |
-          mkdir -p docs/_site/dist
-          mv docs/_site/sitemap.xml docs/_site/dist
-
-      # dist 直下で差分のあるディレクトリを検出
+      # dist直下で差分のあるディレクトリを検出
       - name: Detect changed dist directories
         run: |
           mkdir -p /tmp/changed_dirs
