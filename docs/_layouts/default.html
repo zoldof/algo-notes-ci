@@ -8,11 +8,9 @@
   <!-- Include -->
   {% include katex.html %}
   <!-- General -->
-  <!-- <base href="{{ site.baseurl }}">_config.yml -->
-  <link rel="icon" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <!-- <link rel="stylesheet" href="/algo-notes-ci/style.css"> -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/style.css">
+  <link rel="icon" href="{{ site.cdn_base }}/favicon.png">
+  <link rel="apple-touch-icon" href="{{ site.cdn_base }}/favicon.png">
+  <link rel="stylesheet" href="{{ site.cdn_base }}/style.css">
 </head>
 <body class="page-{{ page.url
                  | split:'/'               # 「/」で分割 → 配列になる
@@ -24,8 +22,8 @@
     {{ content }}
   </div>
   <script type="module">
-    import { renderKatex } from "{{ site.baseurl }}/katex.js";
-    import { addBackToTopLinks } from "{{ site.baseurl }}/backtop.js";
+    import { renderKatex } from "{{ site.cdn_base }}/katex.js";
+    import { addBackToTopLinks } from "{{ site.cdn_base }}/backtop.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
