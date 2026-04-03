@@ -23,7 +23,12 @@ jobs:
           source: ./docs
           destination: ./docs/_site
 
-      # sitemapをdist直下に作成
+      # 必要なサブディレクトリを作成
+      - name: Ensure dist directory
+        run: |
+          mkdir -p docs/_site/dist
+
+      # sitemap を dist 直下に作成
       - name: Move sitemap to dist
         run: |
           mv docs/_site/sitemap.xml docs/_site/dist
@@ -36,7 +41,7 @@ jobs:
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
-      # dist直下で差分のあるディレクトリを検出
+      # dist 直下で差分のあるディレクトリを検出
       - name: Detect changed dist directories
         run: |
           mkdir -p /tmp/changed_dirs
