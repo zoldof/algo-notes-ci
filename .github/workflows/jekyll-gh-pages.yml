@@ -23,14 +23,10 @@ jobs:
           source: ./docs
           destination: ./docs/_site
 
-      # 必要なサブディレクトリを作成
-      - name: Ensure dist directory
-        run: |
-          mkdir -p docs/_site/dist
-
       # sitemap を dist 直下に作成
       - name: Move sitemap to dist
         run: |
+          mkdir -p docs/_site/dist
           mv docs/_site/sitemap.xml docs/_site/dist
 
       # ターゲットリポジトリ
