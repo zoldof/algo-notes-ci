@@ -1,4 +1,8 @@
 ◆課題一覧
+・課題：sitemapにdist-markedも含まれてしまう
+・・状況：sitemapにおいてActionsではビルド対象にURL直下のhtmlをすべて拾っている
+・・対策：exclude
+
 ・課題：Githubに据え置きのmarkdownでPages反映できるか？
 ・・結果：難しそう
 
