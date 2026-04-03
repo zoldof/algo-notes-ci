@@ -69,8 +69,9 @@ jobs:
         run: |
           sed 's|https://zoldof.com/algo-notes-ci/dist/|https://zoldof.com/|' \
           docs/_site/sitemap.xml \
-          if [ ! -f "target-repo/sitemap.xml" ] || ! diff docs/_site/sitemap.xml target-repo/sitemap.xml >/dev/null; then
-            cp docs/_site/sitemap.xml target-repo/sitemap.xml
+          > /tmp/sitemap.xml
+          if [ ! -f "target-repo/sitemap.xml" ] || ! diff /tmp/sitemap.xml target-repo/sitemap.xml >/dev/null; then
+            cp /tmp/sitemap.xml target-repo/sitemap.xml
           fi
 
       # commit & push
