@@ -1,4 +1,4 @@
-# baseurl:""
+baseurl: ""
 # baseurl: /algo-notes-ci
 markdown: kramdown
 kramdown:
