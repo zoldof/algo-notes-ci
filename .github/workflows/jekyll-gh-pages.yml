@@ -23,16 +23,6 @@ jobs:
           source: ./docs
           destination: ./docs/_site
 
-      - name: Debug list build output
-        run: |
-          ls -R docs/_site
-
-      # sitemap を dist 直下に作成
-      - name: Move sitemap to dist
-        run: |
-          mkdir -p docs/_site/dist
-          mv docs/_site/sitemap.xml docs/_site/dist
-
       # ターゲットリポジトリ
       - name: Checkout target repo
         uses: actions/checkout@v4
@@ -74,6 +64,15 @@ jobs:
           while read dir; do
             rsync -a --delete "docs/_site/dist/$dir/" "target-repo/$dir/"
           done < /tmp/changed_dirs/list
+
+      - name: Sync sitemap
+        run: |
+          if [ ! -f "target-repo/sitemap.xml" ] || ! diff docs/_site/sitemap.xml target-repo/sitemap.xml >/dev/null; then
+            cp docs/_site/sitemap.xml target-repo/sitemap.xml
+            echo "sitemap.xml updated"
+          else
+            echo "sitemap.xml unchanged"
+          fi
 
       # commit & push
       - name: Commit and push
