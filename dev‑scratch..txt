@@ -72,12 +72,15 @@
 
 ・課題：パス構造とkramdown脚注の干渉
 ・・対策1：baseパスは使用せずにcssとjsを絶対パスで読み込む形とする
-・・対策2：sitemapをconfig.ymlで設定して読み込む形とする
+・・対策2：sitemapを_config.ymlで設定して読み込む形とする
 ・・経緯：_layouts/default.htmlを使ったJekyllビルドでは相対パスがずれてしまう
 ・・詳細：htmlでbaseパスで一括設定すればentry.jsを使い回せるが、そうすると脚注の参照先まで変更されてしまう
 ・・・相対パスを設定したものの読み込めず../../
 ・・・default生成物から見ようとすると「ファイル無し」の判断？
-・・解決：baseurl
+・・解決：site.baseurl
+・課題再発：公開先リポジトリを独自ドメインにするとbaseurlは空になってしまうが、リポジトリ名をbaseurlとして_config.ymlに設定しても上手くいかない
+↑これはURLのリポジトリ名よりも前の部分が「username.github.io」ではなく独自ドメインになったから
+・・解決：site.cdn_baseを_config.ymlに設定する
 
 ・課題：別リポ成果物出力の修正開始に向けてコード簡略化をしたい
 ・・検討1：markedとkramdownをどちらかに統一できないか？
