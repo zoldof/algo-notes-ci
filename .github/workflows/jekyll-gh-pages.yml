@@ -86,6 +86,7 @@ jobs:
 
       - name: Sync sitemap
         run: |
+          sort docs/_site/sitemap.xml
           sed -E 's|https://zoldof.com/algo-notes-ci/(dist/)?|https://zoldof.com/|' \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
