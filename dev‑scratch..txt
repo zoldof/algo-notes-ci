@@ -6,6 +6,9 @@
 ・課題：urlの設定
 ・・状況：_config.ymlで設定。sitemapの作成時にPagesのURLを参照してしまうため、独自ドメインに変換する処理。location.originを使った場合、urlは反映済みである
 
+・課題：location.*各種
+・・種類：［href，origin，pathname，hostname］など様々な種類があるので使い分けできる
+
 ・課題：Actionsにおけるoriginの扱い
 ・・状況：remoteとも呼ばれるそうで、仮想サーバーとの関連か？
 
