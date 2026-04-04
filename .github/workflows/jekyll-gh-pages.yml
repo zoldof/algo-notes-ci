@@ -31,7 +31,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository_owner }}/$CD_REPO
+          repository: ${{ github.repository_owner }}/${{env.CD_REPO}}
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
@@ -94,7 +94,6 @@ jobs:
           if [ -z "$NOW" ] && [ -f "target-repo/sitemap.xml" ]; then
             NOW=$(grep -oPm1 '(?<=<lastmod>)[^<]+' target-repo/sitemap.xml)
           fi
-          # NOW=${NOW-"2026-04-01T00:00:00+00:00"}
           sed -E "s|https://zoldof.com/$CI_REPO/(dist/)?|https://zoldof.com/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
