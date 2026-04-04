@@ -80,14 +80,14 @@ jobs:
           <head>
             <meta charset="UTF-8">
             <script>
-              location.replace("{{ location.origin }}/$CI_REPO/?dname=menu");
+              location.replace(location.origin + "/$CI_REPO/?dname=menu");
             </script>
           </head>
           <body></body>
           </html>
           EOF
 
-          rsync -c /tmp/index.html target-repo/index.html
+          rsync /tmp/index.html target-repo/index.html
 
       - name: Sync sitemap
         run: |
@@ -98,7 +98,7 @@ jobs:
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
 
-          rsync -c /tmp/sitemap.xml target-repo/sitemap.xml
+          rsync /tmp/sitemap.xml target-repo/sitemap.xml
 
       # commit & push
       - name: Commit and push
