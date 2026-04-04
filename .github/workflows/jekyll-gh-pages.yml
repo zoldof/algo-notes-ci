@@ -26,7 +26,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.8'
+          ruby-version: '3.4.9'
           bundler-cache: true   # ← これだけで bundler 用キャッシュが有効になる
       
       - name: Setup Pages
