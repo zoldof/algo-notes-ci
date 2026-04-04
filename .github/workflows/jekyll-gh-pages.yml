@@ -24,14 +24,22 @@ jobs:
         run: |
           CD_REPO="${CI_REPO::-3}"
           echo "CD_REPO=$CD_REPO" >> $GITHUB_ENV
-      
-      - name: Show origin
-        run: |
-          echo "origin = $ORIGIN_URL"
-    
+
       # ソースリポジトリ
       - name: Checkout source
         uses: actions/checkout@v4
+      
+      # origin の URL を取得して環境変数 ORIGIN_URL に保存
+      - name: Set ORIGIN_URL env var
+        id: set_origin
+        run: |
+          # origin の URL を取得
+          ORIGIN_URL=$(git remote get-url origin)
+          echo "ORIGIN_URL=$ORIGIN_URL" >> "$GITHUB_ENV"
+          
+      # 確認用：環境変数が正しく設定されたか出力
+      - name: Show ORIGIN_URL
+        run: echo "Origin URL is $ORIGIN_URL"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
