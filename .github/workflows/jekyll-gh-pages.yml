@@ -59,6 +59,9 @@ jobs:
           if [ ! -s /tmp/changed_dirs/list ]; then
             echo "No changed dist directories"
             exit 0
+          else
+            NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            echo "NOW=$NOW" >> $GITHUB_ENV
           fi
 
           while read dir; do
@@ -84,7 +87,7 @@ jobs:
 
       - name: Sync sitemap
         run: |
-          sed -E 's|https://zoldof.com/algo-notes-ci/(dist/)?|https://zoldof.com/|' \
+          sed -E "s|https://zoldof.com/algo-notes-ci/(dist/)?|https://zoldof.com/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
 
