@@ -15,6 +15,7 @@ jobs:
       CD_REPO: ""
       DIST: dist
       DOMAIN: ""
+      
     steps:
       # 環境変数 CD_REPO 設定
       - name: Derive CD_REPO (remove last 3 chars)
