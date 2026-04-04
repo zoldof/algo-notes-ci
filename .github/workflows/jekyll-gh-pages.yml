@@ -12,7 +12,7 @@ jobs:
     env:
       CI_REPO: ${{ github.event.repository.name }}  
       DIST: dist
-      DOMAIN: https://${{ github.repository_owner }}.com
+      # DOMAIN: https://${{ github.repository_owner }}.com
     steps:
       - name: Derive CD_REPO (remove last 3 chars)
         run: |
@@ -22,18 +22,6 @@ jobs:
       # ソースリポジトリ
       - name: Checkout source
         uses: actions/checkout@v4
-      
-      # origin の URL を取得して環境変数 ORIGIN_URL に保存
-      - name: Set ORIGIN_URL env var
-        id: set_origin
-        run: |
-          # origin の URL を取得
-          ORIGIN_URL=$(git remote get-url origin)
-          echo "ORIGIN_URL=$ORIGIN_URL" >> "$GITHUB_ENV"
-          
-      # 確認用：環境変数が正しく設定されたか出力
-      - name: Show ORIGIN_URL
-        run: echo "Origin URL is $ORIGIN_URL"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -51,6 +39,11 @@ jobs:
           repository: ${{ github.repository_owner }}/${{env.CD_REPO}}
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
+
+      - name: Derive DOMAIN
+        run: |
+          DOMAIN="https://$(cat target-repo/CNAME | tr -d '\r\n')"
+          echo "DOMAIN=$DOMAIN" >> $GITHUB_ENV
 
       # dist 直下で差分のあるディレクトリを検出
       - name: Detect changed dist directories
