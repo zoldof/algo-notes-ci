@@ -11,7 +11,7 @@
 
 ・課題：Actionsにおけるoriginの扱い
 ・・状況：remoteとも呼ばれるそうで、仮想サーバーとの関連か？
-・・内容：https://github.com/zoldof/algo-notes-ci
+・・方法：ORIGIN_URL=$(git remote get-url origin) # https://github.com/zoldof/algo-notes-ci
 
 ・課題：sitemapにdist-markedも含まれてしまう
 ・・状況：sitemapにおいてActionsではビルド対象にURL直下のhtmlをすべて拾っている
