@@ -65,6 +65,25 @@ jobs:
             rsync -a --delete "docs/_site/dist/$dir/" "target-repo/$dir/"
           done < /tmp/changed_dirs/list
 
+      - name: Sync index.html
+        run: |
+          cat << 'EOF' > /tmp/index.html
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="UTF-8">
+            <script>
+              location.replace("https://zoldof.github.io/algo-notes-ci/?dname=menu");
+            </script>
+          </head>
+          <body></body>
+          </html>
+          EOF
+      
+          if [ ! -f "target-repo/index.html" ] || ! diff /tmp/index.html target-repo/index.html >/dev/null; then
+            cp /tmp/index.html target-repo/index.html
+          fi
+
       - name: Sync sitemap
         run: |
           sed 's|https://zoldof.com/algo-notes-ci/dist/|https://zoldof.com/|' \
