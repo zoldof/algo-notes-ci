@@ -6,6 +6,10 @@ on:
 permissions:
   contents: read
 
+env:
+  CD_REPO: algo-notes
+  CI_REPO: algo-notes-ci
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -27,7 +31,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: zoldof/algo-notes
+          repository: ${{ github.repository_owner }}/$CD_REPO
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
 
@@ -76,7 +80,7 @@ jobs:
           <head>
             <meta charset="UTF-8">
             <script>
-              location.replace("https://zoldof.github.io/algo-notes-ci/?dname=menu");
+              location.replace("https://zoldof.github.io/$CI_REPO/?dname=menu");
             </script>
           </head>
           <body></body>
