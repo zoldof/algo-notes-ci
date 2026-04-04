@@ -50,14 +50,14 @@
 
 # 数学
 - ### 小学校
-  - #### [小学数学まとめ](https://zoldof.github.io/algo-notes/shougaku) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/shougaku/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/shougaku/index.md)
+  - #### [小学数学まとめ](https://zoldof.com/shougaku) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/shougaku/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/shougaku/index.md)
 - ### 中学1年
-  - #### [中1数学まとめ](https://zoldof.github.io/algo-notes/chu1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu1/index.md)
+  - #### [中1数学まとめ](https://zoldof.com/chu1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu1/index.md)
 - ### 中学2年
-  - #### [中2数学まとめ](https://zoldof.github.io/algo-notes/chu2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu2/index.md)
+  - #### [中2数学まとめ](https://zoldof.com/chu2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu2/index.md)
 - ### 中学3年
-  - #### [【数学の役立て方】【基礎知識】](https://zoldof.github.io/algo-notes/chu3-1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-1/index.md)
-  - #### [【検定過去問対策】【応用問題】](https://zoldof.github.io/algo-notes/chu3-2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-2/index.md)
+  - #### [【数学の役立て方】【基礎知識】](https://zoldof.com/chu3-1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-1/index.md)
+  - #### [【検定過去問対策】【応用問題】](https://zoldof.com/chu3-2) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/chu3-2/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/chu3-2/index.md)
  
 # アルゴリズム
 - ### 概要
@@ -73,10 +73,10 @@
  
 # エンジニアリング
 - ### 基礎技術
-  - #### [文字の使い分けとプログラミング命名規則](https://zoldof.github.io/algo-notes/moji) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/moji/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/moji/index.md)
+  - #### [文字の使い分けとプログラミング命名規則](https://zoldof.com/moji) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/moji/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/moji/index.md)
   - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
 - ### 生産管理
-  - #### [基礎](https://zoldof.github.io/algo-notes/seikan1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/seikan1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/seikan1/index.md)
+  - #### [基礎](https://zoldof.com/seikan1) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/seikan1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/seikan1/index.md)
  
 # プロフィール
 - ### サイト別
