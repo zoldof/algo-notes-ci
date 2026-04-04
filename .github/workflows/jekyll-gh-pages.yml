@@ -7,15 +7,28 @@ permissions:
   contents: read
 
 env:
-  CD_REPO: algo-notes
-  CI_REPO: algo-notes-ci
-  DIST: dist
+  # CD_REPO: algo-notes
+  # CI_REPO: algo-notes-ci
+  # DIST: dist
   DOMAIN: https://zoldof.com
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      CI_REPO: ${{ github.event.repository.name }}  
+      DIST: dist
+      # DOMAIN: https://zoldof.com
     steps:
+      - name: Derive CD_REPO (remove last 3 chars)
+        run: |
+          CD_REPO="${CI_REPO::-3}"
+          echo "CD_REPO=$CD_REPO" >> $GITHUB_ENV
+      
+      - name: Show origin
+        run: |
+          echo "origin = $ORIGIN_URL"
+    
       # ソースリポジトリ
       - name: Checkout source
         uses: actions/checkout@v4
