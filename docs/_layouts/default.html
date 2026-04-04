@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="{{ page.robots }}">
+  {% assign name = page.url | split:'/' | last | replace_last:'.md','' | slugify %}
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
@@ -12,11 +13,7 @@
   <link rel="apple-touch-icon" href="{{ site.cdn_base }}/favicon.png">
   <link rel="stylesheet" href="{{ site.cdn_base }}/style.css">
 </head>
-<body class="page-{{ page.url
-                 | split:'/'               # 「/」で分割 → 配列になる
-                 | last                    # 配列の最後の要素（ファイル名）を取得
-                 | replace_last:'.md',''   # .md も除去したいとき
-                 | slugify }}">
+<body class="page-{{ name }}">
   <div id="content">
     <!-- Liquid -->
     {{ content }}
