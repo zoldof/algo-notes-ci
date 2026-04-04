@@ -48,6 +48,9 @@
 ・・Jekyll側：ビルド時にdocs内にあるhtmlやmain.jsも含めている
 
 ◆解決済み
+・課題：baseurl関連
+・・状況：初期設定でCI側のURLになっているが、_config.ymlで設定ができる。設定してCDに成果物を作った場合にkramdownの脚注機能は参照先を見失う。そのため、{ site.baseurl }で特定のファイル［style.css，katex.js，backtop.js］を読み込みもしくはimportしていた。これだとCD側に移ってもデフォルトのbaseurlが生きるので脚注は死なない。ここから発展して、CD側が独自ドメインとなると話が変わってくる。この場合、baseurlは空になってしまう。そうするとCI側のcssやjsを読み込むために{ site.baseurl }では無理になる。そこでbaseurlの代わりにcdn_
+
 ・課題：環境変数の使い方
 ・・解決1：スコープの違い［グローバル，関数，ステップ］
 ・↑後部で格納するならステップまたげる
