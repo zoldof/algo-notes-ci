@@ -10,9 +10,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
+      # 複数の環境変数定義
       CI_REPO: ${{ github.event.repository.name }}  
       DIST: dist
     steps:
+      # 環境変数 CD_REPO 設定
       - name: Derive CD_REPO (remove last 3 chars)
         run: |
           CD_REPO="${CI_REPO::-3}"
@@ -21,13 +23,6 @@ jobs:
       # ソースリポジトリ
       - name: Checkout source
         uses: actions/checkout@v4
-
-      # Ruby のバージョンをセット
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.4.9'
-          bundler-cache: true   # ← これだけで bundler 用キャッシュが有効になる
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -45,15 +40,12 @@ jobs:
           repository: ${{ github.repository_owner }}/${{env.CD_REPO}}
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
-
+          
+      # 環境変数 DOMAIN 設定
       - name: Derive DOMAIN
         run: |
           DOMAIN="https://$(cat target-repo/CNAME | tr -d '\r\n')"
           echo "DOMAIN=$DOMAIN" >> $GITHUB_ENV
-
-      - name: Chenge Jekyll url 
-        run: |
-          bundle exec jekyll build --url "$DOMAIN"
 
       # dist 直下で差分のあるディレクトリを検出
       - name: Detect changed dist directories
@@ -92,6 +84,7 @@ jobs:
             rsync -a --delete "docs/_site/${{env.DIST}}/$dir/" "target-repo/$dir/"
           done < /tmp/changed_dirs/list
 
+      # CD側にラッパーhtml更新生成
       - name: Sync index.html
         run: |
           cat << 'EOF' > /tmp/index.html
@@ -109,6 +102,7 @@ jobs:
 
           rsync /tmp/index.html target-repo/index.html
 
+      # DOMAIN に基づいた sitemap の修正
       - name: Sync sitemap
         run: |
           if [ -z "$NOW" ] && [ -f "target-repo/sitemap.xml" ]; then
