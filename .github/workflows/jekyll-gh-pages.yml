@@ -10,7 +10,7 @@ env:
   # CD_REPO: algo-notes
   # CI_REPO: algo-notes-ci
   # DIST: dist
-  DOMAIN: https://zoldof.com
+  # DOMAIN: https://zoldof.com
 
 jobs:
   deploy:
@@ -18,7 +18,7 @@ jobs:
     env:
       CI_REPO: ${{ github.event.repository.name }}  
       DIST: dist
-      # DOMAIN: https://zoldof.com
+      DOMAIN: https://${{ github.repository_owner }}.com
     steps:
       - name: Derive CD_REPO (remove last 3 chars)
         run: |
