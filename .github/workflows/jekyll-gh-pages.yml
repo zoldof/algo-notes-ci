@@ -79,19 +79,24 @@ jobs:
           <body></body>
           </html>
           EOF
-      
-          if [ ! -f "target-repo/index.html" ] || ! diff /tmp/index.html target-repo/index.html >/dev/null; then
-            cp /tmp/index.html target-repo/index.html
-          fi
+
+          rsync -c /tmp/index.html target-repo/index.html
+
+          # if [ ! -f "target-repo/index.html" ] || ! diff /tmp/index.html target-repo/index.html >/dev/null; then
+            # cp /tmp/index.html target-repo/index.html
+          # fi
 
       - name: Sync sitemap
         run: |
           sed -E 's|https://zoldof.com/algo-notes-ci/(dist/)?|https://zoldof.com/|' \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
-          if [ ! -f "target-repo/sitemap.xml" ] || ! diff /tmp/sitemap.xml target-repo/sitemap.xml >/dev/null; then
-            cp /tmp/sitemap.xml target-repo/sitemap.xml
-          fi
+
+          rsync -c /tmp/sitemap.xml target-repo/sitemap.xml
+          
+          # if [ ! -f "target-repo/sitemap.xml" ] || ! diff /tmp/sitemap.xml target-repo/sitemap.xml >/dev/null; then
+            # cp /tmp/sitemap.xml target-repo/sitemap.xml
+          # fi
 
       # commit & push
       - name: Commit and push
