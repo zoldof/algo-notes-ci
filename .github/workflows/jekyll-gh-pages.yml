@@ -9,7 +9,8 @@ permissions:
 env:
   CD_REPO: algo-notes
   CI_REPO: algo-notes-ci
-  ORIGIN: location.origin
+  DIST: dist
+  DOMAIN: https://zoldof.com
 
 jobs:
   deploy:
@@ -42,7 +43,7 @@ jobs:
           mkdir -p /tmp/changed_dirs
           > /tmp/changed_dirs/list
 
-          for dir in docs/_site/dist/*; do
+          for dir in docs/_site/${{env.DIST}}/*; do
             name=$(basename "$dir")
 
             if [ ! -d "target-repo/$name" ]; then
@@ -70,7 +71,7 @@ jobs:
           fi
 
           while read dir; do
-            rsync -a --delete "docs/_site/dist/$dir/" "target-repo/$dir/"
+            rsync -a --delete "docs/_site/${{env.DIST}}/$dir/" "target-repo/$dir/"
           done < /tmp/changed_dirs/list
 
       - name: Sync index.html
@@ -81,7 +82,7 @@ jobs:
           <head>
             <meta charset="UTF-8">
             <script>
-              location.replace("${{ env.ORIGIN }}/${{ env.CI_REPO }}/?dname=menu");
+              location.replace("https://${{ github.repository_owner }}.github.io/${{ env.CI_REPO }}/?dname=menu");
             </script>
           </head>
           <body></body>
@@ -95,7 +96,7 @@ jobs:
           if [ -z "$NOW" ] && [ -f "target-repo/sitemap.xml" ]; then
             NOW=$(grep -oPm1 '(?<=<lastmod>)[^<]+' target-repo/sitemap.xml)
           fi
-          sed -E "s|https://zoldof.com/$CI_REPO/(dist/)?|https://zoldof.com/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
+          sed -E "s|$DOMAIN/$CI_REPO/(dist/)?|$DOMAIN/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
 
