@@ -22,6 +22,13 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      # Ruby のバージョンをセット
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '4.0.8'
+          bundler-cache: true   # ← これだけで bundler 用キャッシュが有効になる
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -43,6 +50,10 @@ jobs:
         run: |
           DOMAIN="https://$(cat target-repo/CNAME | tr -d '\r\n')"
           echo "DOMAIN=$DOMAIN" >> $GITHUB_ENV
+
+      - name: Chenge Jekyll url 
+        run: |
+          bundle exec jekyll build --url "$DOMAIN"
 
       # dist 直下で差分のあるディレクトリを検出
       - name: Detect changed dist directories
