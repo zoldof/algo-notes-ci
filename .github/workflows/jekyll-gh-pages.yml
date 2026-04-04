@@ -80,7 +80,7 @@ jobs:
           <head>
             <meta charset="UTF-8">
             <script>
-              location.replace("https://zoldof.github.io/$CI_REPO/?dname=menu");
+              location.replace("{{ location.origin }}/$CI_REPO/?dname=menu");
             </script>
           </head>
           <body></body>
@@ -95,7 +95,7 @@ jobs:
             NOW=$(grep -oPm1 '(?<=<lastmod>)[^<]+' target-repo/sitemap.xml)
           fi
           # NOW=${NOW-"2026-04-01T00:00:00+00:00"}
-          sed -E "s|https://zoldof.com/algo-notes-ci/(dist/)?|https://zoldof.com/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
+          sed -E "s|https://zoldof.com/$CI_REPO/(dist/)?|https://zoldof.com/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
 
