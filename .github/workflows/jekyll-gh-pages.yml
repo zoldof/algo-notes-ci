@@ -60,7 +60,7 @@ jobs:
             echo "No changed dist directories"
             exit 0
           else
-            NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            NOW=$(date -u +"%Y-%m-%dT%H:%M:%S+00:00")
             echo "NOW=$NOW" >> $GITHUB_ENV
           fi
 
