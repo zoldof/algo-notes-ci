@@ -6,12 +6,6 @@ on:
 permissions:
   contents: read
 
-env:
-  # CD_REPO: algo-notes
-  # CI_REPO: algo-notes-ci
-  # DIST: dist
-  # DOMAIN: https://zoldof.com
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
