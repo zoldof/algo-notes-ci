@@ -12,7 +12,9 @@ jobs:
     env:
       # 複数の環境変数定義
       CI_REPO: ${{ github.event.repository.name }}  
+      CD_REPO: ""
       DIST: dist
+      DOMAIN: ""
     steps:
       # 環境変数 CD_REPO 設定
       - name: Derive CD_REPO (remove last 3 chars)
@@ -37,7 +39,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository_owner }}+'/'+{{ env.CD_REPO }}
+          repository: ${{ github.repository_owner }}/${{ env.CD_REPO }}
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
           
