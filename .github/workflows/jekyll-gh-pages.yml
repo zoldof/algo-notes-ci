@@ -37,7 +37,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository_owner }}/${{ env.CD_REPO }}
+          repository: ${{ github.repository_owner }}+'/'+{{ env.CD_REPO }}
           token: ${{ secrets.PAT_FOR_TARGET }}
           path: target-repo
           
