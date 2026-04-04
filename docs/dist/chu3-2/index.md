@@ -192,7 +192,7 @@ title: 中3数学【検定過去問対策】【応用問題】
 
 <details markdown="1"><summary>＊参考画像</summary>
   
-  ![](chu3-2-1.png){: width="300"}
+  ![](https://zoldof.github.io/algo-notes-ci/dist/chu3-2/chu3-2-1.png){: width="300"}
   
 </details>
 
