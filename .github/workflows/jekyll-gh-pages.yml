@@ -9,6 +9,7 @@ permissions:
 env:
   CD_REPO: algo-notes
   CI_REPO: algo-notes-ci
+  Origin: location.origin
 
 jobs:
   deploy:
@@ -80,7 +81,7 @@ jobs:
           <head>
             <meta charset="UTF-8">
             <script>
-              location.replace(location.origin + "/${{ env.CI_REPO }}/?dname=menu");
+              location.replace("${{ env.Origin }}/${{ env.CI_REPO }}/?dname=menu");
             </script>
           </head>
           <body></body>
