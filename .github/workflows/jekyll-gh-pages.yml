@@ -87,6 +87,7 @@ jobs:
 
       - name: Sync sitemap
         run: |
+          NOW=${NOW-"2026-04-01T00:00:00+00:00"}
           sed -E "s|https://zoldof.com/algo-notes-ci/(dist/)?|https://zoldof.com/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
