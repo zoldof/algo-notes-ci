@@ -679,3 +679,4 @@ title: 口語の文法
 ・④：体言につく
 
 ## 参考サイト
+- [国語の文法](https://www.kokugobunpou.com){:target="_blank" rel="noopener noreferrer"}
