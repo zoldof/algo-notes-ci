@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="{{ page.robots }}">
-  {% assign name = page.url | split:'/' | last | replace_last:'.md','' | slugify %}
-  <link rel="canonical" href="https://{{ site.github.owner_name }}.com/{{ name }}/">
+  {% assign slug = page.url | split:'/' | reject: '' | last %}
+  <link rel="canonical" href="https://{{ site.github.owner_name }}.com/{{ slug }}/">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
@@ -14,11 +14,11 @@
   <link rel="apple-touch-icon" href="{{ site.cdn_base }}/favicon.png">
   <link rel="stylesheet" href="{{ site.cdn_base }}/style.css">
 </head>
-<body class="page-{{ name }}">
+<body class="page-{{ slug }}">
   <div id="content">
     <!-- Liquid -->
     {{ page.url }}
-    {{ name }}
+    {{ slug }}
     {{ content }}
   </div>
   <script type="module">
