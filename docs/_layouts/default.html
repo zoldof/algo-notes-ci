@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="{{ page.robots }}">
   {% assign name = page.url | split:'/' | last | replace_last:'.md','' | slugify %}
+  <link rel="canonical" href="https://{{ site.github.owner_name }}.com/{{ name }}/">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
@@ -16,6 +17,8 @@
 <body class="page-{{ name }}">
   <div id="content">
     <!-- Liquid -->
+    {{ site.url }}{{ page.url }}
+    {{ name }}
     {{ content }}
   </div>
   <script type="module">
