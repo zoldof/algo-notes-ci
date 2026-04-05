@@ -74,6 +74,7 @@
 # エンジニアリング
 - ### 基礎技術
   - #### [文字の使い分けとプログラミング命名規則](https://zoldof.com/moji/) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/moji/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/moji/index.md)
+  - #### [口語の文法](https://zoldof.com/kougo/) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/kougo/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/kougo/index.md)
   - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
 - ### 生産管理
   - #### [基礎](https://zoldof.com/seikan1/) [🔄](https://github.com/zoldof/algo-notes-ci/commits/main/docs/dist/seikan1/index.md) [📝](https://github.com/zoldof/algo-notes-ci/edit/main/docs/dist/seikan1/index.md)
