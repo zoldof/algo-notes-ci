@@ -10,5 +10,6 @@ kramdown:
 exclude:
   - assets/style.css      # 圧縮済みのファイルを除外
   - dist-marked
+  - index.html
 plugins:
   - jekyll-sitemap
