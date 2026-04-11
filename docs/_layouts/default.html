@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="{{ page.robots }}">
+  <meta name="description" content="{{ pege.description }}">
   {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
   <link rel="canonical" href="https://{{ site.github.owner_name }}.com/{{ slug }}/">
   <title>{{ page.title }}</title>
