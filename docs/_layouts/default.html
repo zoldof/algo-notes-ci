@@ -31,6 +31,7 @@
 <body class="page-{{ slug }}">
   <div id="content">
     <!-- Liquid -->
+    {{ site.cdn_base }}{{ site.github.build_version }}
     {{ content }}
   </div>
   <script type="module">
