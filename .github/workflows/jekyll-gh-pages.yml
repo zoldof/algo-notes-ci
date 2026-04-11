@@ -100,7 +100,7 @@ jobs:
           if [ -z "$NOW" ] && [ -f "target-repo/sitemap.xml" ]; then
             NOW=$(grep -oPm1 '(?<=<lastmod>)[^<]+' target-repo/sitemap.xml)
           fi
-          sed -E "s|https://${{ github.repository_owner }}.github.io/$CI_REPO/($DIST/)?|$DOMAIN/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
+          sed -E "s|https://${{ github.repository_owner }}.github.io/$CI_REPO/$DIST/|$DOMAIN/|; s|<lastmod>.*</lastmod>|<lastmod>$NOW</lastmod>|" \
           docs/_site/sitemap.xml \
           > /tmp/sitemap.xml
 
