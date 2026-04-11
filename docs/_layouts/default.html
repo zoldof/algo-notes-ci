@@ -6,8 +6,10 @@
   <meta name="google-site-verification" content="{{ site.google_site_verification }}">
   <meta name="robots" content="{{ page.robots }}">
   <meta name="description" content="{{ page.description }}">
-  {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
-  {% if page.url != "/" %}
+  {% if page.url == "/dist/" %}
+    {% assign slug = "menu" %}
+  {% else %}
+    {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
     <link rel="canonical" href="https://{{ site.github.owner_name }}.com/{{ slug }}/">
   {% endif %}
   <title>{{ page.title }}</title>
@@ -26,6 +28,7 @@
 <body class="page-{{ slug }}">
   <div id="content">
     <!-- Liquid -->
+    {{ slug }}
     {{ content }}
   </div>
   <script type="module">
