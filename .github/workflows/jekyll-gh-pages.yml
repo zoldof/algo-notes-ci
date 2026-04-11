@@ -94,24 +94,6 @@ jobs:
             fi
           done < /tmp/changed_dirs/list
 
-      # CD側にラッパーhtml更新生成
-      - name: Sync index.html
-        run: |
-          cat << 'EOF' > /tmp/index.html
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="UTF-8">
-            <script>
-              location.replace("https://${{ github.repository_owner }}.github.io/${{ env.CI_REPO }}/?dname=menu");
-            </script>
-          </head>
-          <body></body>
-          </html>
-          EOF
-
-          rsync /tmp/index.html target-repo/index.html
-
       # DOMAIN に基づいた sitemap の修正
       - name: Sync sitemap
         run: |
