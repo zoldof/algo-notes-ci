@@ -26,7 +26,7 @@ async function render() {
 
   try {
     document.body.classList.add(`dname-${dname}`);
-    const urls = dname === "dist"
+    const urls = dname === "menu"
       ? [`dist/index.md`]
       : [`dist/${dname}/index.md`,`dist-marked/${dname}/index.md`];
     let text = "";
