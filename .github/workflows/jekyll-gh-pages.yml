@@ -50,7 +50,7 @@ jobs:
           DOMAIN="https://$(cat target-repo/CNAME | tr -d '\r\n')"
           echo "DOMAIN=$DOMAIN" >> $GITHUB_ENV
 
-      # dist 直下で差分のあるディレクトリを検出
+      # dist 直下で差分のあるディレクトリとメニューページを検出
       - name: Detect changed dist directories
         run: |
           mkdir -p /tmp/changed_dirs
