@@ -49,11 +49,11 @@ th, td {
   overflow-x: auto;
 }
 
+body.page-dist h1 {
+  background-color: #e6f2ff;
+}
 body.page-chu3-2 h3 {
   font-size: 1.5rem;
-}
-.dname-menu h1 {
-  background-color: #e6f2ff;
 }
 .dname-hajime details > summary {
   font-size: 1.5em;
