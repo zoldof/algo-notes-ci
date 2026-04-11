@@ -1,7 +1,7 @@
 # url: "https://zoldof.com"
 # baseurl: /algo-notes-ci
 google_site_verification: "iftMWxWANpsgvxI_uGQFejVc_20AYBDnGFsmsrB19VE"
-cdn_base: "https://cdn.jsdelivr.net/gh/zoldof/algo-notes-ci@v1.0.0/docs"
+cdn_base: "https://cdn.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs"
 title: "アルゴリズム×数学の学び直し"
 markdown: kramdown
 kramdown:
