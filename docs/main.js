@@ -26,21 +26,21 @@ async function render() {
 
   try {
     document.body.classList.add(`dname-${dname}`);
-    const res = await fetch(`dist/${dname}/index.md`);
-    let text ="";
-
-    if (res.ok) {
-      text = await res.text();
-    }
-    else if (res.status === 404) {
-      const markedRes = await fetch(`dist-marked/${dname}/index.md`);
-      if (!markedRes.ok) {
-        throw new Error("both fetches failed");
+    const urls = dname === "dist"
+      ? [`dist/index.md`]
+      : [`dist/${dname}/index.md`,`dist-marked/${dname}/index.md`];
+    let text = "";
+    let lastError;
+    for (const url of urls) {
+      const res = await fetch(url);
+      if (res.ok) {
+        text = await res.text();
+        break;
       }
-      text = await markedRes.text();
+      lastError = res;
     }
-    else {
-      throw new Error(`fetch failed: ${res.status}`);
+    if (!text) {
+      throw new Error(`all fetches failed: ${lastError?.status}`);
     }
     marked.setOptions({ breaks: true, gfm: true });
     const renderer = externalLinkRenderer();
