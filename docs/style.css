@@ -51,7 +51,7 @@ th, td {
 
 /* 静的ビルドによるテストおよび変更用 */
 .dname-menu h1 {
-  background-color: #e6f2ff;
+  /* background-color: #e6f2ff; */
 }
 .dname-hajime details > summary {
   font-size: 1.5em;
