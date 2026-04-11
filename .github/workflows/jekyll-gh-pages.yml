@@ -84,7 +84,14 @@ jobs:
           fi
 
           while read dir; do
-            rsync -a --delete "docs/_site/${{env.DIST}}/$dir/" "target-repo/$dir/"
+            src="docs/_site/${{env.DIST}}/$dir"
+            dst="target-repo/$dir"
+      
+            if [ -d "$src" ]; then               # ディレクトリの場合
+              rsync -a --delete "$src/" "$dst/"
+            else                                 # ファイルの場合
+              rsync -a "$src" "$dst"
+            fi
           done < /tmp/changed_dirs/list
 
       # CD側にラッパーhtml更新生成
