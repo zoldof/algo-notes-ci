@@ -17,9 +17,10 @@
   <!-- Include -->
   {% include katex.html %}
   <!-- General -->
-  <link rel="icon" href="{{ site.cdn_base }}{{ site.github.build_revision }}/docs/favicon.png">
-  <link rel="apple-touch-icon" href="{{ site.cdn_base }}{{ site.github.build_revision }}/docs/favicon.png">
-  <link rel="stylesheet" href="{{ site.cdn_base }}{{ site.github.build_revision }}/docs/style.css">
+  <link rel="icon" href="{{ site.cdn_base }}main/docs/favicon.png">
+  <link rel="apple-touch-icon" href="{{ site.cdn_base }}main/docs/favicon.png">
+  <!--<link rel="stylesheet" href="{{ site.cdn_base }}{{ site.github.build_revision }}/docs/style.css">-->
+  <link rel="stylesheet" href="{{ site.cdn_base }}main/docs/style.css">
 </head>
 {% if page.url == "/dist/" %}
   <header class="site-header">
@@ -34,8 +35,8 @@
     {{ content }}
   </div>
   <script type="module">
-    import { renderKatex } from "{{ site.cdn_base }}{{ site.github.build_revision }}/docs/katex.js";
-    import { addBackToTopLinks } from "{{ site.cdn_base }}{{ site.github.build_revision }}/docs/backtop.js";
+    import { renderKatex } from "{{ site.cdn_base }}main/docs/katex.js";
+    import { addBackToTopLinks } from "{{ site.cdn_base }}main/docs/backtop.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
