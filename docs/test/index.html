@@ -68,39 +68,37 @@ let current = {
 };
 
 /* ======================
-   ドラッグ処理
+   Pointer対応ドラッグ
 ====================== */
-bookmark.addEventListener("mousedown", (e) => {
+bookmark.addEventListener("pointerdown", (e) => {
   isDragging = true;
   dragged = false;
 
+  bookmark.setPointerCapture(e.pointerId);
+
   offsetX = e.clientX - bookmark.offsetLeft;
   offsetY = e.clientY - bookmark.offsetTop;
+});
 
-  function move(e) {
-    if (!isDragging) return;
+bookmark.addEventListener("pointermove", (e) => {
+  if (!isDragging) return;
 
-    dragged = true;
+  dragged = true;
 
-    bookmark.style.left = (e.clientX - offsetX) + "px";
-    bookmark.style.top = (e.clientY - offsetY) + "px";
-  }
+  bookmark.style.left = (e.clientX - offsetX) + "px";
+  bookmark.style.top = (e.clientY - offsetY) + "px";
+});
 
-  function up() {
-    isDragging = false;
+bookmark.addEventListener("pointerup", (e) => {
+  isDragging = false;
 
-    document.removeEventListener("mousemove", move);
-    document.removeEventListener("mouseup", up);
+  bookmark.releasePointerCapture(e.pointerId);
 
-    if (dragged) snapToSection();
-  }
-
-  document.addEventListener("mousemove", move);
-  document.addEventListener("mouseup", up);
+  if (dragged) snapToSection();
 });
 
 /* ======================
-   吸着（縦距離）
+   吸着
 ====================== */
 function snapToSection() {
   let closest = null;
@@ -118,13 +116,11 @@ function snapToSection() {
     }
   });
 
-  if (closest) {
-    setBookmark(closest);
-  }
+  if (closest) setBookmark(closest);
 }
 
 /* ======================
-   配置（文字の右）
+   配置
 ====================== */
 function setBookmark(section) {
   const textEl = section.querySelector(".h2-text");
@@ -141,10 +137,10 @@ function setBookmark(section) {
 }
 
 /* ======================
-   ダブルタップ / ダブルクリック
+   ダブルタップ対応
 ====================== */
-bookmark.addEventListener("click", () => {
-  if (dragged) return; // ドラッグ後は無視
+bookmark.addEventListener("pointerup", (e) => {
+  if (dragged) return;
 
   const now = Date.now();
 
@@ -198,6 +194,6 @@ function load() {
 
 load();
 </script>
-
+  
 </body>
 </html>
