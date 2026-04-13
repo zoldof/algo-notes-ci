@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>しおり（文字横固定）</title>
+<title>しおり（ラベル付き）</title>
 
 <style>
 body {
@@ -17,10 +17,8 @@ h2 {
   background: #f0f0f0;
 }
 
-/* テキストラッパー */
 .h2-text {
   display: inline-block;
-  position: relative;
 }
 
 /* しおり */
@@ -61,6 +59,11 @@ const sections = document.querySelectorAll("h2");
 let offsetX, offsetY;
 let isDragging = false;
 
+let current = {
+  id: null,
+  label: "しおり"
+};
+
 /* ======================
    ドラッグ
 ====================== */
@@ -90,7 +93,7 @@ bookmark.addEventListener("mousedown", (e) => {
 });
 
 /* ======================
-   吸着（縦だけで判定）
+   吸着
 ====================== */
 function snapToSection() {
   let closest = null;
@@ -114,32 +117,73 @@ function snapToSection() {
 }
 
 /* ======================
-   配置（文字の右）
+   配置 + ラベル入力
 ====================== */
 function setBookmark(section) {
   const textEl = section.querySelector(".h2-text");
   const rect = textEl.getBoundingClientRect();
 
+  // 初回 or 別セクションなら入力
+  if (current.id !== section.id) {
+    const input = prompt("しおりの名前を入力", current.label);
+    if (input !== null && input.trim() !== "") {
+      current.label = input.trim();
+    } else {
+      current.label = "しおり";
+    }
+  }
+
+  current.id = section.id;
+
+  bookmark.textContent = current.label;
+
   bookmark.style.left = (window.scrollX + rect.right + 6) + "px";
   bookmark.style.top = (window.scrollY + rect.top) + "px";
 
-  localStorage.setItem("bookmark-section", section.id);
+  save();
+}
+
+/* ======================
+   クリックで編集
+====================== */
+bookmark.addEventListener("click", () => {
+  const input = prompt("しおりの名前を変更", current.label);
+  if (input !== null && input.trim() !== "") {
+    current.label = input.trim();
+    bookmark.textContent = current.label;
+    save();
+  }
+});
+
+/* ======================
+   保存
+====================== */
+function save() {
+  localStorage.setItem("bookmark", JSON.stringify(current));
 }
 
 /* ======================
    復元
 ====================== */
-function loadBookmark() {
-  const id = localStorage.getItem("bookmark-section");
-  if (!id) return;
+function load() {
+  const data = localStorage.getItem("bookmark");
+  if (!data) return;
 
-  const target = document.getElementById(id);
-  if (!target) return;
+  current = JSON.parse(data);
 
-  setBookmark(target);
+  const section = document.getElementById(current.id);
+  if (!section) return;
+
+  bookmark.textContent = current.label;
+
+  const textEl = section.querySelector(".h2-text");
+  const rect = textEl.getBoundingClientRect();
+
+  bookmark.style.left = (window.scrollX + rect.right + 6) + "px";
+  bookmark.style.top = (window.scrollY + rect.top) + "px";
 }
 
-loadBookmark();
+load();
 </script>
 
 </body>
