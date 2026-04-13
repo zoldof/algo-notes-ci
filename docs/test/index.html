@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>しおり（ラベル付き）</title>
+<title>しおり（ダブルタップ編集）</title>
 
 <style>
 body {
@@ -58,6 +58,9 @@ const sections = document.querySelectorAll("h2");
 
 let offsetX, offsetY;
 let isDragging = false;
+let dragged = false;
+
+let lastTap = 0;
 
 let current = {
   id: null,
@@ -65,15 +68,19 @@ let current = {
 };
 
 /* ======================
-   ドラッグ
+   ドラッグ処理
 ====================== */
 bookmark.addEventListener("mousedown", (e) => {
   isDragging = true;
+  dragged = false;
+
   offsetX = e.clientX - bookmark.offsetLeft;
   offsetY = e.clientY - bookmark.offsetTop;
 
   function move(e) {
     if (!isDragging) return;
+
+    dragged = true;
 
     bookmark.style.left = (e.clientX - offsetX) + "px";
     bookmark.style.top = (e.clientY - offsetY) + "px";
@@ -85,7 +92,7 @@ bookmark.addEventListener("mousedown", (e) => {
     document.removeEventListener("mousemove", move);
     document.removeEventListener("mouseup", up);
 
-    snapToSection();
+    if (dragged) snapToSection();
   }
 
   document.addEventListener("mousemove", move);
@@ -93,7 +100,7 @@ bookmark.addEventListener("mousedown", (e) => {
 });
 
 /* ======================
-   吸着
+   吸着（縦距離）
 ====================== */
 function snapToSection() {
   let closest = null;
@@ -117,21 +124,11 @@ function snapToSection() {
 }
 
 /* ======================
-   配置 + ラベル入力
+   配置（文字の右）
 ====================== */
 function setBookmark(section) {
   const textEl = section.querySelector(".h2-text");
   const rect = textEl.getBoundingClientRect();
-
-  // 初回 or 別セクションなら入力
-  if (current.id !== section.id) {
-    const input = prompt("しおりの名前を入力", current.label);
-    if (input !== null && input.trim() !== "") {
-      current.label = input.trim();
-    } else {
-      current.label = "しおり";
-    }
-  }
 
   current.id = section.id;
 
@@ -144,16 +141,32 @@ function setBookmark(section) {
 }
 
 /* ======================
-   クリックで編集
+   ダブルタップ / ダブルクリック
 ====================== */
 bookmark.addEventListener("click", () => {
+  if (dragged) return; // ドラッグ後は無視
+
+  const now = Date.now();
+
+  if (now - lastTap < 300) {
+    editLabel();
+  }
+
+  lastTap = now;
+});
+
+/* ======================
+   編集
+====================== */
+function editLabel() {
   const input = prompt("しおりの名前を変更", current.label);
+
   if (input !== null && input.trim() !== "") {
     current.label = input.trim();
     bookmark.textContent = current.label;
     save();
   }
-});
+}
 
 /* ======================
    保存
@@ -174,10 +187,10 @@ function load() {
   const section = document.getElementById(current.id);
   if (!section) return;
 
-  bookmark.textContent = current.label;
-
   const textEl = section.querySelector(".h2-text");
   const rect = textEl.getBoundingClientRect();
+
+  bookmark.textContent = current.label;
 
   bookmark.style.left = (window.scrollX + rect.right + 6) + "px";
   bookmark.style.top = (window.scrollY + rect.top) + "px";
