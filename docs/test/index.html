@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>しおり（見出し右固定）</title>
+<title>しおり（文字横固定）</title>
 
 <style>
 body {
@@ -15,25 +15,23 @@ h2 {
   margin-top: 100px;
   padding: 10px;
   background: #f0f0f0;
+}
+
+/* テキストラッパー */
+.h2-text {
+  display: inline-block;
   position: relative;
 }
 
 /* しおり */
 #bookmark {
   position: absolute;
-  padding: 6px 10px;
+  padding: 4px 8px;
   background: #ffcc00;
   border-radius: 6px;
   cursor: grab;
   z-index: 1000;
   user-select: none;
-}
-
-/* 吸着した状態 */
-.bookmarked::after {
-  content: " ← しおり";
-  color: #ff9900;
-  font-size: 0.9em;
 }
 </style>
 </head>
@@ -44,16 +42,16 @@ h2 {
 
 <h1>テスト記事</h1>
 
-<h2 id="sec1">セクション1</h2>
+<h2 id="sec1"><span class="h2-text">セクション1</span></h2>
 <p>内容...</p>
 
-<h2 id="sec2">セクション2</h2>
+<h2 id="sec2"><span class="h2-text">セクション2</span></h2>
 <p>内容...</p>
 
-<h2 id="sec3">セクション3</h2>
+<h2 id="sec3"><span class="h2-text">セクション3</span></h2>
 <p>内容...</p>
 
-<h2 id="sec4">セクション4</h2>
+<h2 id="sec4"><span class="h2-text">セクション4</span></h2>
 <p>内容...</p>
 
 <script>
@@ -92,17 +90,17 @@ bookmark.addEventListener("mousedown", (e) => {
 });
 
 /* ======================
-   見出し右に固定
+   吸着（縦だけで判定）
 ====================== */
 function snapToSection() {
   let closest = null;
   let minDist = Infinity;
 
-  const bx = bookmark.getBoundingClientRect().top;
+  const by = bookmark.getBoundingClientRect().top;
 
   sections.forEach(sec => {
     const rect = sec.getBoundingClientRect();
-    const dist = Math.abs(rect.top - bx);
+    const dist = Math.abs(rect.top - by);
 
     if (dist < minDist) {
       minDist = dist;
@@ -116,20 +114,16 @@ function snapToSection() {
 }
 
 /* ======================
-   実際の配置
+   配置（文字の右）
 ====================== */
-function setBookmark(target) {
-  // 既存のマークを解除
-  sections.forEach(s => s.classList.remove("bookmarked"));
+function setBookmark(section) {
+  const textEl = section.querySelector(".h2-text");
+  const rect = textEl.getBoundingClientRect();
 
-  target.classList.add("bookmarked");
-
-  const rect = target.getBoundingClientRect();
-
-  bookmark.style.left = (window.scrollX + rect.right + 10) + "px";
+  bookmark.style.left = (window.scrollX + rect.right + 6) + "px";
   bookmark.style.top = (window.scrollY + rect.top) + "px";
 
-  localStorage.setItem("bookmark-section", target.id);
+  localStorage.setItem("bookmark-section", section.id);
 }
 
 /* ======================
