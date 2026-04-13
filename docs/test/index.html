@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>しおりテスト</title>
+
+<style>
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  padding: 40px;
+}
+
+h2 {
+  margin-top: 100px;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+/* しおり */
+#bookmark {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 12px;
+  background: #ffcc00;
+  border-radius: 6px;
+  cursor: grab;
+  z-index: 1000;
+  user-select: none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="bookmark">しおり</div>
+
+<h1>テスト記事</h1>
+
+<h2 id="sec1">セクション1</h2>
+<p>内容...</p>
+
+<h2 id="sec2">セクション2</h2>
+<p>内容...</p>
+
+<h2 id="sec3">セクション3</h2>
+<p>内容...</p>
+
+<h2 id="sec4">セクション4</h2>
+<p>内容...</p>
+
+<script>
+const bookmark = document.getElementById("bookmark");
+const sections = document.querySelectorAll("h2");
+
+let offsetX, offsetY;
+let isDragging = false;
+
+/* ======================
+   ドラッグ処理
+====================== */
+bookmark.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - bookmark.offsetLeft;
+  offsetY = e.clientY - bookmark.offsetTop;
+
+  function move(e) {
+    if (!isDragging) return;
+
+    bookmark.style.left = (e.clientX - offsetX) + "px";
+    bookmark.style.top = (e.clientY - offsetY) + "px";
+  }
+
+  function up(e) {
+    isDragging = false;
+
+    document.removeEventListener("mousemove", move);
+    document.removeEventListener("mouseup", up);
+
+    snapToSection();
+  }
+
+  document.addEventListener("mousemove", move);
+  document.addEventListener("mouseup", up);
+});
+
+/* ======================
+   見出しに吸着
+====================== */
+function snapToSection() {
+  let closest = null;
+  let minDist = Infinity;
+
+  const bx = bookmark.getBoundingClientRect().left;
+  const by = bookmark.getBoundingClientRect().top;
+
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    const dx = rect.left - bx;
+    const dy = rect.top - by;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < minDist) {
+      minDist = dist;
+      closest = sec;
+    }
+  });
+
+  if (closest) {
+    const rect = closest.getBoundingClientRect();
+
+    bookmark.style.left = (window.scrollX + rect.left - 80) + "px";
+    bookmark.style.top = (window.scrollY + rect.top) + "px";
+
+    saveBookmark(closest.id);
+  }
+}
+
+/* ======================
+   保存
+====================== */
+function saveBookmark(id) {
+  localStorage.setItem("bookmark-section", id);
+}
+
+/* ======================
+   復元
+====================== */
+function loadBookmark() {
+  const id = localStorage.getItem("bookmark-section");
+  if (!id) return;
+
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  const rect = target.getBoundingClientRect();
+
+  bookmark.style.left = (window.scrollX + rect.left - 80) + "px";
+  bookmark.style.top = (window.scrollY + rect.top) + "px";
+}
+
+loadBookmark();
+</script>
+
+</body>
+</html>
