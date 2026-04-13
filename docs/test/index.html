@@ -61,7 +61,7 @@ let offsetX, offsetY;
 let isDragging = false;
 let dragged = false;
 
-let lastTap = 0;
+let pressTimer = null;
 
 let current = {
   id: null,
@@ -69,7 +69,7 @@ let current = {
 };
 
 /* ======================
-   Pointer対応ドラッグ
+   ドラッグ
 ====================== */
 bookmark.addEventListener("pointerdown", (e) => {
   isDragging = true;
@@ -79,12 +79,22 @@ bookmark.addEventListener("pointerdown", (e) => {
 
   offsetX = e.clientX - bookmark.offsetLeft;
   offsetY = e.clientY - bookmark.offsetTop;
+
+  // 長押し開始
+  pressTimer = setTimeout(() => {
+    if (!dragged) {
+      editLabel();
+      isDragging = false;
+    }
+  }, 500); // ←長押し判定（500ms）
 });
 
 bookmark.addEventListener("pointermove", (e) => {
   if (!isDragging) return;
 
   dragged = true;
+
+  clearTimeout(pressTimer);
 
   bookmark.style.left = (e.clientX - offsetX) + "px";
   bookmark.style.top = (e.clientY - offsetY) + "px";
@@ -94,6 +104,8 @@ bookmark.addEventListener("pointerup", (e) => {
   isDragging = false;
 
   bookmark.releasePointerCapture(e.pointerId);
+
+  clearTimeout(pressTimer);
 
   if (dragged) snapToSection();
 });
@@ -136,21 +148,6 @@ function setBookmark(section) {
 
   save();
 }
-
-/* ======================
-   ダブルタップ対応
-====================== */
-bookmark.addEventListener("pointerup", (e) => {
-  if (dragged) return;
-
-  const now = Date.now();
-
-  if (now - lastTap < 300) {
-    editLabel();
-  }
-
-  lastTap = now;
-});
 
 /* ======================
    編集
