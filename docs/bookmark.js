@@ -91,7 +91,7 @@ export function loadBookMark() {
   
     bookmark.textContent = current.label;
   
-    bookmark.style.left = (window.scrollX + rect.right + 6) + "px";
+    bookmark.style.left = (window.scrollX + rect.right + 10) + "px";
     bookmark.style.top = (window.scrollY + rect.top) + "px";
   
     save();
