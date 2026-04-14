@@ -1,4 +1,4 @@
-export function maybeLoadBookmark(isMenuPage) {
+export function loadBookMark() {
   const bookmark = document.getElementById("bookmark");
   const sections = document.querySelectorAll("h4");
   
