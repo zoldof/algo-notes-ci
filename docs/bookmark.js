@@ -1,4 +1,4 @@
-export async function maybeLoadBookmark(isMenuPage) {
+export function maybeLoadBookmark(isMenuPage) {
   const bookmark = document.getElementById("bookmark");
   const sections = document.querySelectorAll("h4");
   
