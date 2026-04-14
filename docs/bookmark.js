@@ -1,38 +1,46 @@
 export function loadBookMark() {
-  const bookmark = document.getElementById("bookmark");
-  const sections  = document.querySelectorAll("h4");
-  let offsetX, offsetY;
-  let isDragging = false;
-  let dragged = false;
-  let pressTimer = null;
-  let current = { id: null, label: "しおり" };
+  const bookmark = document.getElementById("bookmark") as HTMLElement;
+  const sections = document.querySelectorAll("h4");
+  let offsetX = 0,
+      offsetY = 0,
+      isDragging = false,
+      dragged = false,
+      pressTimer: number | null = null;
+  let current = { id: null as string | null, label: "しおり" };
 
   // ---------- ユーティリティ ----------
-  const setBookmarkPos = (x, y) => {
+  const setBookmarkPos = (x: number, y: number) => {
     bookmark.style.left = `${x}px`;
-    bookmark.style.top  = `${y}px`;
+    bookmark.style.top = `${y}px`;
   };
+
   const getScroll = () => ({ x: window.scrollX, y: window.scrollY });
-  const placeBookmark = ({x, y}) => {
-    const {x: sx, y: sy} = getScroll();
-    setBookmarkPos(sx + x, sy + y);
-  };
 
-  // ------- 共有ロジック (テキストと位置) -------
-  const applyBookmark = (section) => {
-    // ラベルは常に current.label を使用
-    bookmark.textContent = current.label;
-
-    // セクションが与えられたときはその横に配置
-    if (section) {
-      const rect = section.getBoundingClientRect();
-      placeBookmark({ x: rect.right + 10, y: rect.top - 3 });
+  // ---------- 位置設定 ----------
+  function placeBookmark(
+    mode: "section" | "default",
+    opts: { section?: HTMLElement; margin?: number } = {}
+  ) {
+    const { x: sx, y: sy } = getScroll();
+    if (mode === "section") {
+      const sec = opts.section!;
+      const r = sec.getBoundingClientRect();
+      setBookmarkPos(sx + r.right + 10, sy + r.top - 3);
+      return;
     }
-  };
+    const margin = opts.margin ?? 20;
+    setBookmarkPos(
+      sx + window.innerWidth - bookmark.offsetWidth - margin,
+      sy + margin
+    );
+  }
 
-  /* ======================
-     ドラッグ
-  ====================== */
+  // しおりテキストと current.label を同期
+  function syncLabel() {
+    bookmark.textContent = current.label;
+  }
+
+  // ---------- ドラッグ ----------
   bookmark.addEventListener("pointerdown", e => {
     isDragging = true;
     dragged = false;
@@ -40,8 +48,7 @@ export function loadBookMark() {
     offsetX = e.clientX - bookmark.offsetLeft;
     offsetY = e.clientY - bookmark.offsetTop;
 
-    // 長押し開始
-    pressTimer = setTimeout(() => {
+    pressTimer = window.setTimeout(() => {
       if (!dragged) {
         editLabel();
         isDragging = false;
@@ -55,80 +62,71 @@ export function loadBookMark() {
       dragged = true;
       bookmark.classList.add("dragging");
     }
-    clearTimeout(pressTimer);
-    placeBookmark({ x: e.clientX - offsetX, y: e.clientY - offsetY });
+    clearTimeout(pressTimer!);
+    setBookmarkPos(e.clientX - offsetX, e.clientY - offsetY);
   });
 
   bookmark.addEventListener("pointerup", e => {
     isDragging = false;
     bookmark.releasePointerCapture(e.pointerId);
-    clearTimeout(pressTimer);
+    clearTimeout(pressTimer!);
     bookmark.classList.remove("dragging");
     if (dragged) snapToSection();
   });
 
-  /* ======================
-     吸着
-  ====================== */
-  const snapToSection = () => {
-    let closest = null;
+  // ---------- 吸着 ----------
+  function snapToSection() {
+    let closest: HTMLElement | null = null;
     let minDist = Infinity;
     const by = bookmark.getBoundingClientRect().top;
-    
     sections.forEach(sec => {
       const dist = Math.abs(sec.getBoundingClientRect().top - by);
       if (dist < minDist) {
         minDist = dist;
-        closest = sec;
+        closest = sec as HTMLElement;
       }
     });
     if (closest) setBookmark(closest);
-  };
+  }
 
-  /* ======================
-     配置
-  ====================== */
-  const setBookmark = (section) => {
+  // ---------- 配置 ----------
+  function setBookmark(section: HTMLElement) {
     current.id = section.id;
-    applyBookmark(section);   // ← ここでテキストと位置をまとめて設定
+    syncLabel();
+    placeBookmark("section", { section });
     save();
-  };
+  }
 
-  /* ======================
-     編集
-  ====================== */
-  const editLabel = () => {
+  // ---------- 編集 ----------
+  function editLabel() {
     const input = prompt("しおりの名前を変更", current.label);
     if (input !== null && input.trim() !== "") {
       current.label = input.trim();
-      applyBookmark();        // ラベルだけ更新すれば位置はそのまま
+      syncLabel();
       save();
     }
-  };
+  }
 
-  /* ======================
-     保存
-  ====================== */
-  const save = () => {
+  // ---------- 保存 ----------
+  function save() {
     localStorage.setItem("bookmark", JSON.stringify(current));
-  };
+  }
 
-  /* ======================
-     復元
-  ====================== */
-  const load = () => {
+  // ---------- 復元 ----------
+  function load() {
     const data = localStorage.getItem("bookmark");
     if (!data) {
-      applyBookmark();  // デフォルト表示だけ
-      placeBookmark({
-        x: window.innerWidth - bookmark.offsetWidth - 20,
-        y: 20
-      });
+      syncLabel();
+      placeBookmark("default");
       return;
     }
+
     current = JSON.parse(data);
-    applyBookmark(document.getElementById(current.id) ?? null);
-  };
+    const section = document.getElementById(current.id!);
+    if (!section) return;
+    syncLabel();
+    placeBookmark("section", { section: section as HTMLElement });
+  }
 
   load();
 }
