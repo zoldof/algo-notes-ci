@@ -53,7 +53,7 @@ th, td {
 #bookmark {
   position: absolute;
   padding: 4px 8px;
-  background: #e6f2ff;
+  background: #cfe8ff;
   border-radius: 6px;
   cursor: grab;
   z-index: 1000;
