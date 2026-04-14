@@ -32,6 +32,7 @@
   </header>
 {% endif %}
 <body class="page-{{ slug }}">
+  <div id="bookmark">bookmark</div>
   <div id="content">
     <!-- Liquid -->
     {{ content }}
@@ -39,9 +40,13 @@
   <script type="module">
     import { renderKatex } from "{{ site.cdn_base }}main/docs/katex.js";
     import { addBackToTopLinks } from "{{ site.cdn_base }}main/docs/backtop.js";
+    import { loadBookMark } from "{{ site.cdn_base }}main/docs/bookmark.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
+      if (document.body.classList.contains('page-menu')) {
+        loadBookMark();
+      }
     });
   </script>
 </body>
