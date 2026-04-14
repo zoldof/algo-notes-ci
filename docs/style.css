@@ -49,6 +49,23 @@ th, td {
   overflow-x: auto;
 }
 
+/* しおり */
+#bookmark {
+  position: absolute;
+  padding: 4px 8px;
+  background: #ffcc00;
+  border-radius: 6px;
+  cursor: grab;
+  z-index: 1000;
+  user-select: none;
+  touch-action: none;
+}
+#bookmark.dragging {
+  transform: scale(0.9);
+  opacity: 0.85;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
 /* 静的ビルドによるテストおよび変更用 */
 .dname-menu h1 {
   /* background-color: #e6f2ff; */
@@ -61,6 +78,9 @@ th, td {
 /* Jekyllビルドによる変更用 */
 body.page-menu h1 {
   background-color: #e6f2ff;
+}
+body.page-menu h4 {
+  display: inline-block;
 }
 body.page-chu3-2 h3 {
   font-size: 1.5rem;
