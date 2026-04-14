@@ -19,12 +19,12 @@
   <!-- General -->
   <link rel="icon" href="{{ site.cdn_base }}main/docs/favicon.png">
   <link rel="apple-touch-icon" href="{{ site.cdn_base }}main/docs/favicon.png">
-  <link rel="stylesheet" href="{{ site.cdn_base }}main/docs/style.css">
+  <link rel="stylesheet" href="{{ site.cdn_base }}{{ site.github.build_revision }}/docs/style.css">
   <!-- Test and Purge -->  
   <!--<link rel="stylesheet" href="{{ site.cdn_base }}{{ site.github.build_revision }}/docs/style.css">-->
   <!-- https://purge.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs -->
 </head>
-{% if page.url == "/dist/" %}
+{% if slug == "menu" %}
   <header class="site-header">
     <div class="site-title">
       {{ site.title }}
@@ -40,7 +40,7 @@
   <script type="module">
     import { renderKatex } from "{{ site.cdn_base }}main/docs/katex.js";
     import { addBackToTopLinks } from "{{ site.cdn_base }}main/docs/backtop.js";
-    import { loadBookMark } from "{{ site.cdn_base }}main/docs/bookmark.js";
+    import { loadBookMark } from "{{ site.cdn_base }}{{ site.github.build_revision }}/docs/bookmark.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
