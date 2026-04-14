@@ -37,7 +37,7 @@ h2 {
   opacity: 0.85;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
-/* リセットボタン用の簡易スタイル（任意） */
+/* リセットボタン用の簡易スタイル（任意）
 #resetStorage{
   position:fixed;
   bottom:10px;
@@ -49,12 +49,13 @@ h2 {
   border-radius:4px;
   cursor:pointer;
 }
+*/
 </style>
 </head>
 
 <body>
 
-<div id="bookmark">しおり</div>
+<!--<div id="bookmark">しおり</div>-->
 
 <h1>テスト記事</h1>
 
@@ -221,12 +222,13 @@ function load() {
 
 load();
 
-/* 例: しおりデータをリセットするボタンの処理 */
+/* 例: しおりデータをリセットするボタンの処理 
 document.getElementById("resetStorage").addEventListener("click", () => {
   localStorage.removeItem("bookmark");
   location.reload();
-});
-  
+}); 
+*/
+
 </script>
   
 </body>
