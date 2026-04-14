@@ -37,6 +37,18 @@ h2 {
   opacity: 0.85;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
+/* リセットボタン用の簡易スタイル（任意） */
+#resetStorage{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  padding:6px 12px;
+  background:#ff6666;
+  color:#fff;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -57,6 +69,8 @@ h2 {
 
 <h2 id="sec4"><span class="h2-text">セクション4</span></h2>
 <p>内容...</p>
+
+<button id="resetStorage">しおりデータリセット</button>
 
 <script>
 const bookmark = document.getElementById("bookmark");
@@ -183,7 +197,13 @@ function save() {
 ====================== */
 function load() {
   const data = localStorage.getItem("bookmark");
-  if (!data) return;
+  if (!data) {
+    bookmark.textContent = current.label;
+    const margin = 20;
+    bookmark.style.left = (window.scrollX + window.innerWidth - bookmark.offsetWidth - margin) + "px";
+    bookmark.style.top  = (window.scrollY + margin) + "px";
+    return;
+  }
 
   current = JSON.parse(data);
 
@@ -200,6 +220,13 @@ function load() {
 }
 
 load();
+
+/* 例: しおりデータをリセットするボタンの処理 */
+document.getElementById("resetStorage").addEventListener("click", () => {
+  localStorage.removeItem("bookmark");
+  location.reload();
+});
+  
 </script>
   
 </body>
