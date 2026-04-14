@@ -32,6 +32,11 @@ h2 {
   user-select: none;
   touch-action: none;
 }
+#bookmark.dragging {
+  transform: scale(0.9);
+  opacity: 0.85;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
 </style>
 </head>
 
@@ -92,7 +97,10 @@ bookmark.addEventListener("pointerdown", (e) => {
 bookmark.addEventListener("pointermove", (e) => {
   if (!isDragging) return;
 
-  dragged = true;
+  if (!dragged) {
+    dragged = true;
+    bookmark.classList.add("dragging");
+  }
 
   clearTimeout(pressTimer);
 
@@ -106,6 +114,7 @@ bookmark.addEventListener("pointerup", (e) => {
   bookmark.releasePointerCapture(e.pointerId);
 
   clearTimeout(pressTimer);
+  bookmark.classList.remove("dragging");
 
   if (dragged) snapToSection();
 });
