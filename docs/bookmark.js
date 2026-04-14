@@ -101,7 +101,7 @@ export function loadBookMark() {
      復元
   ====================== */
   function load() {
-    localStorage.removeItem('bookmark');
+    //localStorage.removeItem('bookmark'); //←localStorageの部分クリア
     const data = localStorage.getItem("bookmark");
     if (!data) {
       bookmark.textContent = current.label;
