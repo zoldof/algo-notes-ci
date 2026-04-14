@@ -52,12 +52,8 @@ th, td {
 /* しおり */
 #bookmark {
   position: absolute;
-  left: 100%;                    /* 見出しの右端 */
-  top: 50%;                      /* 縦中央 */
-  margin-left: 10px;             /* 右側の隙間（必要に応じて調整） */
-  transform: translateY(-50%);   /* 中央揃え */
   padding: 4px 8px;
-  background: #ffcc00;
+  background: #e6f2ff;
   border-radius: 6px;
   cursor: grab;
   z-index: 1000;
