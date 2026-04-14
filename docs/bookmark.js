@@ -1,13 +1,10 @@
 export function loadBookMark() {
   const bookmark = document.getElementById("bookmark");
   const sections = document.querySelectorAll("h4");
-  
   let offsetX, offsetY;
   let isDragging = false;
   let dragged = false;
-  
   let pressTimer = null;
-  
   let current = {
     id: null,
     label: "しおり"
@@ -19,9 +16,7 @@ export function loadBookMark() {
   bookmark.addEventListener("pointerdown", (e) => {
     isDragging = true;
     dragged = false;
-  
     bookmark.setPointerCapture(e.pointerId);
-  
     offsetX = e.clientX - bookmark.offsetLeft;
     offsetY = e.clientY - bookmark.offsetTop;
   
@@ -36,26 +31,20 @@ export function loadBookMark() {
   
   bookmark.addEventListener("pointermove", (e) => {
     if (!isDragging) return;
-  
     if (!dragged) {
       dragged = true;
       bookmark.classList.add("dragging");
     }
-  
     clearTimeout(pressTimer);
-  
     bookmark.style.left = (e.clientX - offsetX) + "px";
     bookmark.style.top = (e.clientY - offsetY) + "px";
   });
   
   bookmark.addEventListener("pointerup", (e) => {
     isDragging = false;
-  
     bookmark.releasePointerCapture(e.pointerId);
-  
     clearTimeout(pressTimer);
     bookmark.classList.remove("dragging");
-  
     if (dragged) snapToSection();
   });
   
@@ -65,19 +54,15 @@ export function loadBookMark() {
   function snapToSection() {
     let closest = null;
     let minDist = Infinity;
-  
     const by = bookmark.getBoundingClientRect().top;
-  
     sections.forEach(sec => {
       const rect = sec.getBoundingClientRect();
       const dist = Math.abs(rect.top - by);
-  
       if (dist < minDist) {
         minDist = dist;
         closest = sec;
       }
     });
-  
     if (closest) setBookmark(closest);
   }
   
@@ -86,14 +71,10 @@ export function loadBookMark() {
   ====================== */
   function setBookmark(section) {
     const rect = section.getBoundingClientRect();
-  
     current.id = section.id;
-  
     bookmark.textContent = current.label;
-  
     bookmark.style.left = (window.scrollX + rect.right + 10) + "px";
     bookmark.style.top = (window.scrollY + rect.top - 3) + "px";
-  
     save();
   }
   
@@ -102,7 +83,6 @@ export function loadBookMark() {
   ====================== */
   function editLabel() {
     const input = prompt("しおりの名前を変更", current.label);
-  
     if (input !== null && input.trim() !== "") {
       current.label = input.trim();
       bookmark.textContent = current.label;
@@ -130,19 +110,15 @@ export function loadBookMark() {
       bookmark.style.top  = (window.scrollY + margin) + "px";
       return;
     }
-  
+    
     current = JSON.parse(data);
-  
     const section = document.getElementById(current.id);
     if (!section) return;
-  
+    
     const rect = section.getBoundingClientRect();
-  
     bookmark.textContent = current.label;
-  
     bookmark.style.left = (window.scrollX + rect.right + 6) + "px";
     bookmark.style.top = (window.scrollY + rect.top) + "px";
   }
-  
   load();
 }
