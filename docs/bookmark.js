@@ -93,6 +93,7 @@ export function loadBookMark() {
       current.label = input.trim();
       applyBookmark(current.label);
       save();
+      load();
     }
   }
 
