@@ -7,6 +7,22 @@ export function loadBookMark() {
   let pressTimer = null;
   let current = { id: null, label: "しおり" };
 
+  // ① クライアント座標 → オフセット計算（ドラッグ開始時）
+  function getDragOffset(e) {
+    return {
+      x: e.clientX - bookmark.offsetLeft,
+      y: e.clientY - bookmark.offsetTop
+    };
+  }
+
+  // ② オフセット + 現在のポインタ位置 → 要素の左上座標
+  function getBookmarkPos(e, offset) {
+    return {
+      left: e.clientX - offset.x,
+      top : e.clientY - offset.y
+    };
+  }
+  
   // ── 位置ヘルパー ───────────────────────────────────────
   function setBookmarkPos(left, top) {
     bookmark.style.left = `${left}px`;
@@ -24,23 +40,20 @@ export function loadBookMark() {
     const top  = window.scrollY + rect.top - 3;
     setBookmarkPos(left, top);
   }
-  // ────────────────────────────────────────────────────────
   
   // ラベル＋位置を同時に適用
   function applyBookmark(label, placeFn) {
     bookmark.textContent = label;
     if (typeof placeFn === "function") placeFn();
   }
-  // 
   
   /* ====================== ドラッグ ====================== */
   bookmark.addEventListener("pointerdown", e => {
     isDragging = true;
     dragged = false;
     bookmark.setPointerCapture(e.pointerId);
-    offsetX = e.clientX - bookmark.offsetLeft;
-    offsetY = e.clientY - bookmark.offsetTop;
-
+    ({ x: offsetX, y: offsetY } = getDragOffset(e));
+    
     pressTimer = setTimeout(() => {
       if (!dragged) {
         editLabel();
@@ -56,8 +69,7 @@ export function loadBookMark() {
       bookmark.classList.add("dragging");
     }
     clearTimeout(pressTimer);
-    bookmark.style.left = `${e.clientX - offsetX}px`;
-    bookmark.style.top  = `${e.clientY - offsetY}px`;
+    setBookmarkPos(getBookmarkPos(e, { x: offsetX, y: offsetY }));
   });
 
   bookmark.addEventListener("pointerup", e => {
