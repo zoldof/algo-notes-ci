@@ -25,7 +25,14 @@ export function loadBookMark() {
     setBookmarkPos(left, top);
   }
   // ────────────────────────────────────────────────────────
-
+  
+  // ラベル＋位置を同時に適用
+  function applyBookmark(label, placeFn) {
+    bookmark.textContent = label;
+    if (typeof placeFn === "function") placeFn();
+  }
+  // 
+  
   /* ====================== ドラッグ ====================== */
   bookmark.addEventListener("pointerdown", e => {
     isDragging = true;
@@ -68,10 +75,7 @@ export function loadBookMark() {
     const by = bookmark.getBoundingClientRect().top;
     sections.forEach(sec => {
       const dist = Math.abs(sec.getBoundingClientRect().top - by);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = sec;
-      }
+      if (dist < minDist) { minDist = dist; closest = sec; }
     });
     if (closest) setBookmark(closest);
   }
@@ -79,8 +83,7 @@ export function loadBookMark() {
   /* ====================== 配置 ====================== */
   function setBookmark(section) {
     current.id = section.id;
-    bookmark.textContent = current.label;
-    placeBeside(section);
+    applyBookmark(current.label, () => placeBeside(section));
     save();
   }
 
@@ -89,7 +92,7 @@ export function loadBookMark() {
     const input = prompt("しおりの名前を変更", current.label);
     if (input !== null && input.trim() !== "") {
       current.label = input.trim();
-      bookmark.textContent = current.label;
+      applyBookmark(current.label);
       save();
     }
   }
@@ -103,17 +106,14 @@ export function loadBookMark() {
   function load() {
     const data = localStorage.getItem("bookmark");
     if (!data) {
-      bookmark.textContent = current.label;
-      placeAtDefault();
+      applyBookmark(current.label, placeAtDefault);
       return;
     }
 
     current = JSON.parse(data);
     const section = document.getElementById(current.id);
     if (!section) return;
-
-    bookmark.textContent = current.label;
-    placeBeside(section);
+    applyBookmark(current.label, () => placeBeside(section));
   }
 
   load();
