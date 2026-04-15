@@ -54,7 +54,7 @@ export function loadBookMark() {
       bookmark.classList.add("dragging");
     }
     clearTimeout(pressTimer);
-    setBookmarkPos(e.clientX - offset.x, e.clientY - offset.y);
+    setBookmarkPos(e.clientX - offsetX, e.clientY - offsetY);
   });
 
   bookmark.addEventListener("pointerup", e => {
