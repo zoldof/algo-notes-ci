@@ -20,8 +20,10 @@ export function loadBookMark() {
   }
   function placeBeside(el) {
     const rect = el.getBoundingClientRect();
-    const left = window.scrollX + rect.right + 10;
-    const top  = window.scrollY + rect.top - 3;
+    const bookmarkHeight = bookmark.offsetHeight;
+    const centerY = window.scrollY + rect.top + rect.height / 2;
+    const top  = Math.round(centerY - bookmarkHeight / 2);
+    const left = Math.round(window.scrollX + rect.right + 10);
     setBookmarkPos(left, top);
   }
   
