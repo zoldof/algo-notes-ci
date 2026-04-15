@@ -6,22 +6,6 @@ export function loadBookMark() {
   let dragged = false;
   let pressTimer = null;
   let current = { id: null, label: "しおり" };
-
-  // ① クライアント座標 → オフセット計算（ドラッグ開始時）
-  function getDragOffset(e) {
-    return {
-      x: e.clientX - bookmark.offsetLeft,
-      y: e.clientY - bookmark.offsetTop
-    };
-  }
-
-  // ② オフセット + 現在のポインタ位置 → 要素の左上座標
-  function getBookmarkPos(e, offset) {
-    return {
-      left: e.clientX - offset.x,
-      top : e.clientY - offset.y
-    };
-  }
   
   // ── 位置ヘルパー ───────────────────────────────────────
   function setBookmarkPos(left, top) {
@@ -52,7 +36,8 @@ export function loadBookMark() {
     isDragging = true;
     dragged = false;
     bookmark.setPointerCapture(e.pointerId);
-    ({ x: offsetX, y: offsetY } = getDragOffset(e));
+    offsetX = e.clientX - bookmark.offsetLeft;
+    offsetY = e.clientY - bookmark.offsetTop;
     
     pressTimer = setTimeout(() => {
       if (!dragged) {
@@ -69,7 +54,7 @@ export function loadBookMark() {
       bookmark.classList.add("dragging");
     }
     clearTimeout(pressTimer);
-    setBookmarkPos(getBookmarkPos(e, { x: offsetX, y: offsetY }));
+    setBookmarkPos(e.clientX - offset.x, e.clientY - offset.y);
   });
 
   bookmark.addEventListener("pointerup", e => {
