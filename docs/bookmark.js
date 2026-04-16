@@ -29,7 +29,7 @@ function placeBeside(el) {
 // ラベル＋位置を同時に適用
 function applyBookmark(label, placeFn) {
   bookmark.textContent = label;
-  if (typeof placeFn === "function") placeFn();
+  if (typeof placeFn === "function") { placeFn(); }
 }
 
 /* ====================== ドラッグ ====================== */
