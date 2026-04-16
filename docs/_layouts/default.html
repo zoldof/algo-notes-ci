@@ -40,11 +40,11 @@
   <script type="module">
     import { renderKatex } from "{{ site.cdn_base }}main/docs/katex.js";
     import { addBackToTopLinks } from "{{ site.cdn_base }}main/docs/backtop.js";
-    import { load } from "{{ site.cdn_base }}main/docs/bookmark.js";
+    import { loadBookMark } from "{{ site.cdn_base }}{{ site.cdn_base }}/docs/bookmark.js";
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
-      if (document.body.classList.contains('page-menu')) load();
+      if (document.body.classList.contains('page-menu')) loadBookMark();
     });
   </script>
 </body>
