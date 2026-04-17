@@ -11,8 +11,8 @@
     {% assign slug = "menu" %}
   {% else %}
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
-    <link rel="canonical" href="https://{{ site.github.owner_name }}.com/{{ slug }}/">
   {% endif %}
+  <link rel="canonical" href="https://{{ site.github.owner_name }}.com{% unless slug == 'menu' %}/{{ slug }}{% endunless %}/">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
