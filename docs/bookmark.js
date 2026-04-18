@@ -33,38 +33,40 @@ function applyBookmark(label, placeFn) {
 }
 
 /* ====================== ドラッグ ====================== */
-bookmark.addEventListener("pointerdown", e => {
-  isDragging = true;
-  dragged = false;
-  bookmark.setPointerCapture(e.pointerId);
-  offsetX = e.clientX - bookmark.offsetLeft;
-  offsetY = e.clientY - bookmark.offsetTop;
+export function initListener() {
+  bookmark.addEventListener("pointerdown", e => {
+    isDragging = true;
+    dragged = false;
+    bookmark.setPointerCapture(e.pointerId);
+    offsetX = e.clientX - bookmark.offsetLeft;
+    offsetY = e.clientY - bookmark.offsetTop;
+    
+    pressTimer = setTimeout(() => {
+      if (!dragged) {
+        editLabel();
+        isDragging = false;
+      }
+    }, 500);
+  });
   
-  pressTimer = setTimeout(() => {
+  bookmark.addEventListener("pointermove", e => {
+    if (!isDragging) return;
     if (!dragged) {
-      editLabel();
-      isDragging = false;
+      dragged = true;
+      bookmark.classList.add("dragging");
     }
-  }, 500);
-});
-
-bookmark.addEventListener("pointermove", e => {
-  if (!isDragging) return;
-  if (!dragged) {
-    dragged = true;
-    bookmark.classList.add("dragging");
-  }
-  clearTimeout(pressTimer);
-  setBookmarkPos(e.clientX - offsetX, e.clientY - offsetY);
-});
-
-bookmark.addEventListener("pointerup", e => {
-  isDragging = false;
-  bookmark.releasePointerCapture(e.pointerId);
-  clearTimeout(pressTimer);
-  bookmark.classList.remove("dragging");
-  if (dragged) snapToSection();
-});
+    clearTimeout(pressTimer);
+    setBookmarkPos(e.clientX - offsetX, e.clientY - offsetY);
+  });
+  
+  bookmark.addEventListener("pointerup", e => {
+    isDragging = false;
+    bookmark.releasePointerCapture(e.pointerId);
+    clearTimeout(pressTimer);
+    bookmark.classList.remove("dragging");
+    if (dragged) snapToSection();
+  });
+}
 
 /* ====================== 吸着 ====================== */
 function snapToSection() {
