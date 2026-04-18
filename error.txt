@@ -1,6 +1,7 @@
-◆JavaScript
-・Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
-・・どこで起きたか：bookmark.js のトップレベルで bookmark.addEventListener(...) を実行した時
-・・何が原因か：モジュールがインポートされた時点では #bookmark 要素がまだ DOM に存在しない ため、bookmark が null になり、addEventListener が例外を投げた
-・・影響：例外がスクリプト評価を中断し、同じ <script type="module"> 内の renderKatex、addBackToTopLinks などの残りのコードが実行されなくなった
-・・対策：要素取得とハンドラ登録を遅延させて、インポート側で DOMContentLoaded 後に呼び出す
+【JavaScript】
+
+◆Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
+・どこで起きたか：bookmark.js のトップレベルで bookmark.addEventListener(...) を実行した時
+・何が原因か：モジュールがインポートされた時点では #bookmark 要素がまだ DOM に存在しない ため、bookmark が null になり、addEventListener が例外を投げた
+・影響：例外がスクリプト評価を中断し、同じ <script type="module"> 内の renderKatex、addBackToTopLinks などの残りのコードが実行されなくなった
+・対策：要素取得とハンドラ登録を遅延させて、インポート側で DOMContentLoaded 後に呼び出す
