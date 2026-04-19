@@ -1,5 +1,5 @@
-const bookmark = document.getElementById("bookmark");
-const sections = document.querySelectorAll("h4");
+let bookmark = null;
+let sections = null;
 let offsetX, offsetY;
 let isDragging = false;
 let dragged = false;
@@ -34,6 +34,8 @@ function applyBookmark(label, placeFn) {
 
 /* ====================== ドラッグ ====================== */
 export function initListener() {
+  bookmark = document.getElementById("bookmark");
+  sections = document.querySelectorAll("h4");
   bookmark.addEventListener("pointerdown", e => {
     isDragging = true;
     dragged = false;
