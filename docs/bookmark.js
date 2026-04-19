@@ -36,10 +36,6 @@ function applyBookmark(label, placeFn) {
 export function initListener() {
   bookmark = document.getElementById("bookmark");
   sections = document.querySelectorAll("h4");
-
-  bookmark.addEventListener("contextmenu", e => {
-    e.preventDefault();
-  });
   
   bookmark.addEventListener("pointerdown", e => {
     isDragging = true;
