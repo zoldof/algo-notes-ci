@@ -69,8 +69,9 @@ export function initListener() {
     if (dragged) snapToSection();
   });
 
-  //タッチデバイスでの「長押し」コンテキストメニュー防止
-  bookmark.addEventListener("contextmenu", e => e.preventDefault());
+  //タッチデバイス用（長押しメニュー抑制）
+  bookmark.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
+  bookmark.addEventListener("touchend",   e => e.preventDefault());
 }
 
 /* ====================== 吸着 ====================== */
