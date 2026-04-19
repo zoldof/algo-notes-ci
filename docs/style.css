@@ -59,6 +59,7 @@ th, td {
   z-index: 1000;
   user-select: none;
   touch-action: none;
+  white-space: nowrap;
 }
 #bookmark.dragging {
   transform: scale(0.9);
