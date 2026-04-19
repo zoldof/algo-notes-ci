@@ -68,6 +68,9 @@ export function initListener() {
     bookmark.classList.remove("dragging");
     if (dragged) snapToSection();
   });
+
+  //タッチデバイスでの「長押し」コンテキストメニュー防止
+  bookmark.addEventListener("contextmenu", e => e.preventDefault());
 }
 
 /* ====================== 吸着 ====================== */
