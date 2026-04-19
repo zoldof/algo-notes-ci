@@ -105,6 +105,7 @@ function save() {
 
 /* ====================== 復元 ====================== */
 export function load() {
+  localStorage.removeItem('bookmark'); //←localStorageの部分クリア
   const data = localStorage.getItem("bookmark");
   if (!data) {
     applyBookmark(current.label, placeAtDefault);
