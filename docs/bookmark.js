@@ -36,7 +36,11 @@ function applyBookmark(label, placeFn) {
 export function initListener() {
   bookmark = document.getElementById("bookmark");
   sections = document.querySelectorAll("h4");
+  
   bookmark.addEventListener("pointerdown", e => {
+    if (e.pointerType === "touch") {
+      e.preventDefault();
+    }
     isDragging = true;
     dragged = false;
     bookmark.setPointerCapture(e.pointerId);
@@ -68,10 +72,6 @@ export function initListener() {
     bookmark.classList.remove("dragging");
     if (dragged) snapToSection();
   });
-
-  //タッチデバイス用（長押しメニュー抑制）
-  bookmark.addEventListener("touchstart", e => e.preventDefault(), { passive: false });
-  bookmark.addEventListener("touchend",   e => e.preventDefault());
 }
 
 /* ====================== 吸着 ====================== */
