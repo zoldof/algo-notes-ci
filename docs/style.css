@@ -10,7 +10,7 @@ body {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-pre.wrap {
+.wrap pre {
   white-space: pre-wrap;
   word-break: break-all;
   background: #f6f8fa;
