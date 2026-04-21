@@ -13,7 +13,7 @@ body {
 .wrap pre {
   white-space: pre-wrap;
   word-break: break-all;
-  background: #b58900;
+  background: #ffff00;
   padding: 16px;
   border-radius: 6px;
 }
