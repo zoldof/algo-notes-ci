@@ -10,13 +10,6 @@ body {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-.wrap pre {
-  white-space: pre-wrap;
-  word-break: break-all;
-  background: #ffff00;
-  padding: 16px;
-  border-radius: 6px;
-}
 table {
   border-collapse: collapse; 
   max-width: 100%;
