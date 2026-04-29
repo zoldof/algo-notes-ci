@@ -1,15 +1,27 @@
 {
-  "shortcuts": [
+  "name": "My Site",                     // アプリの正式名称
+  "short_name": "MySite",                // ホーム画面に表示される短縮名
+  "start_url": "/",                      // 起動時に開く URL
+  "display": "standalone",               // フルスクリーン／スタンドアロン表示
+  "icons": [                             // 1 つ以上のアイコンが必須
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [                         // ここにショートカットを列挙
     {
       "name": "新規投稿",
       "short_name": "投稿",
       "description": "記事を新規作成",
-      "url": "https://zoldof.github.io/algo-notes-ci/?dname=menu",
+      "url": "https://zoldof.github.io/algo-notes-ci/?dname=menu"
     },
     {
       "name": "設定",
       "short_name": "設定",
-      "url": "https://zoldof.github.io/algo-notes-ci/?dname=hajime",
+      "url": "https://zoldof.github.io/algo-notes-ci/?dname=hajime"
     }
   ]
 }
+
