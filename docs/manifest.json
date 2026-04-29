@@ -1,0 +1,15 @@
+{
+  "shortcuts": [
+    {
+      "name": "新規投稿",
+      "short_name": "投稿",
+      "description": "記事を新規作成",
+      "url": "https://zoldof.github.io/algo-notes-ci/?dname=menu",
+    },
+    {
+      "name": "設定",
+      "short_name": "設定",
+      "url": "https://zoldof.github.io/algo-notes-ci/?dname=hajime",
+    }
+  ]
+}
