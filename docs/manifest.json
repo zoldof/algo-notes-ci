@@ -5,7 +5,7 @@
   "display": "standalone",               // フルスクリーン／スタンドアロン表示
   "icons": [                             // 1 つ以上のアイコンが必須
     {
-      "src": "/icons/icon-192.png",
+      "src": "{{ site.cdn_base }}main/docs/favicon.png",
       "sizes": "192x192",
       "type": "image/png"
     }
