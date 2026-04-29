@@ -1,16 +1,16 @@
 {
-  "name": "My Site",                     // アプリの正式名称
-  "short_name": "MySite",                // ホーム画面に表示される短縮名
-  "start_url": "/",                      // 起動時に開く URL
-  "display": "standalone",               // フルスクリーン／スタンドアロン表示
-  "icons": [                             // 1 つ以上のアイコンが必須
+  "name": "My Site",
+  "short_name": "MySite",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
     {
       "src": "{{ site.cdn_base }}main/docs/favicon.png",
       "sizes": "192x192",
       "type": "image/png"
     }
   ],
-  "shortcuts": [                         // ここにショートカットを列挙
+  "shortcuts": [
     {
       "name": "新規投稿",
       "short_name": "投稿",
@@ -24,4 +24,3 @@
     }
   ]
 }
-
