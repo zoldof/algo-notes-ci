@@ -1,4 +1,6 @@
 name: Generate Table of Contents
+permissions:
+  contents: write  
 
 on:
   workflow_dispatch:
