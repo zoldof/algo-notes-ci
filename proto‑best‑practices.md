@@ -1,4 +1,10 @@
 <a id="top"></a>
+# 目次
+<!-- toc -->
+<!-- tocstop -->
+
+---
+
 # 抜粋目次
 - [HTML](#HTML)
 - [JavaScript](#JavaScript)
