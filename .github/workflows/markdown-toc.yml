@@ -1,4 +1,4 @@
-name: Generate Table of Contents (manual)
+name: Generate Table of Contents
 
 on:
   workflow_dispatch:
