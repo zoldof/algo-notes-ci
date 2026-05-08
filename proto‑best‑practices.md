@@ -68,6 +68,7 @@ jekyllを用いたビルドであれば、Liquid構文で_includeディレクト
 ### DOMContentLoaded
 DOM操作は div id="content" やヘッダー要素などが DOM に存在して初めて意味を持ちます。jsが body の末尾に置かれている場合、DOMContentLoadedを使ったところで、実際には DOM がすでに構築された状態で実行されますが、将来的にjs位置をヘッド側へ移したり、外部ファイル化したりする可能性 を考慮すると、DOMContentLoaded にハンドラを登録しておく方が安全です。イベントが発火すれば、ページの構造が変わっても要素取得が失敗するリスクを回避でき、コードの保守性が向上します。
 
+## a
 ### jsの読み込み順序
 通常、`script` → `module` → `defer` → `DOMContentLoaded` の順でスクリプトが実行されます。ただしテンプレートや SPA のように要素がページ描画後に動的に追加される場合、`DOMContentLoaded` 時点ではその要素はまだ存在しません。そのため **MutationObserver** を使って DOM の変更を非同期で監視し、要素が挿入された瞬間に処理を付与する必要があります。
 
