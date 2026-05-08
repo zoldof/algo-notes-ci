@@ -1,29 +1,23 @@
 name: Generate Table of Contents
-
 permissions:
-  contents: write
+  contents: write  
 
 on:
   workflow_dispatch:
     inputs:
+      # カンマ区切りで複数ファイルを渡す例
       files:
         description: |
-          更新したい Markdown ファイル（カンマ区切り）
+          更新したい Markdown ファイル（カンマ区切り、ワイルドカードは不可）。
+          例: README.md, docs/guide.md
         required: true
         default: README.md
-
-  push:
-    paths:
-      - 'bestpractice.md'
 
 jobs:
   generate-toc:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -33,34 +27,24 @@ jobs:
       - name: Install markdown-toc
         run: npm install -g markdown-toc
 
-      - name: Generate TOC
+      - name: Generate TOC for selected files
+        env:
+          FILES: ${{ github.event.inputs.files }}   # ユーザー入力を環境変数に渡す
         run: |
-          # 手動実行時
-          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-
-            IFS=',' read -ra FILE_ARR <<< "${{ github.event.inputs.files }}"
-
-            for f in "${FILE_ARR[@]}"; do
-              FILE=$(echo "$f" | xargs)
-
-              if [[ -f "$FILE" ]]; then
-                echo "🔧 Updating TOC in $FILE"
-                markdown-toc -i "$FILE"
-              else
-                echo "⚠️ File not found: $FILE"
-              fi
-            done
-
-          # push時
-          elif [[ "${{ github.event_name }}" == "push" ]]; then
-
-            echo "🔧 Updating TOC in bestpractice.md"
-            markdown-toc -i bestpractice.md
-
-          fi
+          # カンマで分割 → 配列に変換
+          IFS=',' read -ra FILE_ARR <<< "$FILES"
+          for f in "${FILE_ARR[@]}"; do
+            # 前後の空白を除去
+            FILE=$(echo "$f" | xargs)
+            if [[ -f "$FILE" ]]; then
+              echo "🔧 Updating TOC in $FILE"
+              markdown-toc -i "$FILE"
+            else
+              echo "⚠️ File not found: $FILE (skip)"
+            fi
+          done
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🔧 Update Table of Contents"
-          skip_dirty_check: true
+          commit_message: "🔧 Update Table of Contents (manual run)"
