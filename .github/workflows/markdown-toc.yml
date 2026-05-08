@@ -14,7 +14,7 @@ on:
   # push 時に変更された Markdown が 1 つだけという前提で自動実行
   push:
     paths:
-      - '**/*.md'   # .md が変更されたときだけ起動
+      - 'proto‑best‑practices.md'   # 特定の .md が変更されたときだけ起動
 
 jobs:
   generate-toc:
