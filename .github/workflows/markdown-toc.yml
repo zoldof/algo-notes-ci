@@ -1,4 +1,4 @@
-name: Generate TOC for README
+name: Generate TOC for PBP
 permissions:
   contents: write
 
