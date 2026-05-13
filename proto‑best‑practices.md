@@ -6,6 +6,7 @@
 - [コーディング](#%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0)
   * [HTML](#html)
     + [一般的なページ構造](#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%9A%E3%83%BC%E3%82%B8%E6%A7%8B%E9%80%A0)
+    + [headとbody](#head%E3%81%A8body)
     + [!DOCTYPE htmlの必要性](#doctype-html%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7)
     + [テンプレート機能](#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E6%A9%9F%E8%83%BD)
   * [JavaScript](#javascript)
