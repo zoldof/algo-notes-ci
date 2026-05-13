@@ -1,5 +1,4 @@
 # 目次
-$a+b$
 <details markdown="1"><summary>クリックで目次を表示</summary>
 
 <!-- toc -->
