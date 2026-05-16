@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 基礎からつなげる中学3年の数学｜Layer 3.1
+title: "基礎からつなげる中学3年の数学｜Layer 3.1"
 ---
 
 {% include intro.md %}
