@@ -11,9 +11,9 @@
 
 <details><summary>算数からはじめる数学まとめ</summary>
    
-- [数学の土台として学び直す算数：シリーズ第1弾](https://zoldof.com/shougaku/)
+- [数学の土台として学び直す算数｜Layer 0](https://zoldof.com/shougaku/)
 - [中学1年の数学を整理し直す｜Layer 1](https://zoldof.com/chu1/)
-- [つながりから学び直す中学2年の数学：シリーズ第3弾](https://zoldof.com/chu2/)
+- [つながりから学び直す中学2年の数学｜Layer 2](https://zoldof.com/chu2/)
 - 中3数学
   - [【数学の役立て方】【基礎知識】](https://zoldof.com/chu3-1/)
   - [【検定過去問対策】【応用問題】](https://zoldof.com/chu3-2/)
