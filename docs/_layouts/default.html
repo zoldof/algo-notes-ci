@@ -6,7 +6,7 @@
   <meta name="google-site-verification" content="{{ site.google_site_verification }}">
   <meta name="robots" content="{{ page.robots }}">
   <meta name="description" content="{{ page.description }}">
-  <!-- Check dist ⇔ menu -->
+  <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名との2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
   {% if page.url == "/dist/" %}
     {% assign slug = "menu" %}
   {% else %}
