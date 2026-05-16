@@ -13,7 +13,7 @@
    
 - [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.com/shougaku/)
 - [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.com/chu1/)
-- [中2数学](https://zoldof.com/chu2/)
+- [つながりから学び直す中学2年の数学：シリーズ第3弾](https://zoldof.com/chu2/)
 - 中3数学
   - [【数学の役立て方】【基礎知識】](https://zoldof.com/chu3-1/)
   - [【検定過去問対策】【応用問題】](https://zoldof.com/chu3-2/)
