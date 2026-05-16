@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 応用問題から整理する中学3年の数学｜Layer 3.2
+title: "応用問題から整理する中学3年の数学｜Layer 3.2"
 ---
 
 {% include intro.md %}
