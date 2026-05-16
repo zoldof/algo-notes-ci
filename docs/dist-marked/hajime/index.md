@@ -11,8 +11,8 @@
 
 <details><summary>算数からはじめる数学まとめ</summary>
    
-- [算数を学び直してアルゴリズムを理解する: シリーズの第一歩](https://zoldof.com/shougaku/)
-- [中学1年の数学で学ぶアルゴリズムの基礎：シリーズ第2弾](https://zoldof.com/chu1/)
+- [数学の土台として学び直す算数：シリーズ第1弾](https://zoldof.com/shougaku/)
+- [中学1年の数学を整理し直す｜Layer 1](https://zoldof.com/chu1/)
 - [つながりから学び直す中学2年の数学：シリーズ第3弾](https://zoldof.com/chu2/)
 - 中3数学
   - [【数学の役立て方】【基礎知識】](https://zoldof.com/chu3-1/)
