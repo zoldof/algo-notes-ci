@@ -13,9 +13,21 @@
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
   {% endif %}
   {% assign full_url %}
-    https://{{ site.github.owner_name }}.com{% unless page.slug == 'menu' %}/{{ page.slug }}{% endunless %}/
+    https://{{ site.github.owner_name }}.com{% unless slug == 'menu' %}/{{ slug }}{% endunless %}/
   {% endassign %}
   <link rel="canonical" href="{{ full_url }}">
+  {% assign ogp = site.cdn_base | append: 'main/docs/dist/' | append: slug | append: '/thumbnail.png' %}
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ full_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:image" content="{{ ogp }}">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:image" content="{{ ogp }}">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
