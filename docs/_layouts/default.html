@@ -13,10 +13,12 @@
     {% assign slug = "menu" %}
     {% assign full_url = full_url | append: '/' %}
     {% assign default-ogp = site.cdn_base | append: 'main/docs/dist/' | append: 'default-thumbnail.png' %}
+    <meta property="og:type" content="website">
   {% else %}
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
     {% assign full_url = full_url | append: '/' | append: slug %}
     {% assign ogp = site.cdn_base | append: 'main/docs/dist/' | append: slug | append: '/thumbnail.png' %}
+    <meta property="og:type" content="article">
   {% endif %}
   
   <link rel="canonical" href="{{ full_url }}">
