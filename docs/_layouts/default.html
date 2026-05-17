@@ -7,27 +7,30 @@
   <meta name="robots" content="{{ page.robots }}">
   <meta name="description" content="{{ page.description }}">
   <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
+  <!-- slug生成とは別にfull_urlとサムネイル画像の準備も行う -->
+  {% assign full_url = 'https://' | append: site.github.owner_name | append: '.com' %}
   {% if page.url == "/dist/" %}
     {% assign slug = "menu" %}
+    {% assign full_url = full_url | append: '/' %}
+    {% assign default-ogp = site.cdn_base | append: 'main/docs/dist/' | append: 'default-thumbnail.png' %}
   {% else %}
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
+    {% assign full_url = full_url | append: '/' | append: slug %}
+    {% assign ogp = site.cdn_base | append: 'main/docs/dist/' | append: slug | append: '/thumbnail.png' %}
   {% endif %}
-  {% assign full_url %}
-    https://{{ site.github.owner_name }}.com{% unless slug == 'menu' %}/{{ slug }}{% endunless %}/
-  {% endassign %}
+  
   <link rel="canonical" href="{{ full_url }}">
-  {% assign ogp = site.cdn_base | append: 'main/docs/dist/' | append: slug | append: '/thumbnail.png' %}
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:url" content="{{ full_url }}">
   <meta property="og:site_name" content="{{ site.title }}">
-  <meta property="og:image" content="{{ ogp }}">
+  <meta property="og:image" content="{{ ogp | default: default-ogp }}">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ page.title }}">
   <meta name="twitter:description" content="{{ page.description }}">
-  <meta name="twitter:image" content="{{ ogp }}">
+  <meta name="twitter:image" content="{{ ogp | default: default-ogp }}">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
