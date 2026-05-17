@@ -21,8 +21,6 @@
     <meta property="og:type" content="article">
   {% endif %}
   
-  <link rel="canonical" href="{{ full_url }}">
-  <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:url" content="{{ full_url }}">
@@ -33,6 +31,8 @@
   <meta name="twitter:title" content="{{ page.title }}">
   <meta name="twitter:description" content="{{ page.description }}">
   <meta name="twitter:image" content="{{ ogp | default: default-ogp }}">
+
+  <link rel="canonical" href="{{ full_url }}">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
