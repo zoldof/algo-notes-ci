@@ -12,7 +12,10 @@
   {% else %}
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
   {% endif %}
-  <link rel="canonical" href="https://{{ site.github.owner_name }}.com{% unless slug == 'menu' %}/{{ slug }}{% endunless %}/">
+  {% assign full_url %}
+    https://{{ site.github.owner_name }}.com{% unless page.slug == 'menu' %}/{{ page.slug }}{% endunless %}/
+  {% endassign %}
+  <link rel="canonical" href="{{ full_url }}">
   <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
