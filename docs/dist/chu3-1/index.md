@@ -3,7 +3,6 @@ layout: default
 title: "基礎からつなげる中学3年の数学｜Layer 3.1"
 ---
 
-{% include intro.md %}
 {% include toc.md %}
 
 ## 【数学は何の役に立つか？中3数学までで得られる知識からの回答】
