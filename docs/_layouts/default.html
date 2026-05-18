@@ -6,34 +6,11 @@
   <meta name="google-site-verification" content="{{ site.google_site_verification }}">
   <meta name="robots" content="{{ page.robots }}">
   <meta name="description" content="{{ page.description }}">
-  <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
-  <!-- slug生成とは別にfull_urlとサムネイルパスの準備も行う -->
-  {% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
-  {% assign default_ogp = site.cdn_base | append: 'main/docs/dist/default-thumbnail.png' %}
-  {% if page.url == "/dist/" %}
-    {% assign slug = "menu" %}
-    {% assign full_url = origin_url | append: '/' %}
-    <meta property="og:type" content="website">
-  {% else %}
-    {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
-    {% assign full_url = origin_url | append: '/' | append: slug %}
-    {% if page.ogp %}
-      {% assign ogp = site.cdn_base | append: 'main/docs/dist/' | append: slug | append: '/thumbnail.png' %}
-    {% endif %}
-    <meta property="og:type" content="article">
-  {% endif %}
-  
-  <meta property="og:title" content="{{ page.og_title }}">
-  <meta property="og:description" content="{{ page.description }}">
-  <meta property="og:url" content="{{ full_url }}">
-  <meta property="og:site_name" content="{{ site.github.owner_name }}.com">
-  <meta property="og:image" content="{{ ogp | default: default_ogp }}">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="canonical" href="{{ full_url }}">
-  <title>{{ page.title }}</title>
   <!-- Include -->
   {% include katex.html %}
+  {% include assign-og.html %}
+  <link rel="canonical" href="{{ full_url }}">
+  <title>{{ page.title }}</title>
   <!-- General -->
   <link rel="icon" href="{{ site.cdn_base }}main/docs/favicon.png">
   <link rel="apple-touch-icon" href="{{ site.cdn_base }}main/docs/favicon.png">
@@ -50,10 +27,10 @@
   </div>
   <div id="bookmark"></div>
 {% endif %}
-  📖<a href="{{ origin_url }}">メニュー</a>
-  🔰<a href="https://{{ site.github.owner_name }}.github.io/algo-notes-ci/?dname=hajime">はじめに</a>
-  🐦<a href="https://twitter.com/intent/tweet?url={{ full_url }}">Tweet</a>
-  🍀<a href="https://social-plugins.line.me/lineit/share?url={{ full_url }}">LINE</a>
+  <a href="{{ origin_url }}">📖メニュー</a>
+  <a href="https://{{ site.github.owner_name }}.github.io/algo-notes-ci/?dname=hajime">🔰はじめに</a>
+  <a href="https://twitter.com/intent/tweet?url={{ full_url }}">🐦Tweet</a>
+  <a href="https://social-plugins.line.me/lineit/share?url={{ full_url }}">🍀LINE</a>
 </header>
 
 <body class="page-{{ slug }}">
