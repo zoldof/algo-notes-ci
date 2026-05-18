@@ -9,7 +9,7 @@
   <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
   <!-- slug生成とは別にfull_urlとサムネイル画像の準備も行う -->
   {% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
-  {% assign default-ogp = site.cdn_base | append: '{{ site.github.build_revision }}/docs/dist/' | append: 'default-thumbnail.png' %}
+  {% assign default_ogp = site.cdn_base | append: '{{ site.github.build_revision }}/docs/dist/' | append: 'default_thumbnail.png' %}
   {% if page.url == "/dist/" %}
     {% assign slug = "menu" %}
     {% assign full_url = origin_url | append: '/' %}
@@ -25,7 +25,7 @@
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:url" content="{{ full_url }}">
   <meta property="og:site_name" content="{{ site.github.owner_name }}.com">
-  <meta property="og:image" content="{{ ogp | default: default-ogp }}">
+  <meta property="og:image" content="{{ ogp | default: default_ogp }}">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="canonical" href="{{ full_url }}">
