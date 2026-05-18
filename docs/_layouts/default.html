@@ -9,10 +9,10 @@
   <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
   <!-- slug生成とは別にfull_urlとサムネイル画像の準備も行う -->
   {% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
+  {% assign default-ogp = site.cdn_base | append: 'main/docs/dist/' | append: 'default-thumbnail.png' %}
   {% if page.url == "/dist/" %}
     {% assign slug = "menu" %}
     {% assign full_url = origin_url | append: '/' %}
-    {% assign default-ogp = site.cdn_base | append: 'main/docs/dist/' | append: 'default-thumbnail.png' %}
     <meta property="og:type" content="website">
   {% else %}
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
