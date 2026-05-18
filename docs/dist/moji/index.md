@@ -3,7 +3,7 @@ layout: default
 title: 文字の使い分けとプログラミング命名規則
 ---
 
-<details markdown="1"><summary>はじめに</summary>
+<details markdown="1"><summary>ページ紹介</summary>
 
   このページでは、実際に私が使っている文字の使い分け例を紹介します。プロジェクトの進捗管理やメモ整理にも活用できますし、好みに合わせて自由にカスタマイズしてみてください。
 
