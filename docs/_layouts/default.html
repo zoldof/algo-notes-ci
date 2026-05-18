@@ -9,7 +9,7 @@
   <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
   <!-- slug生成とは別にfull_urlとサムネイル画像の準備も行う -->
   {% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
-  {% assign default_ogp = site.cdn_base | append: site.github.build_revision | append: '/docs/dist/default-thumbnail.png' %}
+  {% assign default_ogp = site.cdn_base | append: 'main/docs/dist/default-thumbnail.png' %}
   {% if page.url == "/dist/" %}
     {% assign slug = "menu" %}
     {% assign full_url = origin_url | append: '/' %}
@@ -38,8 +38,9 @@
   <link rel="icon" href="{{ site.cdn_base }}main/docs/favicon.png">
   <link rel="apple-touch-icon" href="{{ site.cdn_base }}main/docs/favicon.png">
   <link rel="stylesheet" href="{{ site.cdn_base }}main/docs/style.css">
-  <!-- Test and Purge -->  
-  <!--<link rel="stylesheet" href="{{ site.cdn_base }}{{ 'site.github.build_revision' }}/docs/style.css">-->
+  <!-- Test and Purge *コメントの中身でもビルドバージョン変更が反映されるのでクォートで囲っている -->  
+  <!-- href="{{ site.cdn_base }}{{ 'site.github.build_revision' }}/docs/style.css"> -->
+  <!-- append: 'site.github.build_revision' | -->
   <!-- https://purge.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs -->
 </head>
 <header class="site-header">
