@@ -44,16 +44,17 @@
   <!--<link rel="stylesheet" href="{{ site.cdn_base }}{{ 'site.github.build_revision' }}/docs/style.css">-->
   <!-- https://purge.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs -->
 </head>
+<header class="site-header">
 {% if slug == "menu" %}
-  <header class="site-header">
-    <div class="site-title">
-      {{ site.title }}
-    </div>
-    <a href="https://twitter.com/intent/tweet?url={{ full_url }}">🐦Tweet</a>
-    <a href="https://social-plugins.line.me/lineit/share?url={{ full_url }}">🍀LINE</a>
-    <div id="bookmark"></div>
-  </header>
+  <div class="site-title">
+    {{ site.title }}
+  </div>
+  <div id="bookmark"></div>
 {% endif %}
+  <a href="https://twitter.com/intent/tweet?url={{ full_url }}">🐦Tweet</a>
+  <a href="https://social-plugins.line.me/lineit/share?url={{ full_url }}">🍀LINE</a>
+</header>
+
 <body class="page-{{ slug }}">
   <div id="content">
     <!-- Liquid -->
