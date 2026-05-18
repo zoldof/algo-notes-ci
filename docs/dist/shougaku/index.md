@@ -4,7 +4,6 @@ title: 小学数学
 robots: noindex
 ---
 
-{% include intro.md %}
 {% include toc.md %}
 
 ## 検定過去問対策
