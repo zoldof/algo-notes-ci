@@ -9,6 +9,7 @@
     + [headとbody](#head%E3%81%A8body)
     + [!DOCTYPE htmlの必要性](#doctype-html%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7)
     + [テンプレート機能](#%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E6%A9%9F%E8%83%BD)
+    + [Liquid構文](#liquid%E6%A7%8B%E6%96%87)
   * [JavaScript](#javascript)
     + [クォーテーション](#%E3%82%AF%E3%82%A9%E3%83%BC%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
     + [jsの読み込み順序](#js%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E9%A0%86%E5%BA%8F)
