@@ -3,8 +3,6 @@ layout: default
 title: "応用問題から整理する中学3年の数学｜Layer 3.2"
 ---
 
-{% include intro.md %}
-
 ### 【検定過去問の技能別対策】
 
 ◆作図
