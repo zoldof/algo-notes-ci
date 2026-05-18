@@ -8,15 +8,15 @@
   <meta name="description" content="{{ page.description }}">
   <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
   <!-- slug生成とは別にfull_urlとサムネイル画像の準備も行う -->
-  {% assign full_url = 'https://' | append: site.github.owner_name | append: '.com' %}
+  {% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
   {% if page.url == "/dist/" %}
     {% assign slug = "menu" %}
-    {% assign full_url = full_url | append: '/' %}
+    {% assign full_url = origin_url | append: '/' %}
     {% assign default-ogp = site.cdn_base | append: 'main/docs/dist/' | append: 'default-thumbnail.png' %}
     <meta property="og:type" content="website">
   {% else %}
     {% assign slug = page.url | replace: 'index.html', '' | split:'/' |  reject: '' | last %}
-    {% assign full_url = full_url | append: '/' | append: slug %}
+    {% assign full_url = origin_url | append: '/' | append: slug %}
     {% assign ogp = site.cdn_base | append: 'main/docs/dist/' | append: slug | append: '/thumbnail.png' %}
     <meta property="og:type" content="article">
   {% endif %}
@@ -26,11 +26,7 @@
   <meta property="og:url" content="{{ full_url }}">
   <meta property="og:site_name" content="{{ site.github.owner_name }}.com">
   <meta property="og:image" content="{{ ogp | default: default-ogp }}">
-  
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ page.description }}">
-  <meta name="twitter:image" content="{{ ogp | default: default-ogp }}">
 
   <link rel="canonical" href="{{ full_url }}">
   <title>{{ page.title }}</title>
@@ -51,6 +47,8 @@
   </div>
   <div id="bookmark"></div>
 {% endif %}
+  <a href="{{ origin_url }}">📖メニュー</a>
+  <a href="https://{{ site.github.owner_name }}.github.io/algo-notes-ci/?dname=hajime">🔰はじめに</a>
   <a href="https://twitter.com/intent/tweet?url={{ full_url }}">🐦Tweet</a>
   <a href="https://social-plugins.line.me/lineit/share?url={{ full_url }}">🍀LINE</a>
 </header>
