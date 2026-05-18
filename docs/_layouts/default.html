@@ -32,6 +32,17 @@
   <meta name="twitter:description" content="{{ page.description }}">
   <meta name="twitter:image" content="{{ ogp | default: default-ogp }}">
 
+  <!-- Twitter Share Button -->
+  <a href="https://twitter.com/share"
+     class="twitter-share-button"
+     data-text="このページが役に立ちました！"
+     data-url="{{ full_url }}"
+     data-via="zoldof21941793"   <!-- @は不要 -->
+     data-hashtags="アルゴリズム,数学,学び直し"
+     data-show-count="false">
+    Tweet
+  </a>
+
   <link rel="canonical" href="{{ full_url }}">
   <title>{{ page.title }}</title>
   <!-- Include -->
