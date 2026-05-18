@@ -1,3 +1,1 @@
-📖[メニュー](https://zoldof.com/)
-🔰[はじめに](https://zoldof.github.io/algo-notes-ci/?dname=hajime)
-🐦[Tweet](https://twitter.com/share){: .twitter-share-button data-text="このページが役に立ちました！" data-url="{{ full_url }}" data-via="zoldof21941793" data-hashtags="アルゴリズム,数学,学び直し" data-show-count="false" }
+|📖[メニュー](https://zoldof.com/)|🔰[はじめに](https://zoldof.github.io/algo-notes-ci/?dname=hajime)|🐦[Tweet](https://twitter.com/share){: .twitter-share-button data-text="このページが役に立ちました！" data-url="{{ full_url }}" data-via="zoldof21941793" data-hashtags="アルゴリズム,数学,学び直し" data-show-count="false" }|
