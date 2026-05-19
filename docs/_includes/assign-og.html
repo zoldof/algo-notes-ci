@@ -1,6 +1,6 @@
 <!-- Check dist ⇔ menu フロントマターでの指定によるファイル名とslugの2重管理を避け、CI/CD運用によるディレクトリ構成変更のため -->
 <!-- slug生成とは別にfull_urlとサムネイルパスの準備も行う -->
-{% assign origin_url = 'https://' | append: site.github.owner | append: '.com' %}
+{% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
 {% assign hajime_path = "algo-notes-ci/?dname=hajime" %}
 {% assign default_ogp = site.cdn_base | append: 'main/docs/dist/default-thumbnail.png' %}
 {% if page.url == "/dist/" %}
