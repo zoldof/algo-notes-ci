@@ -1,6 +1,6 @@
 <header class="site-header">
 {% if show_site_title %}
-  <div class="site-title" style="background-image: url('{{ site.cdn_base }}main/docs/header.webp');"></div>
+  <div class="site-title" style="background-image: url('{{ site.cdn_base }}{{ site.github.build_revision }}/docs/header.webp');"></div>
   <div id="bookmark"></div>
 {% endif %}
   <a href="{{ origin_url }}">📖メニュー</a>
