@@ -1,1 +1,0 @@
-|📖[メニュー](https://zoldof.com/)|🔰[はじめに](https://zoldof.github.io/algo-notes-ci/?dname=hajime)|<a href="https://twitter.com/intent/tweet?url={{ full_url }}">🐦Tweet</a>|<a href="https://social-plugins.line.me/lineit/share?url={{ full_url }}">🍀LINE</a>|
