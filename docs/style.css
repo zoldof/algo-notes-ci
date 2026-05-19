@@ -22,15 +22,17 @@ th, td {
   padding: 0.4em 0.6em;
 }
 .site-header {
-  background-color: #cfe8ff;
+  #background-color: #cfe8ff;
   text-align: center;
   padding: 0.2em 0em;
 }
 .site-title {
-  font-size: 2.3em;
-  font-weight: bold;
-  color: #1f3a5f;
-  margin: 0.8rem 0rem;
+  background-size: cover;
+  background-position: center;
+  #font-size: 2.3em;
+  #font-weight: bold;
+  #color: #1f3a5f;
+  #margin: 0.8rem 0rem;
 }
 .site-header a {
   color: inherit;
