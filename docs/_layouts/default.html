@@ -21,7 +21,7 @@
   <!-- https://purge.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs -->
 </head>
 <header class="site-header">
-{% if slug == "menu" %}
+{% if show_site_title %}
   <div class="site-title">
     {{ site.title }}
   </div>
@@ -45,7 +45,7 @@
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
-      if (document.body.classList.contains('page-menu')) {
+      if (document.body.classList.contains('page-{{ slug }}')) {
         initListener();
         load();
       }
