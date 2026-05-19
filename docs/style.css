@@ -24,13 +24,14 @@ th, td {
 .site-header {
   background-color: #cfe8ff;
   text-align: center;
-  padding-top: 1em;
+  padding-top: 1rem;
+  padding-bottom: 0.1rem;
 }
 .site-title {
   font-size: 2.3em;
   font-weight: bold;
   color: #1f3a5f;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 .site-header a {
   color: inherit;
