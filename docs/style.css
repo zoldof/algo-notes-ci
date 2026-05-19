@@ -39,6 +39,7 @@ th, td {
 .site-header a {
   color: inherit;
   text-decoration: none;
+  padding-top: 0.2em;
 }
 #content {
   width: 99%;
