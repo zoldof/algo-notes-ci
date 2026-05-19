@@ -22,13 +22,9 @@ th, td {
   padding: 0.4em 0.6em;
 }
 .site-header {
-  background-color: #081520;
+  background-color: #cfe8ff;
   text-align: center;
   padding: 0.2em 0em;
-}
-.header-image {
-  width: 100%;
-  display: block;
 }
 .site-title {
   font-size: 2.3em;
@@ -39,7 +35,6 @@ th, td {
 .site-header a {
   color: inherit;
   text-decoration: none;
-  padding-top: 0.2em;
 }
 #content {
   width: 99%;
