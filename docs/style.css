@@ -31,9 +31,9 @@ th, td {
   font-weight: bold;
   color: #1f3a5f;
 }
-  .site-header a {
-  color: inherit;
-  text-decoration: none;
+.site-header a {
+color: inherit;
+text-decoration: none;
 }
 #content {
   width: 99%;
