@@ -2,6 +2,7 @@
 layout: default
 title: 数式メモ
 robots: noindex
+ogp: true
 ---
 
 <a id="top"></a>
