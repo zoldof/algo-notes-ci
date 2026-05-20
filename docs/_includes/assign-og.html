@@ -2,7 +2,7 @@
 <!-- slug生成とは別にfull_urlとサムネイルパスの準備も行う -->
 {% assign origin_url = 'https://' | append: site.github.owner_name | append: '.com' %}
 {% assign hajime_path = "algo-notes-ci/?dname=hajime" %}
-{% assign default_ogp = site.cdn_base | append: 'main/docs/default-thumbnail.webp' %}
+{% assign default_ogp = site.cdn_base | append: 'main/docs/thumbnail/default.webp' %}
 {% if page.url == "/dist/" %}
   {% assign slug = "menu" %}
   {% assign full_url = origin_url | append: '/' %}
