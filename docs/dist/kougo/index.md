@@ -2,7 +2,6 @@
 layout: default
 title: "国文法の全体像まとめ｜中学口語文法"
 description: "国語の文法（口語文法）を，できるだけシンプルに整理した学習用まとめです。中学国文法を復習したい人向けに要点を一覧化しています。"
-ogp: true
 ---
 
 {% include toc.md %}
