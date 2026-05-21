@@ -197,6 +197,14 @@ GitHub Pages と CI/CD 分離構成を前提にすると，CDN運用の本質的
 
 ＊Jekyll同梱のkramdownがビルド前提なので用途分け必要
 
+## 種類別の詳細
+- 原始Markdownは仕様が曖昧だったため，後にCommonMarkで標準化が試みられた。その後も各実装が独自拡張を行っている。
+- GFMはCommonMarkベースだが，GitHub独自拡張や実装上の調整を含む。
+- MarkedやKramdownはMarkdown実装であり，実際の挙動は各実装やオプション設定に依存する。Markedでは gfm:true により GitHubライクなHTML/Markdown混在挙動が有効になり，さらに marked 実装自体が details を完全HTML block停止扱いしていないため，details内部Markdownが動いて見える。
+- Kramdownの markdown="1" は，HTML block 内でも Markdown解析を継続する指定。
+- details内部でMarkdownを安定して使うには，summary後や block 要素前後に空行を入れるほうが安全。details や summary の見た目変更はCSS側で調整する。summary未指定時の表示はブラウザ実装依存。
+- ソフトラインブレークを <br> 化するには，Markedなら breaks:true，Kramdownなら hard_wrap:true のような設定が必要。breaks:true は Markdown改行をHTMLの <br> に変換する。一方Kramdownは HTML block を比較的厳密に扱うため，hard_wrap:true は Markdown解析対象部分にしか効かない。そのため HTML要素内部の生テキスト改行維持には，white-space: pre-wrap などCSS側対応が必要になることがある。
+
 ## ハードラインブレーク
 オリジナル Markdown では，行末に半角スペース2個を置くとハードラインブレークとして扱われ，HTML 出力時には`<br>`が生成される。GitHub Flavored Markdown（GFM）や CommonMark でもこの仕様は継承されている。\
 一方，単なる改行（ソフトラインブレーク）は，GitHub の標準プレビューでは表示上の改行にはならず，段落内の空白として扱われる。<br>そのため，GitHub 上で明示的に改行したい場合は，行末スペース2個，行末バックスラッシュ，または`<br>`を使用する必要がある。
