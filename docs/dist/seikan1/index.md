@@ -1,6 +1,7 @@
 ---
 layout: default
-title: 生産管理 基礎
+title: "生産管理とORの基礎｜数理最適化・JIT・MRP・在庫管理まとめ"
+description: "生産管理とオペレーションズ・リサーチを中心に，数理最適化，JIT，MRP，BOM，在庫管理，負荷計画などを整理。製造業の意思決定と業務改善を学べます。"
 ---
 
 {% include toc.md %}
