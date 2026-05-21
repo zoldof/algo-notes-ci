@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 中1数学
+title: 中学1年の数学を整理し直す｜Layer 1
 robots: noindex
 ---
 
