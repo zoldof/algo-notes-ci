@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 小学数学
+title: 数学の土台として学び直す算数｜Layer 0
 robots: noindex
 ---
 
