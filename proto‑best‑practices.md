@@ -274,7 +274,7 @@ GitHub Pages と CI/CD 分離構成を前提にすると，CDN運用の本質的
 - GFMはCommonMarkベースだが，GitHub独自拡張や実装上の調整を含む。
 - MarkedやKramdownはMarkdown実装であり，実際の挙動は各実装やオプション設定に依存する。Markedでは gfm:true により GitHubライクなHTML/Markdown混在挙動が有効になり，さらに marked 実装自体が details を完全HTML block停止扱いしていないため，details内部Markdownが動いて見える。
 - Kramdownの markdown="1" は，HTML block 内でも Markdown解析を継続する指定。
-- details内部でMarkdownを安定して使うには，summary後や block 要素前後に空行を入れるほうが安全。details や summary の見た目変更はCSS側で調整する。summary未指定時の表示はブラウザ実装依存。mdに直接記入する場合はdetails直下に
+- details内部でMarkdownを安定して使うには，summary後や block 要素前後に空行を入れるほうが安全。details や summary の見た目変更はCSS側で調整する。summary未指定時の表示はブラウザ実装依存。md に直接記入する場合は details 直下に '<div style="white-space: pre-wrap;">' のようにセレクタを書く。
 - ソフトラインブレークを `<br>` 化するには，Markedなら breaks:true，Kramdownなら hard_wrap:true のような設定が必要。breaks:true は Markdown改行をHTMLの `<br>` に変換する。一方Kramdownは HTML block を比較的厳密に扱うため，hard_wrap:true は Markdown解析対象部分にしか効かない。そのため HTML要素内部の生テキスト改行維持には，white-space: pre-wrap などCSS側対応が必要になることがある。
 
 ## ハードラインブレーク
