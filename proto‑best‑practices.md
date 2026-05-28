@@ -275,8 +275,9 @@ GitHub Pages と CI/CD 分離構成を前提にすると，CDN運用の本質的
 - MarkedやKramdownはMarkdown実装であり，実際の挙動は各実装やオプション設定に依存する。Markedでは gfm:true により GitHubライクなHTML/Markdown混在挙動が有効になり，さらに marked 実装自体が details を完全HTML block停止扱いしていないため，details内部Markdownが動いて見える。
 - Kramdownの markdown="1" は，HTML block 内でも Markdown解析を継続する指定。
 - details内部でMarkdownを安定して使うには，summary後や block 要素前後に空行を入れるほうが安全。details や summary の見た目変更はCSS側で調整する。summary未指定時の表示はブラウザ実装依存。
-- ソフトラインブレークを `<br>` 化するには，Markedなら breaks:true，Kramdownなら hard_wrap:true のような設定が必要。breaks:true は Markdown改行をHTMLの `<br>` に変換する。一方Kramdownは HTML block を比較的厳密に扱うため，hard_wrap:true は Markdown解析対象部分にしか効かない。そのため HTML要素内部の生テキスト改行維持には，white-space: pre-wrap などCSS側対応が必要になることがある。
-- md に直接記入する場合は details 直下で `<div style="white-space: pre-wrap;">` のようにセレクタを書く。インラインで CSS（style="…" "） を書くと、その style 属性は HTML 要素そのものに適用 され、Markdown の再変換は行われない。つまり markdown="1" はその子要素のテキストにだけ影響 し、style="white-space:…" が付いた要素自身は Markdown の対象外 になるため、Markdown の変換は「帳消し」 される。
+- ソフトラインブレークを `<br>` 化するには，Markedなら breaks:true，Kramdownなら hard_wrap:true のような設定が必要。breaks:true は Markdown改行をHTMLの `<br>` に変換する。一方Kramdownは HTML block を比較的厳密に扱うため，hard_wrap:true は Markdown解析対象部分にしか効かない。そのため、HTML要素内部の生テキスト改行維持には，white-space: pre-wrap などCSS側対応が必要になることがある。とはいえ、`pre-wrap` は親から子に継承されてしまうので、style 全体に適用すると Markdown が生成した `<p>` や HTML 内部の整形改行・空白まで保持してしまい，不自然な空行や折り返しが発生しやすい。`<br>` 化したいなら、個別指定する方が良い。
+  ↑`markdown="1"` を付けた `details` では，Markdown の改行情報自体は保持されるが，CommonMark で言うところのソフトラインブレークは通常の HTML では空白扱いになる。そのため `pre-wrap` を使うと改行を表示できるが，`details` の style 全体に適用すると Markdown が生成した `<p>` や HTML 内部の整形改行・空白まで保持してしまい，不自然な空行や折り返しが発生しやすい。`pre-wrap` は親から子に継承されてしまうので、Kramdownの `details` 内部でソフトラインブレークを `<br>` 化したいなら、個別指定する方が良い。
+- md に直接記入する場合は details 直下で `<div style="white-space: pre-wrap;">` のようにセレクタを書く。
 
 ## ハードラインブレーク
 オリジナル Markdown では，行末に半角スペース2個を置くとハードラインブレークとして扱われ，HTML 出力時には`<br>`が生成される。GitHub Flavored Markdown（GFM）や CommonMark でもこの仕様は継承されている。\
