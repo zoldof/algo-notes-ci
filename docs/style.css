@@ -75,7 +75,7 @@ th, td {
 
 /* 共通設定 */
 details {
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 /* 静的ビルドによるテストおよび変更用 */
