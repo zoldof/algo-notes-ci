@@ -74,7 +74,7 @@ th, td {
 }
 
 /* 共通設定 */
-details * {
+details {
   white-space: pre-wrap;
 }
 
