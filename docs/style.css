@@ -75,7 +75,7 @@ th, td {
 
 /* 共通設定 */
 details * {
-  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 /* 静的ビルドによるテストおよび変更用 */
