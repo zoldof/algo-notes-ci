@@ -8,7 +8,6 @@ body {
   font-family: monospace;
   font-size: 1rem;
   overflow-wrap: anywhere;
-  word-break: break-word;
 }
 table {
   border-collapse: collapse; 
@@ -41,6 +40,7 @@ th, td {
   max-width: 100%;
   margin: 0.1em auto;
   box-sizing: border-box;
+  white-space: pre-wrap;
 }
 .back-to-top {
   text-decoration: none;
