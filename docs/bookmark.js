@@ -32,7 +32,7 @@ function applyBookmark(label, placeFn) {
   if (typeof placeFn === "function") placeFn();
 }
 
-/* ====================== ドラッグ ====================== */
+/* ================= ドラッグ & トグル ================= */
 export function initListener() {
   bookmark = document.getElementById("bookmark");
   sections = document.querySelectorAll("h4");
@@ -68,6 +68,10 @@ export function initListener() {
     clearTimeout(pressTimer);
     bookmark.classList.remove("dragging");
     if (dragged) snapToSection();
+  });
+
+  document.querySelectorAll("details").forEach(details => {
+    details.addEventListener("toggle", load);
   });
 }
 
