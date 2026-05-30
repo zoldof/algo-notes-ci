@@ -1,5 +1,5 @@
 {
   "name": "アルゴリズム×数学の学び直し",
   "start_url": "/",
-  "display": "standalone"
+  "display": "minimal-ui"
 }
