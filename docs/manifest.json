@@ -2,5 +2,5 @@
   "name": "アルゴリズム×数学の学び直し",
   "short_name": "アルゴ数学",
   "start_url": "https://zoldof.com/",
-  "display": "standalone"
+  "display": "minimal-ui"
 }
