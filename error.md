@@ -11,6 +11,8 @@ fixedであれば改行だけでずれる現象は防げるものの、上記現
 ずれを解消するためには、html, bodyの高さを1%刻みで調整して意図する表示部分との干渉をなくす。\
 editerの高さは％であれ、flex: 1;（余分なスペース均等配分もしくは均等縮小）であれ設定は可能である。
 
+もしくは、flex対象となる要素を追加して変換候補行数分の余白を擬似的に追加する方法もある。むしろこちらが正攻法か。flexはdefaultで必要な高さだけ、flex: 1;のように残り全部の高さといった設定ができる。
+
 ## 【JavaScript】
 ◆Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
 ・どこで起きたか：bookmark.js のトップレベルで bookmark.addEventListener(...) を実行した時
