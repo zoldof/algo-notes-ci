@@ -39,6 +39,8 @@ description: "数学を，考え方の流れや構造を意識しながら体系
   - #### [並べ替え](https://zenn.dev/algorithm_math/articles/548c3fe8d7b937)
 
 # プログラミング
+- ### 全般
+  - #### [ベスト・プラクティス](https://github.com/zoldof/algo-notes-ci/blob/main/proto-best-practices.md)
 - ### Python
   - #### [ライブラリ選別基準](https://zenn.dev/zoldof/articles/tech-algo-library)
  
@@ -93,6 +95,5 @@ description: "数学を，考え方の流れや構造を意識しながら体系
  
 # プロフィール
 - ### サイト別
-  - #### [Github](https://github.com/zoldof/algo-notes/tree/main/)
   - #### [Qiita](https://qiita.com/zoldof/items/e33808cc7b1280f133f7)
   - #### [Zenn](https://zenn.dev/zoldof/articles/6af328a17001b4)
