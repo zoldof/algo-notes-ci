@@ -40,7 +40,7 @@ description: "数学を，考え方の流れや構造を意識しながら体系
 
 # プログラミング
 - ### 全般
-  - #### [ベスト・プラクティス](https://github.com/zoldof/algo-notes-ci/blob/main/proto-best-practices.md)
+  - #### [ベストプラクティス](https://github.com/zoldof/algo-notes-ci/blob/main/proto-best-practices.md)
 - ### Python
   - #### [ライブラリ選別基準](https://zenn.dev/zoldof/articles/tech-algo-library)
  
