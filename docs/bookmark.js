@@ -77,10 +77,9 @@ export function initListener() {
   });
 
   // 特定のトグルを制御する
-  if (savedState === "open") mathIntro.open = true;
+  mathIntro.open = savedState !== "closed";
   mathIntro.addEventListener("toggle", () => {
-    if (mathIntro.open) localStorage.setItem("mathIntroState", "open");
-    else localStorage.setItem("mathIntroState", "closed");
+    localStorage.setItem("mathIntroState",　mathIntro.open ? "open" : "closed");
   });
 }
 
