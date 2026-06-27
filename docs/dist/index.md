@@ -21,7 +21,7 @@ description: "数学を，考え方の流れや構造を意識しながら体系
     </details>
 
 - ### 小学校
-  -　[小学数学まとめ](https://zoldof.com/shougaku/)
+  - **[小学数学まとめ](https://zoldof.com/shougaku/)**
 - ### 中学1年
   - #### [中1数学まとめ](https://zoldof.com/chu1/)
 - ### 中学2年
