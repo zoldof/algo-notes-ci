@@ -15,16 +15,6 @@ description: "数学を，考え方の流れや構造を意識しながら体系
 小学校から中学校までの数学を、
 単元ごとに整理して学べるようにまとめています。
 
-{% for item in site.pages %}
-{% if item.title == "数学の土台として学び直す算数|Layer 0" %}
-
-### [{{ item.title }}]({{ item.url }})
-
-{{ item.description }}
-
-{% endif %}
-{% endfor %}
-
 - ### 小学校
   - #### [小学数学まとめ](https://zoldof.com/shougaku/)
 - ### 中学1年
