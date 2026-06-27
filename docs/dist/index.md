@@ -6,7 +6,7 @@ description: "数学を，考え方の流れや構造を意識しながら体系
 ---
 
 # 数学
-- <details markdown="1" id="mathIntro" open><summary>「数学をわかりやすく学ぶ」</summary>
+- <details markdown="1" id="mathIntro"><summary>「数学をわかりやすく学ぶ」</summary>
 
   数学は公式を覚えるだけではなく、\
   なぜそうなるのか、どんな考え方で解くのかを理解することで、\
