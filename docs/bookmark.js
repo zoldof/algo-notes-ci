@@ -36,6 +36,8 @@ function applyBookmark(label, placeFn) {
 export function initListener() {
   bookmark = document.getElementById("bookmark");
   sections = document.querySelectorAll("h4");
+  const mathIntro = document.getElementById("mathIntro");
+  const savedState = localStorage.getItem("mathIntroState");
   
   bookmark.addEventListener("pointerdown", e => {
     isDragging = true;
@@ -72,6 +74,13 @@ export function initListener() {
 
   document.querySelectorAll("details").forEach(details => {
     details.addEventListener("toggle", load);
+  });
+
+  // 特定のトグルを制御する
+  if (savedState === "open") mathIntro.open = true;
+  mathIntro.addEventListener("toggle", () => {
+    if (mathIntro.open) localStorage.setItem("mathIntroState", "open");
+    else localStorage.setItem("mathIntroState", "closed");
   });
 }
 
