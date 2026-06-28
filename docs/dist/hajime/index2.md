@@ -129,7 +129,7 @@ description: "アルゴリズム理解のために数学を学び始めた経緯
 合格判定となったものを掲載しています。
 単位は％です。
 
-<details><summary></summary>
+<details><summary>受験結果を確認</summary>
 
 **ウェブサンプル**
 |級位|残時間率|正答率|
