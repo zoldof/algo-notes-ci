@@ -5,53 +5,6 @@ og_title: "数学は公式の暗記から，構造の理解へ"
 description: "数学を，考え方の流れや構造を意識しながら体系的に学び直していくサイト。アルゴリズムにも通じる視点から，公式や解法のつながりを整理していく。"
 ---
 
-# 数学
-- ### 数学の学び直し
-  - <details markdown="1" id="mathIntro"><summary>数学をわかりやすく学ぶ</summary>
-    <div style="white-space: pre-wrap;">
-    数学は公式を覚えるだけではなく、
-    なぜそうなるのか、どんな考え方で解くのかを理解することで、
-    仕組みが見えてきます。
-  
-    このサイトでは、
-    小学校から中学校までの数学を、
-    単元ごとに整理して学べるようにまとめています。
-    各ページ最上部の「目次」から学びたい項目に移動できます。
-    </div>
-    </details>
-
-- ### 小学校
-  - #### [小学数学まとめ](https://zoldof.com/shougaku/)
-- ### 中学1年
-  - #### [中1数学まとめ](https://zoldof.com/chu1/)
-- ### 中学2年
-  - #### [中2数学まとめ](https://zoldof.com/chu2/)
-- ### 中学3年
-  - #### [【数学の役立て方】【基礎知識】](https://zoldof.com/chu3-1/)
-  - #### [【検定過去問対策】【応用問題】](https://zoldof.com/chu3-2/)
- 
-# アルゴリズム
-- ### 概要
-  - #### [アルゴリズムの基本と算法体系](https://zenn.dev/algorithm_math/articles/7c9a208402e9ae)
-- ### 種類別
-  - #### [配列](https://zenn.dev/algorithm_math/articles/339cdee6be1334)
-  - #### [時刻差分](https://zenn.dev/zoldof/articles/8087839369b6ad)
-  - #### [並べ替え](https://zenn.dev/algorithm_math/articles/548c3fe8d7b937)
-
-# プログラミング
-- ### 全般
-  - #### [ベストプラクティス](https://github.com/zoldof/algo-notes-ci/blob/main/proto-best-practices.md)
-- ### Python
-  - #### [ライブラリ選別基準](https://zenn.dev/zoldof/articles/tech-algo-library)
- 
-# エンジニアリング
-- ### 基礎技術
-  - #### [文字の使い分けとプログラミング命名規則](https://zoldof.com/moji/)
-  - #### [口語の文法](https://zoldof.com/kougo/)
-  - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
-- ### 生産管理
-  - #### [基礎](https://zoldof.com/seikan1/)
-
 # 哲学
 - ### 哲学の歴史と起源
   - <details markdown="1"><summary>哲学まとめ</summary>
@@ -92,6 +45,39 @@ description: "数学を，考え方の流れや構造を意識しながら体系
     - 生命の誕生
 
     </details>
+
+# 数学
+- ### 小学校
+  - #### [小学数学まとめ](https://zoldof.com/shougaku/)
+- ### 中学1年
+  - #### [中1数学まとめ](https://zoldof.com/chu1/)
+- ### 中学2年
+  - #### [中2数学まとめ](https://zoldof.com/chu2/)
+- ### 中学3年
+  - #### [【数学の役立て方】【基礎知識】](https://zoldof.com/chu3-1/)
+  - #### [【検定過去問対策】【応用問題】](https://zoldof.com/chu3-2/)
+ 
+# アルゴリズム
+- ### 概要
+  - #### [アルゴリズムの基本と算法体系](https://zenn.dev/algorithm_math/articles/7c9a208402e9ae)
+- ### 種類別
+  - #### [配列](https://zenn.dev/algorithm_math/articles/339cdee6be1334)
+  - #### [時刻差分](https://zenn.dev/zoldof/articles/8087839369b6ad)
+  - #### [並べ替え](https://zenn.dev/algorithm_math/articles/548c3fe8d7b937)
+
+# プログラミング
+- ### 全般
+  - #### [ベストプラクティス](https://github.com/zoldof/algo-notes-ci/blob/main/proto-best-practices.md)
+- ### Python
+  - #### [ライブラリ選別基準](https://zenn.dev/zoldof/articles/tech-algo-library)
+ 
+# エンジニアリング
+- ### 基礎技術
+  - #### [文字の使い分けとプログラミング命名規則](https://zoldof.com/moji/)
+  - #### [口語の文法](https://zoldof.com/kougo/)
+  - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
+- ### 生産管理
+  - #### [基礎](https://zoldof.com/seikan1/)
  
 # プロフィール
 - ### サイト別
