@@ -77,10 +77,6 @@ th, td {
 .dname-menu h1 {
   /* background-color: #e6f2ff; */
 }
-.dname-hajime details > summary {
-  font-size: 1.5em;
-  font-weight: bold;
-}
 
 /* Jekyllビルドによる変更用 */
 body.page-menu h1 {
