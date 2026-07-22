@@ -87,12 +87,14 @@ description: "数学を，考え方の流れや構造を意識しながら体系
 # お問い合わせ
 - ### Gmail
   - <details markdown="1"><summary>zoldof.game@gmail.com</summary>
+    <div style="white-space: pre-wrap;">
     返信にお時間をいただく場合があります。
     率直な意見をいただければ幸いです。
     匿名の承認機能付きコメントのような使い方を想定しています。
     
     サイト内において積極的に意見を紹介します。
     発言者の開示請求があった場合には承認と状況を鑑みて対応を判断します。
+    </div>
     </details>
 
 # プロフィール
