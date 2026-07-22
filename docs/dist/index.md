@@ -78,7 +78,23 @@ description: "数学を，考え方の流れや構造を意識しながら体系
   - #### [ハードウェアから電気の基礎](https://zenn.dev/zoldof/articles/idea-data-flow)
 - ### 生産管理
   - #### [基礎](https://zoldof.com/seikan1/)
- 
+
+# AIチャット履歴
+- ### GPT
+  - #### [人間の不安と文明の目的](https://zoldof.com/2026072002/)
+  - #### [SEOとサイト価値](https://zoldof.com/2026072001/)
+
+# お問い合わせ
+- ### Gmail
+  - <details markdown="1"><summary>zoldof.game@gmail.com</summary>
+    返信にお時間をいただく場合があります。
+    率直な意見をいただければ幸いです。
+    匿名の承認機能付きコメントのような使い方を想定しています。
+    
+    サイト内において積極的に意見を紹介します。
+    発言者の開示請求があった場合には承認と状況を鑑みて対応を判断します。
+    </details>
+
 # プロフィール
 - ### サイト別
   - #### [Qiita](https://qiita.com/zoldof/items/e33808cc7b1280f133f7)
