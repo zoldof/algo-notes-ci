@@ -1,14 +1,11 @@
 - title: "Item 1"
-  url: "/items/item1/"
   image: "/assets/img/item1.jpg"
   description: "説明文（短め推奨）"
 
 - title: "Item 2"
-  url: "/items/item2/"
   image: "/assets/img/item2.jpg"
   description: "説明文（短め推奨）"
 
 - title: "Item 3"
-  url: "/items/item3/"
   image: "/assets/img/item3.jpg"
   description: "説明文（短め推奨）"
