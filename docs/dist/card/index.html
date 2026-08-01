@@ -1,0 +1,38 @@
+<style>
+  .card-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .card{
+    border:1px solid #e5e5e5;
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 1px 2px rgba(0,0,0,0.04);
+  }
+  .card a{ display:block; color:inherit; text-decoration:none; height:100%; }
+  .card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    display:block;
+  }
+  .card .card-body{ padding:12px; }
+  .card h3{ margin:0 0 8px; font-size:1rem; }
+  .card p{ margin:0; color:#444; font-size:.95rem; }
+</style>
+
+<div class="card-grid">
+  {% for c in site.data.cards %}
+    <div class="card">
+      <a href="{{ c.url }}">
+        <img src="{{ c.image }}" alt="{{ c.title }}">
+        <div class="card-body">
+          <h3>{{ c.title }}</h3>
+          <p>{{ c.description }}</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</div>
