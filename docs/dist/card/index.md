@@ -7,18 +7,20 @@ title: Cards
   <div class="page-cards__grid">
     {% for c in site.data.cards %}
       <div class="page-cards__card">
-        <a class="page-cards__link" href="{{ c.url }}">
+        <div class="page-cards__imgwrap">
           <img
             class="page-cards__img"
             src="{{ c.image }}"
             alt="{{ c.title }}"
             loading="lazy"
+            data-modal-img="{{ c.image }}"
+            data-modal-title="{{ c.title }}"
           >
-          <div class="page-cards__body">
-            <h3 class="page-cards__title">{{ c.title }}</h3>
-            <p class="page-cards__desc">{{ c.description }}</p>
-          </div>
-        </a>
+        </div>
+        <div class="page-cards__body">
+          <h3 class="page-cards__title">{{ c.title }}</h3>
+          <p class="page-cards__desc">{{ c.description }}</p>
+        </div>
       </div>
     {% endfor %}
   </div>
@@ -39,11 +41,8 @@ title: Cards
     box-shadow:0 1px 2px rgba(0,0,0,0.04);
     height:100%;
   }
-  .page-cards .page-cards__link{
-    display:block;
-    color:inherit;
-    text-decoration:none;
-    height:100%;
+  .page-cards .page-cards__imgwrap{
+    cursor: zoom-in;
   }
   .page-cards .page-cards__img{
     width:100%;
@@ -62,4 +61,77 @@ title: Cards
     font-size:.95rem;
     line-height:1.5;
   }
+
+  /* モーダル */
+  .pc-modal{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding: 24px;
+  }
+  .pc-modal.is-open{ display:flex; }
+  .pc-modal__panel{
+    width:min(980px, 100%);
+    background:transparent;
+    color:#fff;
+  }
+  .pc-modal__img{
+    width:100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display:block;
+    border-radius: 12px;
+    background:#111;
+  }
+  .pc-modal__caption{
+    margin-top:10px;
+    font-size: 1rem;
+    text-align:center;
+  }
 </style>
+
+<div class="pc-modal" id="pcModal" aria-hidden="true">
+  <div class="pc-modal__panel">
+    <img class="pc-modal__img" id="pcModalImg" alt="">
+    <div class="pc-modal__caption" id="pcModalCaption"></div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const modal = document.getElementById('pcModal');
+    const imgEl = document.getElementById('pcModalImg');
+    const capEl = document.getElementById('pcModalCaption');
+
+    const open = (src, title) => {
+      imgEl.src = src;
+      imgEl.alt = title || '';
+      capEl.textContent = title || '';
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+
+    const close = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      imgEl.src = '';
+    };
+
+    document.querySelectorAll('[data-modal-img]').forEach(im => {
+      im.addEventListener('click', () => {
+        open(im.getAttribute('data-modal-img'), im.getAttribute('data-modal-title'));
+      });
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
+  })();
+</script>
