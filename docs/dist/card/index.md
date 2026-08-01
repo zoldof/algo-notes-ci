@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Cards
+title: "星環のカタリオン"
 ---
 
 <div class="page-cards">
