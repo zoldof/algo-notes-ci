@@ -24,11 +24,27 @@ title: "星環のカタリオン"
 <style>
   .page-cards .page-cards__grid{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
     align-items: stretch;
+  
+    /* スマホ（デフォルト）：2列 */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
+  
+  /* 640px以上：3列 */
+  @media (min-width: 640px){
+    .page-cards .page-cards__grid{
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  
+  /* 980px以上：4列 */
+  @media (min-width: 980px){
+    .page-cards .page-cards__grid{
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  
   .page-cards .page-cards__card{
     border:1px solid #e5e5e5;
     border-radius:12px;
@@ -37,19 +53,28 @@ title: "星環のカタリオン"
     box-shadow:0 1px 2px rgba(0,0,0,0.04);
     height:100%;
   }
-
+  
   .page-cards .page-cards__imgwrap{
     cursor: zoom-in;
   }
-
-  /* 見切れ防止：cover → contain に変更 */
+  
+  /* カード画像：大きめ + 見切れ回避（余白は出る可能性あり） */
   .page-cards .page-cards__img{
     width:100%;
-    height:120px;          /* ここを好みの縮小サイズに調整 */
-    object-fit: contain;   /* 見切れない */
+    height:220px;
+    object-fit: contain;
     display:block;
-    background:#fff;        /* containの余白が気になるなら #111 などに変更可 */
+    background:#fff; /* containの余白色（気になるなら #111 などに） */
   }
+  
+  /* 画面が小さいときは高さを調整 */
+  @media (max-width: 639.98px){
+    .page-cards .page-cards__img{ height:170px; }
+  }
+  @media (min-width: 640px) and (max-width: 979.98px){
+    .page-cards .page-cards__img{ height:200px; }
+  }
+
 
   /* モーダル */
   .pc-modal{
