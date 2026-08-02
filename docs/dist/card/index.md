@@ -10,16 +10,16 @@ title: "星環のカタリオン"
         <div class="page-cards__imgwrap">
           <img
             class="page-cards__img"
-            src="{{ c.image }}"
-            alt="{{ c.title }}"
+            src="{{ site.cdn_base }}main/docs/{{ c.image }}"
+            alt="{{ site.cdn_base }}main/docs/{{ c.title }}"
             loading="lazy"
-            data-modal-img="{{ c.image }}"
-            data-modal-title="{{ c.title }}"
+            data-modal-img="{{ site.cdn_base }}main/docs/{{ c.image }}"
+            data-modal-title="{{ site.cdn_base }}main/docs/{{ c.title }}"
           >
         </div>
         <div class="page-cards__body">
-          <h3 class="page-cards__title">{{ c.title }}</h3>
-          <p class="page-cards__desc">{{ c.description }}</p>
+          <h3 class="page-cards__title">{{ site.cdn_base }}main/docs/{{ c.title }}</h3>
+          <p class="page-cards__desc">{{ site.cdn_base }}main/docs/{{ c.description }}</p>
         </div>
       </div>
     {% endfor %}
