@@ -22,6 +22,9 @@ title: "星環のカタリオン"
 </div>
 
 <style>
+  .page-cards{
+    margin-top: 16px; /* カード間のgapと同じ16pxにして統一 */
+  }
   .page-cards .page-cards__grid{
     display:grid;
     gap: 16px;
