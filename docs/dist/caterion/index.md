@@ -5,7 +5,7 @@ title: "星環のカタリオン"
 
 <div class="page-cards">
   <div class="page-cards__grid">
-    {% for c in site.data.cards %}
+    {% for c in site.data.caterion %}
       <div class="page-cards__card">
         <div class="page-cards__imgwrap">
           <img
