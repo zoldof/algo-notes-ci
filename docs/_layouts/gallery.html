@@ -19,8 +19,9 @@
   <!-- append: 'site.github.build_revision' | -->
   <!-- https://purge.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs -->
 <body class="page-{{ slug }}">
-  <!-- Include -->
-  {% include header.html %}
+  <header class="site-header">
+    <a href="{{ origin_url }}">内核転送</a>
+  </header>
   <div id="content">
     <!-- Liquid -->
     {{ content }}
