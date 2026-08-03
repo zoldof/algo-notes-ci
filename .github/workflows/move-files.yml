@@ -2,13 +2,22 @@ name: Move Files
 
 on:
   workflow_dispatch:
+    inputs:
+      source_dir:
+        description: "Source directory"
+        required: true
+        default: "source-dir"
+      dist_dir:
+        description: "Destination directory"
+        required: true
+        default: "dist-dir"
 
 permissions:
   contents: write
 
 env:
-  SOURCE_DIR: source-dir
-  DIST_DIR: dist-dir
+  SOURCE_DIR: ${{ inputs.source_dir }}
+  DIST_DIR: ${{ inputs.dist_dir }}
 
 jobs:
   move_files:
@@ -16,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Git
         run: |
