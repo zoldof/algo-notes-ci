@@ -34,6 +34,7 @@
     document.addEventListener("DOMContentLoaded", async () => {
       renderKatex(document.getElementById("content"));
       addBackToTopLinks();
+      //将来的にメニューページ以外でもしおりが使える形を残すためにslug判定にしている
       if (document.body.classList.contains('page-{{ slug }}')) {
         initListener();
         load();
