@@ -35,6 +35,7 @@ function applyBookmark(label, placeFn) {
 /* ================= ドラッグ & トグル ================= */
 export function initListener() {
   bookmark = document.getElementById("bookmark");
+  if (!bookmark) return;
   sections = document.querySelectorAll("h4");
   
   bookmark.addEventListener("pointerdown", e => {
@@ -112,6 +113,7 @@ function save() {
 
 /* ====================== 復元 ====================== */
 export function load() {
+  if (!bookmark) return;
   //localStorage.removeItem('bookmark'); //←localStorageの部分クリア
   const data = localStorage.getItem("bookmark");
   if (!data) {
