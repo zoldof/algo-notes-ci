@@ -22,6 +22,11 @@ title: "星環のカタリオン"
 </div>
 
 <style>
+  .site-header a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
   .page-cards{
     margin-top: 16px; /* カード間のgapと同じ16pxにして統一 */
   }
