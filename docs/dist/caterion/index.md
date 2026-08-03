@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: gallery
 title: "星環のカタリオン"
 ---
 
