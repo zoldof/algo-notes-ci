@@ -33,9 +33,11 @@ title: "星環のカタリオン"
   }
   .site-hero__home{
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 7px;
+    left: 7px;
     z-index: 2;
+
+    font-size: 10px;
   
     color: inherit;
     text-decoration: none;
@@ -43,8 +45,8 @@ title: "星環のカタリオン"
   
     /* 背景画像の上で読めるようにする（好みで） */
     background: rgba(0,0,0,0.35);
-    padding: 6px 10px;
-    border-radius: 8px;
+    padding: 3px 6px;
+    border-radius: 5px;
   }
   
   .page-cards{
