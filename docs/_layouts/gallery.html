@@ -19,6 +19,14 @@
   <!-- append: 'site.github.build_revision' | -->
   <!-- https://purge.jsdelivr.net/gh/zoldof/algo-notes-ci@main/docs -->
 <body class="page-{{ slug }}">
+  <header class="site-hero">
+    <img
+      src="{{ site.cdn_base }}main/docs/dist/{{ slug }}/header.png"
+      alt="特設ページのヘッダー画像"
+      class="site-hero__img"
+    />
+    <a class="site-hero__home" href="{{ origin_url }}">Algorithm and Math</a>
+  </header>
   <div id="content">
     <!-- Liquid -->
     {{ content }}
