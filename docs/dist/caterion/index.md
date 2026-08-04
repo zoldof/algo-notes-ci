@@ -52,7 +52,7 @@ title: "星環のカタリオン"
     right: 7px;
     z-index: 2;
   }
-  #playBtn{
+  #site-hero__playBtn{
     border: 0;
     background: rgba(0,0,0,.35);
     border-radius: 999px;
