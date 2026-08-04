@@ -3,15 +3,6 @@ layout: gallery
 title: "星環のカタリオン"
 ---
 
-<header class="site-hero">
-  <img
-    src="{{ site.cdn_base }}main/docs/dist/caterion/header.png"
-    alt="サイトのヘッダー画像"
-    class="site-hero__img"
-  />
-  <a class="site-hero__home" href="{{ origin_url }}">Algorithm and Math</a>
-</header>
-
 <div class="page-cards">
   <div class="page-cards__grid">
     {% for c in site.data.caterion %}
