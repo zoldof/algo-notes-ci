@@ -3,6 +3,15 @@ layout: gallery
 title: "星環のカタリオン"
 ---
 
+<header class="site-hero">
+  <img
+    src="{{ site.cdn_base }}main/docs/dist/caterion/header.png"
+    alt="サイトのヘッダー画像"
+    class="site-hero__img"
+  />
+  <a class="site-hero__home" href="{{ origin_url }}">Algorithm and Math</a>
+</header>
+
 <div class="page-cards">
   <div class="page-cards__grid">
     {% for c in site.data.caterion %}
@@ -22,15 +31,29 @@ title: "星環のカタリオン"
 </div>
 
 <style>
-  .site-header__img {
+  .site-hero {
+    position: relative;
+  }
+  .site-hero__img {
     width: 100%;
     height: auto;      /* 縦は比率維持 */
     object-fit: contain;
     display: block;
   }
-  .site-header a {
+  .site-hero__home{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+  
     color: inherit;
     text-decoration: none;
+    font-weight: 700;
+  
+    /* 背景画像の上で読めるようにする（好みで） */
+    background: rgba(0,0,0,0.35);
+    padding: 6px 10px;
+    border-radius: 8px;
   }
   
   .page-cards{
