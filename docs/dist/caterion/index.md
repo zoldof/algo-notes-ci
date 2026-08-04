@@ -22,6 +22,12 @@ title: "星環のカタリオン"
 </div>
 
 <style>
+  .site-header__img {
+    width: 100%;
+    height: auto;      /* 縦は比率維持 */
+    object-fit: contain;
+    display: block;
+  }
   .site-header a {
     color: inherit;
     text-decoration: none;
