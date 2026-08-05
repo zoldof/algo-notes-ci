@@ -41,6 +41,12 @@ title: "星環のカタリオン"
     cursor: pointer;
     align-items: center;
   }
+  #site-hero__home{
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 2;
+  }
   .site-hero__music{
     position: absolute;
     top: 7px;
