@@ -153,7 +153,7 @@ title: "星環のカタリオン"
 </div>
 
 <script>
-  const btn = document.getElementById('playBtn');
+  const btn = document.getElementById('site-hero__playBtn');
   const audio = document.getElementById('audio');
   
   btn.addEventListener('click', async () => {
