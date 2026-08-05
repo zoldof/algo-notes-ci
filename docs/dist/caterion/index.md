@@ -43,7 +43,7 @@ title: "星環のカタリオン"
   
     /* 背景画像の上で読めるようにする（好みで） */
     background: rgba(0,0,0,0.35);
-    padding: 1px 1px;
+    padding: 3px 6px;
     border-radius: 5px;
   }
   .site-hero__music{
@@ -53,16 +53,17 @@ title: "星環のカタリオン"
     z-index: 2;
   }
   #site-hero__playBtn{
-    border: 0;
-    background: rgba(0,0,0,.35);
+    border: 2px solid #ffffff;      /* ボーダー白 */
+    background: #0b1f4a;           /* 紺色 */
     border-radius: 999px;
     width: 24px;
     height: 24px;
     font-size: 10px;
     cursor: pointer;
   }
-    #site-hero__playBtn.is-playing{
-    background: #ff4d4d; /* 再生中の色 */
+  #site-hero__playBtn.is-playing{
+    border-color: #ffffff; /* 必要なら維持 */
+    background: #4a7dff; /* 薄い青（お好みで調整） */
   }
   
   .page-cards{
