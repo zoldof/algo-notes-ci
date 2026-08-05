@@ -31,28 +31,7 @@ title: "星環のカタリオン"
     object-fit: contain;
     display: block;
   }
-  .site-hero__home{
-    position: absolute;
-    top: 7px;
-    left: 7px;
-    z-index: 2;
-    font-size: 10px;
-    color: inherit;
-    text-decoration: none;
-    font-weight: 700;
-  
-    /* 背景画像の上で読めるようにする（好みで） */
-    background: rgba(0,0,0,0.35);
-    padding: 3px 6px;
-    border-radius: 5px;
-  }
-  .site-hero__music{
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    z-index: 2;
-  }
-  #site-hero__playBtn{
+  .site-hero__iconBtn{
     border: 2px solid #ffffff;      /* ボーダー白 */
     background: #0b1f4a;           /* 紺色 */
     border-radius: 999px;
@@ -60,6 +39,13 @@ title: "星環のカタリオン"
     height: 24px;
     font-size: 10px;
     cursor: pointer;
+    align-items: center;
+  }
+  .site-hero__music{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    z-index: 2;
   }
   #site-hero__playBtn.is-playing{
     border-color: #ffffff; /* 必要なら維持 */
