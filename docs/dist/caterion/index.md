@@ -43,7 +43,7 @@ title: "星環のカタリオン"
   
     /* 背景画像の上で読めるようにする（好みで） */
     background: rgba(0,0,0,0.35);
-    padding: 3px 6px;
+    padding: 1px 1px;
     border-radius: 5px;
   }
   .site-hero__music{
@@ -60,6 +60,9 @@ title: "星環のカタリオン"
     height: 24px;
     font-size: 10px;
     cursor: pointer;
+  }
+    #site-hero__playBtn.is-playing{
+    background: #ff4d4d; /* 再生中の色 */
   }
   
   .page-cards{
@@ -155,17 +158,28 @@ title: "星環のカタリオン"
 <script>
   const btn = document.getElementById('site-hero__playBtn');
   const audio = document.getElementById('audio');
+
+  function setPlayingUI(isPlaying) {
+    if (isPlaying) btn.classList.add('is-playing');
+    else btn.classList.remove('is-playing');
+  }
+
+  // 初期状態
+  setPlayingUI(!audio.paused);
   
   btn.addEventListener('click', async () => {
     if (audio.paused) {
-      await audio.play();      // 停止時に currentTime=0 に戻してあるので最初からになる
-      btn.textContent = '⏹️';
+      audio.currentTime = 0;
+      audio.play();
     } else {
       audio.pause();
-      audio.currentTime = 0;  // 次の再生は最初から
-      btn.textContent = '▶️';
     }
   });
+  
+  // 状態に応じてUIを同期（ズレ防止）
+  audio.addEventListener('play', () => setPlayingUI(true));
+  audio.addEventListener('pause', () => setPlayingUI(false));
+  audio.addEventListener('ended', () => setPlayingUI(false));
 
   (function(){
     const modal = document.getElementById('pcModal');
