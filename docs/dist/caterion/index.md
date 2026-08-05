@@ -153,6 +153,20 @@ title: "星環のカタリオン"
 </div>
 
 <script>
+  const btn = document.getElementById('playBtn');
+  const audio = document.getElementById('audio');
+  
+  btn.addEventListener('click', async () => {
+    if (audio.paused) {
+      await audio.play();      // 停止時に currentTime=0 に戻してあるので最初からになる
+      btn.textContent = '⏹️';
+    } else {
+      audio.pause();
+      audio.currentTime = 0;  // 次の再生は最初から
+      btn.textContent = '▶️';
+    }
+  });
+
   (function(){
     const modal = document.getElementById('pcModal');
     const imgEl = document.getElementById('pcModalImg');
