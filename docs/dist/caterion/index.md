@@ -32,6 +32,8 @@ title: "星環のカタリオン"
     display: block;
   }
   .site-hero__iconBtn{
+    border: none;          /* ボーダーなし */
+    background: transparent; /* 背景色なし（透明） */
     border-radius: 999px;
     width: 24px;
     height: 24px;
