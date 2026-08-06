@@ -148,9 +148,6 @@ title: "星環のカタリオン"
 <script>
   const btn = document.getElementById('site-hero__music');
   const audio = document.getElementById('audio');
-
-  // 初期状態
-  setPlayingUI(!audio.paused);
   
   btn.addEventListener('click', async () => {
     if (audio.paused) {
