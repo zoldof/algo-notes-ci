@@ -13,5 +13,7 @@ exclude:
   - dist-marked
   - index.html
   - dist/**/*.png
+  - dist/**/*.PNG
+  - dist/**/*.mp3
 plugins:
   - jekyll-sitemap
