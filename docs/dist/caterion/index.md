@@ -32,20 +32,19 @@ title: "星環のカタリオン"
     display: block;
   }
   .site-hero__iconBtn{
-    border: 2px solid #ffffff;      /* ボーダー白 */
     background: #0b1f4a;           /* 紺色 */
     border-radius: 999px;
     width: 24px;
     height: 24px;
     font-size: 10px;
     cursor: pointer;
-    align-items: center;
   }
   #site-hero__home{
     position: absolute;
     top: 7px;
     left: 7px;
     z-index: 2;
+    text-decoration: none;
   }
   .site-hero__music{
     position: absolute;
