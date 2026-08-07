@@ -1,6 +1,7 @@
 ---
 layout: gallery
 title: "星環のカタリオン"
+description: "カタリオンはすべてオリジナルの創作であり、実在の作品・人物・団体とは関係ありません。"
 ---
 
 <div class="page-cards">
