@@ -100,7 +100,8 @@ description: "カタリオンはすべてオリジナルの創作であり、実
   /* カード画像：大きめ + 見切れ回避（余白は出る可能性あり） */
   .page-cards .page-cards__img{
     width:100%;
-    height:220px;
+    aspect-ratio: 2 / 3;
+    height: auto;
     object-fit: contain;
     display:block;
     background:#fff; /* containの余白色（気になるなら #111 などに） */
