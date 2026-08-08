@@ -99,7 +99,7 @@ description: "カタリオンはすべてオリジナルの創作であり、実
   /* カード画像：大きめ + 見切れ回避（余白は出る可能性あり） */
   .page-cards .page-cards__img{
     width:100%;
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 2.3 / 3;
     height: auto;
     object-fit: contain;
     display:block;
