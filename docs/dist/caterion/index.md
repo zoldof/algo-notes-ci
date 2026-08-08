@@ -86,7 +86,6 @@ description: "カタリオンはすべてオリジナルの創作であり、実
   
   .page-cards .page-cards__card{
     border:1px solid #e5e5e5;
-    border-radius:12px;
     overflow:hidden;
     background:#fff;
     box-shadow:0 1px 2px rgba(0,0,0,0.04);
@@ -106,15 +105,6 @@ description: "カタリオンはすべてオリジナルの創作であり、実
     display:block;
     background:#fff; /* containの余白色（気になるなら #111 などに） */
   }
-  
-  /* 画面が小さいときは高さを調整 */
-  @media (max-width: 639.98px){
-    .page-cards .page-cards__img{ height:170px; }
-  }
-  @media (min-width: 640px) and (max-width: 979.98px){
-    .page-cards .page-cards__img{ height:200px; }
-  }
-
 
   /* モーダル */
   .pc-modal{
