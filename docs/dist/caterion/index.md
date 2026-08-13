@@ -39,6 +39,7 @@ description: "カタリオンはすべてオリジナルの創作であり、実
     width: 24px;
     height: 24px;
     font-size: 10px;
+    top: 7px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -46,20 +47,17 @@ description: "カタリオンはすべてオリジナルの創作であり、実
   }
   #site-hero__home{
     position: absolute;
-    top: 7px;
     left: 7px;
     z-index: 2;
     text-decoration: none;
   }
   #site-hero__music{
     position: absolute;
-    top: 7px;
-    right: 7px;
+    right: 32px;
     z-index: 2;
   }
   #site-hero__music-2{
     position: absolute;
-    bottom: 7px;
     right: 7px;
     z-index: 2;
   }
@@ -148,13 +146,27 @@ description: "カタリオンはすべてオリジナルの創作であり、実
 <script>
   const btn = document.getElementById('site-hero__music');
   const audio = document.getElementById('audio');
+  const btn_2 = document.getElementById('site-hero__music-2');
+  const audio_2 = document.getElementById('audio-2');
   
   btn.addEventListener('click', async () => {
     if (audio.paused) {
+      audio_2.pause();
+      audio_2.currentTime = 0;
       audio.currentTime = 0;
       audio.play();
     } else {
       audio.pause();
+    }
+  });
+
+  btn_2.addEventListener('click', async () => {
+    if (audio_2.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio_2.play();
+    } else {
+      audio_2.pause();
     }
   });
 
