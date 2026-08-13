@@ -56,7 +56,7 @@ description: "カタリオンはすべてオリジナルの創作であり、実
     right: 32px;
     z-index: 2;
   }
-  #site-hero__music-2{
+  #site-hero__music_2{
     position: absolute;
     right: 7px;
     z-index: 2;
@@ -146,8 +146,8 @@ description: "カタリオンはすべてオリジナルの創作であり、実
 <script>
   const btn = document.getElementById('site-hero__music');
   const audio = document.getElementById('audio');
-  const btn_2 = document.getElementById('site-hero__music-2');
-  const audio_2 = document.getElementById('audio-2');
+  const btn_2 = document.getElementById('site-hero__music_2');
+  const audio_2 = document.getElementById('audio_2');
   
   btn.addEventListener('click', async () => {
     if (audio.paused) {
