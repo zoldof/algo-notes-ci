@@ -144,30 +144,27 @@ description: "カタリオンはすべてオリジナルの創作であり、実
 </div>
 
 <script>
-  const btn = document.getElementById('site-hero__music');
-  const audio = document.getElementById('audio');
-  const btn_2 = document.getElementById('site-hero__music_2');
-  const audio_2 = document.getElementById('audio_2');
+  const pairs = [
+    ['site-hero__music',   'audio'],
+    ['site-hero__music_2', 'audio_2']
+  ];
   
-  btn.addEventListener('click', async () => {
-    if (audio.paused) {
-      audio_2.pause();
-      audio_2.currentTime = 0;
-      audio.currentTime = 0;
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  });
-
-  btn_2.addEventListener('click', async () => {
-    if (audio_2.paused) {
-      audio.pause();
-      audio.currentTime = 0;
-      audio_2.play();
-    } else {
-      audio_2.pause();
-    }
+  const get = (id) => document.getElementById(id);
+  
+  const audios = pairs.map(([, audioId]) => get(audioId));
+  const btns   = pairs.map(([btnId]) => get(btnId));
+  
+  btns.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      const target = audios[i];
+      const other  = audios[1 - i];
+  
+      if (!target.paused) return target.pause();
+  
+      other.pause(); other.currentTime = 0;
+      target.currentTime = 0;
+      target.play();
+    });
   });
 
   (function(){
