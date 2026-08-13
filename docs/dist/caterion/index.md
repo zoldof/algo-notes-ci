@@ -3,7 +3,7 @@ layout: gallery
 title: "星環のカタリオン"
 description: "カタリオンはすべてオリジナルの創作であり、実在の作品・人物・団体とは関係ありません。"
 ---
-
+<!-- 確認済み147~168  -->
 <div class="page-cards">
   <div class="page-cards__grid">
     {% for c in site.data.caterion %}
