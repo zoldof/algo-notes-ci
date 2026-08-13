@@ -57,6 +57,12 @@ description: "カタリオンはすべてオリジナルの創作であり、実
     right: 7px;
     z-index: 2;
   }
+  #site-hero__music-2{
+    position: absolute;
+    bottom: 7px;
+    right: 7px;
+    z-index: 2;
+  }
   
   .page-cards{
     margin-top: 16px; /* カード間のgapと同じ16pxにして統一 */
