@@ -133,6 +133,17 @@ button2.addEventListener(...)
 ```
 btns.forEach((btn, i) => {
   btn.addEventListener('click', () => {
+    if (i === 0) {
+        // ボタン1の処理
+        ...
+        return;
+      }
+  
+    // ここに来るのは i === 1 の場合
+    // ボタン2の処理
+    ...
+  });
+});
 ```
 でよくなる\
 なかで `i` を使わなくても良い
