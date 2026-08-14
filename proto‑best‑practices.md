@@ -18,6 +18,7 @@
     + [jsの読み込み順序](#js%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E9%A0%86%E5%BA%8F)
     + [DOMContentLoaded](#domcontentloaded)
     + [ハンドラの残留干渉](#%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E6%AE%8B%E7%95%99%E5%B9%B2%E6%B8%89)
+    + [イベントハンドラの設定](#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A9%E3%81%AE%E8%A8%AD%E5%AE%9A)
     + [Promise](#promise)
     + [MutationOvserver](#mutationovserver)
     + [モジュールの必要性](#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7)
