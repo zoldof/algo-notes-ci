@@ -144,26 +144,90 @@ description: "カタリオンはすべてオリジナルの創作であり、実
 </div>
 
 <script>
-  const pairs = [
-    ['site-hero__music',   'audio'],
-    ['site-hero__music_2', 'audio_2']
-  ];
-  
   const get = (id) => document.getElementById(id);
+  const btns = [
+    get('site-hero__music'),
+    get('site-hero__music_2')
+  ];
+  const audios = [
+    get('audio'),
+    get('audio_2'),
+    get('audio_3'),
+    get('audio_4')
+  ];
+  const pool = audios.slice(1);
+  let chainRunning = false;
   
-  const audios = pairs.map(([, audioId]) => get(audioId));
-  const btns   = pairs.map(([btnId]) => get(btnId));
+  function stopChain() {
+    chainRunning = false;
+    pool.forEach(a => {
+      if (!a) return;
+      a.pause();
+      a.currentTime = 0;
+    });
+  }
+  
+  function playRandomLoop() {
+    chainRunning = true;
+  
+    // 全停止から開始（安全策）
+    pool.forEach(a => {
+      if (!a) return;
+      a.pause();
+      a.currentTime = 0;
+    });
+  
+    const candidates = () => pool.filter(a => a); //念のため
+    const pickRandom = () => {
+      const list = candidates();
+      return list[Math.floor(Math.random() * list.length)];
+    };
+  
+    const playNext = () => {
+      if (!chainRunning) return;
+  
+      const next = pickRandom();
+  
+      // 次のonendedでも止められるように
+      next.onended = () => {
+        if (!chainRunning) return;
+        playNext();
+      };
+  
+      next.currentTime = 0;
+      next.play();
+    };
+  
+    playNext();
+  }
   
   btns.forEach((btn, i) => {
     btn.addEventListener('click', () => {
-      const target = audios[i];
-      const other  = audios[1 - i];
+      const audio = audios[0];
   
-      if (!target.paused) return target.pause();
+      // i=0側: audio（単体）
+      if (i === 0) {
+        // 鳴ってたら止める
+        if (!audio.paused) {
+          audio.pause();
+          audio.currentTime = 0;
+          return;
+        }
+        // 他方停止＆自分開始
+        stopChain();
+        audio.currentTime = 0;
+        audio.play();
+        return;
+      }
   
-      other.pause(); other.currentTime = 0;
-      target.currentTime = 0;
-      target.play();
+      // i=1側:（2/3/4ランダムループ）
+      if (chainRunning) {
+        stopChain();
+        return;
+      }
+      audio.pause();
+      audio.currentTime = 0;
+      playRandomLoop();
     });
   });
 
