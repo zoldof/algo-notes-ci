@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title }}</title>
+</head>
+
+<body>
+
+  <main>
+
+    <button id="speakButton" type="button">
+      この本文を読む
+    </button>
+
+    <button id="stopButton" type="button">
+      停止
+    </button>
+
+    <article id="content">
+      {{ content }}
+    </article>
+
+  </main>
+
+  <script>
+    const content = document.getElementById('content');
+    const speakButton = document.getElementById('speakButton');
+    const stopButton = document.getElementById('stopButton');
+
+    // 読み上げ状態
+    let chunks = [];
+    let currentChunk = 0;
+    let isReading = false;
+
+
+    // --------------------------------------------------
+    // 本文を読み上げ用のチャンクに分割する
+    // --------------------------------------------------
+    function createChunks() {
+
+      // 本文をコピー
+      const clone = content.cloneNode(true);
+
+      // コードブロックを除外
+      // <pre><code>...</code></pre>
+      clone.querySelectorAll('pre').forEach(el => {
+        el.remove();
+      });
+
+      // 読み上げ対象となる要素
+      const elements = clone.querySelectorAll(
+        'h1, h2, h3, h4, h5, h6, p, li, blockquote'
+      );
+
+      const result = [];
+      let currentText = '';
+
+      // 1チャンクあたりのおおよその文字数
+      const MAX_CHARS = 500;
+
+      elements.forEach(element => {
+
+        const text = element.innerText.trim();
+
+        if (!text) return;
+
+        // 現在のチャンクに追加すると長すぎる場合
+        if (
+          currentText &&
+          currentText.length + text.length > MAX_CHARS
+        ) {
+          result.push(currentText);
+          currentText = '';
+        }
+
+        currentText += text + '\n';
+      });
+
+      // 最後のチャンク
+      if (currentText.trim()) {
+        result.push(currentText.trim());
+      }
+
+      return result;
+    }
+
+
+    // --------------------------------------------------
+    // 次のチャンクを読み上げる
+    // --------------------------------------------------
+    function speakNext() {
+
+      // 全チャンク終了
+      if (currentChunk >= chunks.length) {
+        isReading = false;
+        speakButton.textContent = 'この本文を読む';
+        return;
+      }
+
+      const utterance = new SpeechSynthesisUtterance(
+        chunks[currentChunk]
+      );
+
+      utterance.lang = 'ja-JP';
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+
+      // 現在のチャンクが終了したら次へ
+      utterance.onend = () => {
+
+        if (!isReading) return;
+
+        currentChunk++;
+
+        speakNext();
+      };
+
+      // エラー発生時
+      utterance.onerror = () => {
+        isReading = false;
+        speakButton.textContent = 'この本文を読む';
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+
+    // --------------------------------------------------
+    // 読み上げ開始
+    // --------------------------------------------------
+    speakButton.addEventListener('click', () => {
+
+      // 現在の読み上げを停止
+      window.speechSynthesis.cancel();
+
+      // 本文をチャンク化
+      chunks = createChunks();
+
+      if (chunks.length === 0) {
+        return;
+      }
+
+      // 最初から再生
+      currentChunk = 0;
+      isReading = true;
+
+      speakButton.textContent = '読み上げ中...';
+
+      speakNext();
+    });
+
+
+    // --------------------------------------------------
+    // 読み上げ停止
+    // --------------------------------------------------
+    stopButton.addEventListener('click', () => {
+
+      isReading = false;
+
+      window.speechSynthesis.cancel();
+
+      speakButton.textContent = 'この本文を読む';
+    });
+
+  </script>
+
+</body>
+
+</html>
